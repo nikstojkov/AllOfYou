@@ -1,15 +1,11 @@
-<h1>All Opportunities</h1>
+<h1><%= @opportunity.title %></h1>
 
 <div class="container">
   <% @opportunities.each do |opportunity| %>
     <ul>
-      <li><%= opportunity.title %></li>
       <li><%= opportunity.location %></li>
       <li><%= opportunity.description %></li>
       <li><%= opportunity.status %></li>
-      <%= link_to "Delete",
-          artwork_path(opportunity),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </ul>
   <% end %>
 </div>
