@@ -1,0 +1,12 @@
+<h1>All Opportunities</h1>
+
+<div class="container">
+  <% @opportunities.each do |opportunity| %>
+    <ul>
+      <li><%= opportunity.title %></li>
+      <li><%= opportunity.location %></li>
+      <li><%= opportunity.description %></li>
+      <li><%= opportunity.status %></li>
+    </ul>
+  <% end %>
+</div>
