@@ -1,15 +1,15 @@
 class OpportunitiesController < ApplicationController
   before_action :set_opportunities, only: %i[show edit update destroy]
   def index
-    @opportunities = Opportunities.all
+    @opportunities = Opportunity.all
   end
 
   def new
-    @opportunity = Opportunities.new
+    @opportunity = Opportunity.new
   end
 
   def create
-    opportunities = Opportunities.new(opportunity_params)
+    opportunities = Opportunity.new(opportunity_params)
     opportunities.save
     redirect_to opportunity_path(opportunities)
   end
@@ -21,9 +21,13 @@ class OpportunitiesController < ApplicationController
   end
 
   def update
+    opportunity.update(opportunity_params)
+    redirect_to opportunity_path(opportunity)
   end
 
-  def delete
+  def destroy
+    @opportunity.destroy
+    redirect_to opportunities_path, status: see_other
   end
 
   private
