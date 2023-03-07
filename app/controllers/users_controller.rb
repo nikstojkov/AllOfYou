@@ -15,13 +15,19 @@ class UsersController < ApplicationController
     redirect_to current_user
   end
 
+  def destroy
+    @user.destroy
+    redirect_to new_artist_registration
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:location, :first_name, :last_name, :tags, :bio)
+    params.require(:user).permit(:location, :first_name, :last_name, :bio)
   end
 
   def set_user
     @user = User.find(params[:id])
   end
+
 end

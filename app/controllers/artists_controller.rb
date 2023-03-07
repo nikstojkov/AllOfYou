@@ -17,6 +17,11 @@ class ArtistsController < ApplicationController
     redirect_to current_user
   end
 
+  def destroy
+    @artist.destroy
+    redirect_to new_artist_registration
+  end
+
   private
 
   def artist_params
@@ -26,4 +31,5 @@ class ArtistsController < ApplicationController
   def set_artist
     @artist = Artist.find(params[:id])
   end
+
 end
