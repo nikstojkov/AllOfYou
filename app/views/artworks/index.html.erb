@@ -1,0 +1,11 @@
+<h1>All Artwork</h1>
+
+<p>#TODO - Add cloudinary to app</p>
+
+<ul>
+  <% @Artworks.each do |art| %>
+    <li><%= art.name %></li>
+    <li><%= art.genre %></li>
+    <li><%= art.tags %></li>
+  <% end %>
+</ul>
