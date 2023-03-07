@@ -1,0 +1,14 @@
+<h1>All Artwork</h1>
+
+<p>#TODO - Add cloudinary to app</p>
+
+<ul>
+  <% @Artworks.each do |artwork| %>
+    <li><%= artwork.name %></li>
+    <li><%= artwork.genre %></li>
+    <li><%= artwork.tags %></li>
+    <%= link_to "Delete",
+        artwork_path(artwork),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <% end %>
+</ul>
