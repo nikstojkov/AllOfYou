@@ -6,4 +6,5 @@
   </div>
   <p class="artwork__title">test<%#= artwork.title %></p>
   <p>test<%#= artwork.artist %></p>
+  <%#= render partial: "shared/tags_container", locals: {tags: artwork.tags} %>
 </div>
