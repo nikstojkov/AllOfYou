@@ -11,7 +11,11 @@ class OpportunitiesController < ApplicationController
   def create
     opportunities = Opportunity.new(opportunity_params)
     opportunities.save
-    redirect_to opportunity_path(opportunities)
+    if opportunities.save
+      redirect_to opportunity_path(opportunities)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -37,6 +41,6 @@ class OpportunitiesController < ApplicationController
   end
 
   def set_opportunities
-    @opportunity = Opportunities.find(params[:id])
+    @opportunity = Opportunity.find(params[:id])
   end
 end
