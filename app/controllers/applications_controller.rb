@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_opportunity, only: [:new]
+
+  before_action :set_opportunity, only: %i[new create]
 
   def index
     @applications = Application.all
@@ -13,6 +13,7 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.new(application_params)
     @application.opportunity = @opportunity
+    @application.artist = current_artist
     @application.save
     if @application.save
       redirect_to opportunity_path(@opportunity)
@@ -22,11 +23,11 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @application = Application.find(params[:application_id])
+    @application = Application.find(params[:id])
   end
 
   def delete
-    @review.destroy
+    @application.destroy
     redirect_to opportunity_path(@opportunity)
   end
 
