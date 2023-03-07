@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  before_action :set_artwork, only: %i[show edit update destroy]
   def index
     @artworks = Artwork.all
   end
@@ -14,21 +15,17 @@ class ArtworksController < ApplicationController
   end
 
   def show
-    @artwork = Artwork.find(params[:id])
   end
 
   def edit
-    @artwork = Artwork.find(params[:id])
   end
 
   def update
-    artwork = Artwork.find(params[:id])
     artwork.update(artwork_params)
     redirect_to artwork_path(artwork)
   end
 
   def delete
-    @artwork = Artwork.find(params[:id])
     @artwork.destroy
     redirect_to artworks_path, status: see_other
   end
@@ -37,5 +34,9 @@ class ArtworksController < ApplicationController
 
   def artwork_params
     params.require(:artwork).permit(:name, :genre, :tags)
+  end
+
+  def set_artwork
+    @artwork = Artwork.find(params[:id])
   end
 end
