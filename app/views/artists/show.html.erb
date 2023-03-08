@@ -8,6 +8,12 @@
       <h2>
         <%= "#{@artist.first_name} #{@artist.last_name}" %>
       </h2>
+      <p>
+        <%= icon('fa-solid', 'user')%> <%= @artist.pronouns %>
+      </p>
+      <p>
+        <%= icon('fa-solid', 'location-dot')%> <%= @artist.location ? @artist.location : "" %>
+      </p>
 
       <p>
         <%= @artist.bio %>
@@ -17,12 +23,13 @@
         tags will go here
       </div>
 
-      <p>
-        <%= icon('fa-solid', 'user')%> <%= @artist.pronouns.join(" / ") %>
-      </p>
-      <p>
-        <%= icon('fa-solid', 'location-dot')%> <%= @artist.location ? @artist.location : "" %>
-      </p>
+      <% if user_signed_in? %>
+        <%= link_to "Add to Shortlist", root_path, class: "btn btn-secondary" %>
+      <% end %>
+
+      <% if @artist == current_artist %>
+        <%= link_to "delete", artist_path, class: "btn btn-danger" %>
+      <% end %>
     </div>
   </aside>
 
