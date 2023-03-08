@@ -10,7 +10,6 @@ class OpportunitiesController < ApplicationController
 
   def create
     opportunities = Opportunity.new(opportunity_params)
-    opportunities.save
     if opportunities.save
       redirect_to opportunity_path(opportunities)
     else
