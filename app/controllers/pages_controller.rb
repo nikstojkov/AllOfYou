@@ -3,8 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @new_tag = params[:newtag] if params[:newtag]
-    @tag = Tag.create(name: @new_tag)
+    # @tag = Tag.create(name: @new_tag)
     ArtistTag.create(tag: @tag, artist: current_artist)
     @current_tags = current_artist.tags
+
+    @all_current_tags = Tag.all
+    @new_tags = params[:tags].split(", ").reject { |tag| Tag.exists?(name: tag) }
   end
 end

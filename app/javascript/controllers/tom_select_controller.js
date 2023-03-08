@@ -21,7 +21,6 @@ export default class extends Controller {
     console.log(elements)
     elements.forEach((tag) => {
       const tagValue = tag.dataset.value
-
       console.log(tagValue)
       tagArray.push(tagValue)
     })
