@@ -1,6 +1,37 @@
-<div class="container">
-  <p><%= @application.id %></p>
-  <p><%= @application.opportunity %></p>
-  <p><%= @application.artist %></p>
-  <p><%= @application.content %></p>
+
+<div class="grid-artist-show">
+  <aside class="d-flex justify-content-end">
+  <div class="side">
+    <%# TODO: change below link path %>
+    <%= link_to "< back to results", root_path %>
+
+    <div class="artist-avatar"></div>
+    <h2>
+      <%= "#{@artist.first_name} #{@artist.last_name}" %>
+    </h2>
+
+    <p>
+      <%= @artist.bio %>
+    </p>
+
+    <div class="tags-holder">
+    tags will go here
+    </div>
+
+    <p>
+      <%= @artist.pronouns %>
+    </p>
+    <p>
+      <%= @artist.location ? @artist.location : "" %>
+    </p>
+  </div>
+  </aside>
+  <main>
+    <h2>Works</h2>
+    <div class="artwork-container">
+      <% @artworks.each do %>
+      <% end %>
+    </div>
+  </main>
+
 </div>
