@@ -1,3 +1,11 @@
+<%= form_with url: artists_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an artist"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 
 <div class="container">
 
@@ -8,13 +16,13 @@
     <li>Last name:<%= artist.last_name %></li>
     <li>Bio: <%= artist.bio %></li>
     <li>Pronouns: <%= artist.pronouns %></li>
-    <h2>TAGS FUCK YES</h2>
+    <h3><strong>TAGS HELL YEAH</strong></h3>
     <% artist.tags.each do |tag| %>
     <div class="container">
     <li><%= tag.name %></li>
     </div>
     <% end %>
-    <%# <%= link_to "#{arists.first_name}s", artist_path %> 
+    <%# <%= link_to "#{arists.first_name}s", artist_path %>
   </ul>
 <h3>------------------</h3>
 <% end %>
