@@ -1,5 +1,6 @@
 class OpportunitiesController < ApplicationController
   before_action :set_opportunities, only: %i[show edit update destroy]
+
   def index
     @opportunities = Opportunity.all
   end
@@ -9,9 +10,10 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
-    opportunities = Opportunity.new(opportunity_params)
-    if opportunities.save
-      redirect_to opportunity_path(opportunities)
+    opportunity = Opportunity.new(opportunity_params)
+    opportunity.user = current_user
+    if opportunity.save
+      redirect_to opportunity_path(opportunity)
     else
       render :new, status: :unprocessable_entity
     end
