@@ -43,7 +43,7 @@ puts "--------------------"
     user_id: User.all.ids.sample,
     title: Faker::Book.title,
     location: locations.sample,
-    description: Faker::Lorem.paragraph_by_chars(number: rand(150..250))
+    description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false)
   )
   puts "Opportunity with id #{opportunity.id} created"
 end
