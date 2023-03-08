@@ -1,7 +1,7 @@
 <div class="container">
 
 <h1>All Artists</h1>
-<% Artist.each do |artist| %>
+<% @artist.each do |artist| %>
   <ul>
     <li><%= artist.first_name artist.last_name %></li>
     <li><%= artist.last_name %></li>
