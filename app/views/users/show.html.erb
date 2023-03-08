@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= @user.first_name %></h1>
+  <% @users.each do |user| %>
+    <ul>
+      <li><%= user.first_name %></li>
+      <li><%= user.last_name %></li>
+      <li><%= user.email %></li>
+      <li><%= user.location %></li>
+    </ul>
+  <% end %>
+</div>
