@@ -14,8 +14,11 @@ class ShortlistsController < ApplicationController
 
   def create
     @shortlist = Shortlist.new(shortlist_params)
-    @shortlist.save
-    redirect_to shortlist_path(@shortlist)
+    if @shortlists.save
+      redirect_to shortlist_path(@shortlist)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
