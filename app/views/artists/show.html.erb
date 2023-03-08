@@ -41,3 +41,10 @@
   </main>
 
 </div>
+
+<button class="button"><%=  %><%= link_to "Delete", artist_path(@artist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></button>
+
+
+<h1>Edit <%= @artist.name %></h1>
+
+<%= render "form", artist: @artist %>

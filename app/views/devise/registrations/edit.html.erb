@@ -6,6 +6,27 @@
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
 
+    <%# <% if request.url.include?("artists") %>
+      <%# <%= f.simple_fields_for :artist_tags do |tags_form| %>
+        <%# <%= tags_form.input :tag, collection: Tag.all %>
+      <%# <% end %>
+    <%# <% end %>
+
+
+    <%= f.input :bio,
+        # required: true,
+        input_html: { autocomplete: "bio" }%>
+
+<%= f.input :location,
+        # required: true,
+        autofocus: true,
+        input_html: { autocomplete: "location" }%>
+
+<%= f.input :pronouns,
+        # required: true,
+        input_html: { autocomplete: "pronouns" }%>
+
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>

@@ -10,5 +10,6 @@
     <%= link_to "Delete",
         artwork_path(artwork),
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <%# VALIATION ITS ARTIST AND NOT USER FOR DELETE METHOD %>
   <% end %>
 </ul>
