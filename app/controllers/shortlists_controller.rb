@@ -1,6 +1,6 @@
 class ShortlistsController < ApplicationController
   before_action :set_shortlist, only: %i[show edit update destroy]
-
+  
 
   def index
     @shortlists = Shortlist.where(user: current_user)
