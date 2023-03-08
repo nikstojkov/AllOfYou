@@ -14,7 +14,6 @@ class ApplicationsController < ApplicationController
     @application = Application.new(application_params)
     @application.opportunity = @opportunity
     @application.artist = current_artist
-    @application.save
     if @application.save
       redirect_to opportunity_path(@opportunity)
     else
