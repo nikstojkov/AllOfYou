@@ -4,7 +4,6 @@
     <%# leaving this here for when we have cloudinary %>
     <%#= image_tag artwork.image.key %>
   </div>
-  <p class="artwork__title">test<%#= artwork.title %></p>
-  <p>test<%#= artwork.artist %></p>
-  <%#= render partial: "shared/tags_container", locals: {tags: artwork.tags} %>
+  <p class="artwork__title"><%= artwork.name %></p>
+  <p><%= artwork.genre %></p>
 </div>

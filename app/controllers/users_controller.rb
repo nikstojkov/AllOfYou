@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_user, only: %i[show update edit]
+  before_action :set_user, only: %i[show update edit destroy]
 
   def show
     @opportunities = @user.opportunities
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to new_artist_registration
+    redirect_to new_user_registration
   end
 
   private

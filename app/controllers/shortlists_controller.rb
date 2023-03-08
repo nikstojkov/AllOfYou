@@ -1,11 +1,9 @@
 class ShortlistsController < ApplicationController
-  before_action :set_shortlist, only: [:show, :edit, :update, :destroy]
-
-  def show
-  end
+  before_action :set_shortlist, only: %i[show edit update destroy]
+  
 
   def index
-    @shortlists = Shortlist.all
+    @shortlists = Shortlist.where(user: current_user)
   end
 
   def new
@@ -14,11 +12,15 @@ class ShortlistsController < ApplicationController
 
   def create
     @shortlist = Shortlist.new(shortlist_params)
+    @shortlist.user = current_user
     if @shortlists.save
       redirect_to shortlist_path(@shortlist)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
   end
 
   def edit
