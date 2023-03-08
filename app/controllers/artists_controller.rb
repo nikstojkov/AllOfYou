@@ -7,6 +7,8 @@ class ArtistsController < ApplicationController
     @tags = @artist.tags
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities
+
+    @created_tag = params[:selecttags] if params[:selecttags]
   end
 
   def edit

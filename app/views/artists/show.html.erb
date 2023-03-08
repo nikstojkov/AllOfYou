@@ -16,6 +16,18 @@
 
     <div class="tags-holder">
     tags will go here
+    <% if current_artist == @artist %>
+      <form action='/' data-controller="tom-select">
+        <input type="hidden" value="" name="tags">
+        <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
+          <% Tag.all.each do |tag| %>
+            <option value='<%= tag.name %>'><%= tag.name %></option>
+          <% end %>
+        </select>
+        <input type="submit" value="Add Tags" class="btn btn-primary rounded-pill">
+      </form>
+    <% end %>
+
     </div>
 
     <p>
