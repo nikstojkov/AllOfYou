@@ -1,5 +1,18 @@
-<% @artists.each do |artist| %>
-  <div class="container">
-    <p><%= artist.first_name %></p>
-  </div>
-  <% end %>
+
+<div class="container">
+
+<h1>All Artists</h1>
+<% @artist.each do |artist| %>
+  <ul>
+    <li><%= artist.first_name artist.last_name %></li>
+    <li><%= artist.last_name %></li>
+    <li><%= artist.bio %></li>
+    <li><%= artist.pronouns %></li>
+    <li><%= artist.location %></li>
+    <%= link_to "#{arists.first_name}s", artist_path %>
+  </ul>
+<% end %>
+
+</div>
+
+<%# hi %>
