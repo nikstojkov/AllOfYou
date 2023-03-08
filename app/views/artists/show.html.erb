@@ -28,8 +28,14 @@
   <main>
     <h2>Works</h2>
     <div class="artwork-container">
-      <% @artworks.each do %>
+      <% @artworks.each do |artwork| %>
+
+        <%= render partial: "shared/artwork", artwork: artwork %>
+
       <% end %>
+
+      <%# THIS IS A TEST RENDER JUST TO SEE HOW IT LOOKS... delete later %>
+      <%= render partial: "shared/artwork" %>
     </div>
   </main>
 </div>
