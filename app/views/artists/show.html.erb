@@ -19,9 +19,7 @@
         <%= @artist.bio %>
       </p>
 
-      <div class="tags-holder">
-        tags will go here
-      </div>
+      <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
 
       <% if user_signed_in? %>
         <%= link_to "Add to Shortlist", root_path, class: "btn btn-secondary" %>
