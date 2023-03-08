@@ -1,8 +1,6 @@
 class ShortlistsController < ApplicationController
-  before_action :set_shortlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_shortlist, only: %i[show edit update destroy]
 
-  def show
-  end
 
   def index
     @shortlists = Shortlist.all
@@ -21,7 +19,12 @@ class ShortlistsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   def edit
+
   end
 
   def update
