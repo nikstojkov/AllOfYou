@@ -20,6 +20,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def show
+    @applications = @opportunity.applications
   end
 
   def edit
