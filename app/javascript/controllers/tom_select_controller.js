@@ -26,7 +26,9 @@ export default class extends Controller {
       tagArray.push(tagValue)
     })
 
-    console.log(tagArray)
+    const tagString = tagArray.join(", ")
+    const tagBox = document.querySelector('#tag-box')
+    tagBox.setAttribute('value', tagString)
     // .item is the selector you need
     // console.log(element.getAttribute('data-value'))
    // get the selected options, and add them as values to this.selectorTarget. Or in another hidden form field
