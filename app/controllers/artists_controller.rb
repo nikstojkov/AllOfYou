@@ -2,8 +2,6 @@ class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_artist, only: %i[show update edit destroy]
 
-  # @artists = Artist.where(title: params[:query])
-
   def index
     @artist_tags = ArtistTag.all
     if params[:query].present?
@@ -13,19 +11,21 @@ class ArtistsController < ApplicationController
     end
   end
 
+  # this guy down here just doesnt want to work...
+  # ...............................................
+  
   # def index
   #   if params[:query].present?
   #     sql_query = <<~SQL
-  #       movies.title @@ :query
-  #       OR movies.synopsis @@ :query
-  #       OR directors.first_name @@ :query
-  #       OR directors.last_name @@ :query
+  #       artist.tags @@ :query    # guessing its to do with this line here...
   #     SQL
-  #     @movies = Movie.joins(:director).where(sql_query, query: "%#{params[:query]}%")
+  #     @artists = Artist.joins(:tags).where(sql_query, query: "%#{params[:query]}%")
   #   else
-  #     @movies = Movie.all
+  #     @artists = Artist.all
   #   end
   # end
+  
+  # ...............................................
 
   def show
     @artworks = @artist.artworks
