@@ -1,11 +1,53 @@
-<h1><%= @opportunity.title %></h1>
+<div class="opp-info d-flex">
 
-<div class="container">
-  <% @opportunities.each do |opportunity| %>
-    <ul>
-      <li><%= opportunity.location %></li>
-      <li><%= opportunity.description %></li>
-      <li><%= opportunity.status %></li>
-    </ul>
-  <% end %>
+  <div class="opp-headers w-75">
+    <%= link_to "< back to Opportunities", opportunities_path, class: "link-back-opp" %>
+    <%# <div class="test-div">TESTER</div> %>
+
+    <div class="opportunity-info">
+      <h1><%= @opportunity.title %></h1>
+
+      <div class="tags-holder">
+        <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags } %>
+
+        <% if current_user == @opportunity.user %>
+          <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select">
+            <input type="hidden" value="" name="tags" id="tag-box">
+            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
+              <% Tag.all.each do |tag| %>
+                <option value='<%= tag.name %>'><%= tag.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Add Tags" class="btn btn-primary rounded-pill">
+          </form>
+        <% end %>
+      </div>
+
+      <div class="opp-icons">
+        <p>
+          <%= @opportunity.location %>
+        </p>
+        <p>
+          <%= @opportunity.description %>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <aside class="w-25 side-info">
+      <div class="p-5">
+        <%# TODO: change below link path %>
+        <div class="opp-pic-box">
+          <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
+          <%# <% if @opportunity.photo.key %>
+            <%# <% cl_image_tag opportunity.photo.key %>
+          <%# <% else %>
+            <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic" width="300">
+          <%# <% end %>
+        </div>
+
+  </aside>
 </div>
