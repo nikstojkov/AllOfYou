@@ -1,16 +1,14 @@
-<h1>All Opportunities</h1>
+<div class="container mt-3 artist-card__container">
 
-<div class="container">
+<h1>All Opportunities</h1>
   <% @opportunities.each do |opportunity| %>
-    <ul>
-      <li><%= opportunity.title %></li>
-      <li><%= opportunity.location %></li>
-      <li><%= opportunity.description %></li>
-      <li><%= opportunity.status %></li>
-      <%= link_to "Delete",
+    <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
+      <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
+    <% end %>
+    <% if opportunity.user == current_user %>
+    <%= link_to "Delete",
           artwork_path(opportunity),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          <%# must add validation that its user, not artist for delete method %>
-    </ul>
+    <% end %>
   <% end %>
 </div>
