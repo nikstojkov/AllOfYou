@@ -53,7 +53,7 @@ puts "-------------"
 puts "Tags Creation"
 puts "-------------"
 
-tags.each do |tag|
+tags.uniq.each do |tag|
   Tag.create!(name: tag)
 end
 puts "-------------"
