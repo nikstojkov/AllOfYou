@@ -6,7 +6,12 @@
   gap: 1em;
   max-width: 1000px;
   background-color: white;
-  box-shadow: rgba(0,0,0,0.2) 2px 2px 10px;
+  box-shadow: rgba(0,0,0,0.15) 2px 2px 10px;
+
+}
+
+.artist-card:hover {
+  box-shadow: rgba(0,0,0,0.3) 2px 2px 15px;
 }
 
 .artist-card__info {
@@ -28,5 +33,7 @@
 .artist-card__link {
   color: $body-color;
 
-  :hover {color: $body-color}
+  :hover {
+    color: $body-color;
+  }
 }
