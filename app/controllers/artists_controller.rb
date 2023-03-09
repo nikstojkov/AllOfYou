@@ -2,21 +2,6 @@ class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_artist, only: %i[show update edit destroy]
 
-  # @artists = Artist.where(title: params[:query])
-
-
-  # def index
-  #   @artist_tags = ArtistTag.all
-  #   if params[:query].present?
-  #     sql_query = <<~SQL
-  #       artist_tags.artists @@ :query
-  #     SQL
-  #     @artists = Artist.joins(:tags).where(sql_query, query: "%#{params[:query]}%")
-  #   else
-  #     @artists = Artist.all
-  #   end
-  # end
-
   def index
     if params[:query].present?
       tagsquery = params[:query].split
@@ -26,7 +11,6 @@ class ArtistsController < ApplicationController
       @artists = Artist.all
     end
   end
-
 
   def show
     @artworks = @artist.artworks
