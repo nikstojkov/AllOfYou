@@ -1,50 +1,62 @@
-
 <div class="grid-artist-show">
   <aside class="d-flex justify-content-end">
-  <div class="side">
-    <%# TODO: change below link path %>
-    <%= link_to "< back to results", root_path %>
+    <div class="side">
+      <%# TODO: change below link path %>
+      <%= link_to "< back to results", :back %>
 
-    <div class="artist-avatar"></div>
-    <h2>
-      <%= "#{@artist.first_name} #{@artist.last_name}" %>
-    </h2>
+      <div class="artist-avatar"></div>
+      <h2>
+        <%= "#{@artist.first_name} #{@artist.last_name}" %>
+      </h2>
+      <p>
+        <%= icon('fa-solid', 'user')%> <%= @artist.pronouns %>
+      </p>
+      <p>
+        <%= icon('fa-solid', 'location-dot')%> <%= @artist.location ? @artist.location : "" %>
+      </p>
 
-    <p>
-      <%= @artist.bio %>
-    </p>
+      <p>
+        <%= @artist.bio %>
+      </p>
 
     <div class="tags-holder">
     tags will go here
-    </div>
+    <% if current_artist == @artist %>
+      <form action='/artists/<%= @artist.id %>' data-controller="tom-select">
+        <input type="hidden" value="" name="tags" id="tag-box">
+        <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
+          <% Tag.all.each do |tag| %>
+            <option value='<%= tag.name %>'><%= tag.name %></option>
+          <% end %>
+        </select>
+        <input type="submit" value="Add Tags" class="btn btn-primary rounded-pill">
+      </form>
+    <% end %>
 
-    <p>
-      <%= @artist.pronouns %>
-    </p>
-    <p>
-      <%= @artist.location ? @artist.location : "" %>
-    </p>
-  </div>
+      <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
+
+
+      <% if user_signed_in? %>
+        <%= link_to "Add to Shortlist", root_path, class: "btn btn-secondary" %>
+      <% end %>
+
+      <% if @artist == current_artist %>
+        <%= link_to "delete", artist_path, class: "btn btn-danger" %>
+      <% end %>
+    </div>
   </aside>
+
   <main>
     <h2>Works</h2>
     <div class="artwork-container">
       <% @artworks.each do |artwork| %>
 
-        <%= render partial: "shared/artwork", artwork: artwork %>
+        <%= render partial: "shared/artwork", locals: { artwork: artwork } %>
 
       <% end %>
 
       <%# THIS IS A TEST RENDER JUST TO SEE HOW IT LOOKS... delete later %>
-      <%= render partial: "shared/artwork" %>
+      <%#= render partial: "shared/artwork" %>
     </div>
   </main>
-
 </div>
-
-<button class="button"><%=  %><%= link_to "Delete", artist_path(@artist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></button>
-
-
-<h1>Edit <%= @artist.name %></h1>
-
-<%= render "form", artist: @artist %>
