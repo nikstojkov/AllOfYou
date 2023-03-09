@@ -26,6 +26,17 @@
   position: absolute;
   height: 60vh;
   background: linear-gradient(transparent, white 30%);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discover {
+  height: 35vh;
+  width: 55%;
+  background-color: white;
+  margin-top: 20vh;
+  font-family: 'Poppins', sans-serif;
 }
 
 
