@@ -135,6 +135,9 @@ puts "----------------"
     name: Faker::Verb.base,
     genre: Faker::Book.genre
   )
+  Tag.all.sample(5).each do |tag|
+    ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+  end
   puts "Artwork with id #{artwork.id} created"
 end
 
@@ -169,6 +172,9 @@ puts "------------------"
     name: opportunity.title,
     user_id: User.all.ids.sample
   )
+  Tag.all.sample(5).each do |tag|
+    OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
+  end
   puts "Shortlist with id #{shortlist.id} created"
 end
 

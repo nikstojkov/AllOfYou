@@ -1,16 +1,18 @@
-
-<div class="container">
-
-<h1>All Artists</h1>
-<% @artist.each do |artist| %>
-  <ul>
-    <li><%= artist.first_name artist.last_name %></li>
-    <li><%= artist.last_name %></li>
-    <li><%= artist.bio %></li>
-    <li><%= artist.pronouns %></li>
-    <li><%= artist.location %></li>
-    <%= link_to "#{arists.first_name}s", artist_path %>
-  </ul>
+<div class="container mt-3 artist-card__container">
+<%= form_with url: artists_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an artist"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
+
+<h1>All Artists</h1>
+  <% @artists.each do |artist| %>
+    <%= link_to artist_path(artist), class: "text-decoration-none artist-card__link" do %>
+      <%= render partial: "shared/artist_card", locals: {artist: artist} %>
+    <% end %>
+  <% end %>
 </div>
