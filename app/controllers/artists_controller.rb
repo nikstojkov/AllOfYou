@@ -3,35 +3,32 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[show update edit destroy]
 
   def index
-    @artist_tags = ArtistTag.all
     if params[:query].present?
-      @artists = Artist.joins(:tags).where(tags: { name: params[:query] })
+      tagsquery = params[:query].split
+
+      @artists = Artist.joins(:tags).where(tags: {name: tagsquery} )
     else
       @artists = Artist.all
     end
   end
-
-  # this guy down here just doesnt want to work...
-  # ...............................................
-  
-  # def index
-  #   if params[:query].present?
-  #     sql_query = <<~SQL
-  #       artist.tags @@ :query    # guessing its to do with this line here...
-  #     SQL
-  #     @artists = Artist.joins(:tags).where(sql_query, query: "%#{params[:query]}%")
-  #   else
-  #     @artists = Artist.all
-  #   end
-  # end
-  
-  # ...............................................
 
   def show
     @artworks = @artist.artworks
     @tags = @artist.tags
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities
+
+    if params[:tags]
+      @new_tags = params[:tags].split(", ")
+      @new_tags.each do |tag|
+        tag_create = Tag.create(name: tag)
+        # if current_artist.tags.include?(tag_create)
+        #   next
+        # else
+          ArtistTag.create(tag: tag_create, artist: current_artist)
+        # end
+      end
+    end
   end
 
   def edit
