@@ -10,10 +10,10 @@
     <p>
       <%= icon('fa-solid', 'user')%>  <%= artist.pronouns ? artist.pronouns : "" %>
     </p>
-    <p>
+    <p class="flex-grow-1">
       <%= artist.bio %>
     </p>
 
-    <%#= render partial: "shared/tags_container", locals: { tags: artist.tags } %>
+    <%= render partial: "shared/tags_container", locals: { tags: artist.tags } %>
   </div>
 </div>
