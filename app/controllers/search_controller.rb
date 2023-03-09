@@ -12,4 +12,8 @@ class SearchController < ApplicationController
       @opportunities = Opportunity.all
     end
   end
+
+  def show
+
+  end
 end

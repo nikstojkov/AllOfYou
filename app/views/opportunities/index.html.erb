@@ -7,6 +7,7 @@
       <li><%= opportunity.location %></li>
       <li><%= opportunity.description %></li>
       <li><%= opportunity.status %></li>
+      <li><%= opportunity.tags %></li>
       <%= link_to "Delete",
           artwork_path(opportunity),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
