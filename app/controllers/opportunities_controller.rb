@@ -18,6 +18,7 @@ class OpportunitiesController < ApplicationController
         # end
       end
     end
+
   end
 
   def new
