@@ -1,5 +1,5 @@
 <div class="page-wrapper">
-    <%= link_to artists_path, class: "text-decoration-none" do %>
+    <%= link_to artists_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--artists">
       <div class="sideways-text">Artists</div>
     </div>
@@ -21,7 +21,7 @@
   </div>
 
 </div>
-<%= link_to opportunities_path, class: "text-decoration-none" do %>
+<%= link_to opportunities_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--opportunities">
       <div class="sideways-text">Opportunities</div>
     </div>

@@ -17,13 +17,13 @@
   <% end %>
 </div>
 
-    <%= link_to artworks_path, class: "text-decoration-none" do %>
+    <%= link_to artworks_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--artworks">
       <div class="sideways-text">Artworks</div>
     </div>
   <% end %>
 
-  <%= link_to opportunities_path, class: "text-decoration-none" do %>
+  <%= link_to opportunities_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--opportunities">
       <div class="sideways-text">Opportunities</div>
     </div>
