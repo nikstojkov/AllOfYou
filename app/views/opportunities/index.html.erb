@@ -6,6 +6,12 @@
     </div>
   <% end %>
 
+  <%= link_to artworks_path, class: "text-decoration-none" do %>
+    <div class="tab-button tab-button--artworks">
+      <div class="sideways-text">Artworks</div>
+    </div>
+  <% end %>
+
   <div class="container mt-3 artist-card__container">
 
     <h1>All Opportunities</h1>
@@ -21,9 +27,5 @@
     <% end %>
   </div>
 
-  <%= link_to artworks_path, class: "text-decoration-none" do %>
-    <div class="tab-button tab-button--artworks">
-      <div class="sideways-text">Artworks</div>
-    </div>
-  <% end %>
+
 </div>
