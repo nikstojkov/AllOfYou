@@ -1,5 +1,5 @@
 <div class="page-wrapper">
-    <%= link_to artists_path, class: "text-decoration-none" do %>
+    <%= link_to artists_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--artists">
       <div class="sideways-text">Artists</div>
     </div>
@@ -10,21 +10,18 @@
 
   <h1>All Artwork</h1>
 
-  <p>#TODO - Add cloudinary to app</p>
+  <%# <p>#TODO - Add cloudinary to app</p> %>
 
-  <ul>
+  <div class="artwork-container justify-content-center">
     <% @artworks.each do |artwork| %>
-      <li><%= artwork.name %></li>
-      <li><%= artwork.genre %></li>
-      <li><%= artwork.tags %></li>
-      <%= link_to "Delete",
-          artwork_path(artwork),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          <%# VALIATION ITS ARTIST AND NOT USER FOR DELETE METHOD %>
+      <%= link_to artist_path(artwork.artist), class: "text-decoration-none opportunity-card__link" do %>
+        <%= render partial: "shared/artwork_result", locals: { artwork: artwork } %>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
+
 </div>
-<%= link_to opportunities_path, class: "text-decoration-none" do %>
+<%= link_to opportunities_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--opportunities">
       <div class="sideways-text">Opportunities</div>
     </div>

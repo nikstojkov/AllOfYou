@@ -1,0 +1,10 @@
+<div class="artwork__card">
+  <div class="artwork__frame">
+    <%= image_tag "https://www.nationalgalleries.org/sites/default/files/styles/ngs-default/public/externals/40984.jpg?itok=faemvZEs" %>
+    <%# leaving this here for when we have cloudinary %>
+    <%#= image_tag artwork.image.key %>
+  </div>
+  <p class="artwork__title"><%= artwork.name %></p>
+  <p><%= "#{artwork.artist.first_name} #{artwork.artist.last_name}" %></p>
+  <%= render partial: "shared/tags_container", locals: {tags: artwork.tags} %>
+</div>
