@@ -17,15 +17,14 @@ class ArtistsController < ApplicationController
     @tags = @artist.tags
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities
-
+    # raise
     if params[:tags]
       @new_tags = params[:tags].split(", ")
       @new_tags.each do |tag|
-        tag_create = Tag.create(name: tag)
-        # if current_artist.tags.include?(tag_create)
-        #   next
-        # else
+        tag_create = Tag.find_or_create_by(name: tag)
+        if current_artist.tags.include?(tag_create) == false
           ArtistTag.create(tag: tag_create, artist: current_artist)
+        end
         # end
       end
     end
