@@ -16,7 +16,11 @@ class ArtistsController < ApplicationController
       @new_tags = params[:tags].split(", ")
       @new_tags.each do |tag|
         tag_create = Tag.create(name: tag)
-        ArtistTag.create(tag: tag_create, artist: current_artist)
+        # if current_artist.tags.include?(tag_create)
+        #   next
+        # else
+          ArtistTag.create(tag: tag_create, artist: current_artist)
+        # end
       end
     end
   end
