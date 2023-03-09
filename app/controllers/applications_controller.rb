@@ -3,7 +3,7 @@ class ApplicationsController < ApplicationController
   before_action :set_opportunity, only: %i[new create]
 
   def index
-    @applications = Application.all
+    @applications = Application.where(artist: current_artist)
   end
 
   def new

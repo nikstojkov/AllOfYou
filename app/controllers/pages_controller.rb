@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @current_tags = current_artist.tags
 
     @all_current_tags = Tag.all
-    @new_tags = params[:tags].split(", ").reject { |tag| Tag.exists?(name: tag) }
+    @new_tags = params[:tags]
+    @new_tags.each { |tag| Tag.create(name: tag)}
   end
 end

@@ -1,5 +1,6 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: %i[show edit update destroy]
+
   def index
     @artworks = Artwork.all
   end
@@ -10,6 +11,7 @@ class ArtworksController < ApplicationController
 
   def create
     artwork = Artwork.new(artwork_params)
+    artwork.artist = current_artist
     if artwork.save
       redirect_to artwork_path(artwork)
     else
