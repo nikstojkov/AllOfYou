@@ -3,7 +3,13 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[show update edit destroy]
 
   def index
-    @artists = Artist.all
+    if params[:query].present?
+      tagsquery = params[:query].split
+
+      @artists = Artist.joins(:tags).where(tags: {name: tagsquery} )
+    else
+      @artists = Artist.all
+    end
   end
 
   def show
