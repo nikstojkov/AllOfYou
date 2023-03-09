@@ -6,7 +6,7 @@ class OpportunitiesController < ApplicationController
       tagsquery = params[:query].split
       @opportunities = Opportunity.joins(:tags).where(tags: {name: tagsquery} )
     else
-      @opportunities = Artist.all
+      @opportunities = Opportunity.all
     end
   end
 
