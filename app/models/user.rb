@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :shortlists, dependent: :destroy
   has_many :opportunities, dependent: :destroy
+
+  has_one_attached :photo
 end
