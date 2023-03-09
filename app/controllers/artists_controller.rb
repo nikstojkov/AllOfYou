@@ -12,7 +12,13 @@ class ArtistsController < ApplicationController
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities
 
-    @created_tag = params[:selecttags] if params[:selecttags]
+    if params[:tags]
+      @new_tags = params[:tags].split(", ")
+      @new_tags.each do |tag|
+        tag_create = Tag.create(name: tag)
+        ArtistTag.create(tag: tag_create, artist: current_artist)
+      end
+    end
   end
 
   def edit

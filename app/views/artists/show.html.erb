@@ -22,7 +22,7 @@
     <div class="tags-holder">
     tags will go here
     <% if current_artist == @artist %>
-      <form action='/' data-controller="tom-select">
+      <form action='/artists/<%= @artist.id %>' data-controller="tom-select">
         <input type="hidden" value="" name="tags" id="tag-box">
         <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
           <% Tag.all.each do |tag| %>
