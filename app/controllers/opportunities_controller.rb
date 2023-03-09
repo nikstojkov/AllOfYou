@@ -2,7 +2,12 @@ class OpportunitiesController < ApplicationController
   before_action :set_opportunities, only: %i[show edit update destroy]
 
   def index
-    @opportunities = Opportunity.all
+    if params[:query].present?
+      tagsquery = params[:query].split
+      @opportunities = Opportunity.joins(:tags).where(tags: {name: tagsquery} )
+    else
+      @opportunities = Artist.all
+    end
   end
 
   def new

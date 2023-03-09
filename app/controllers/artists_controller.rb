@@ -5,7 +5,6 @@ class ArtistsController < ApplicationController
   def index
     if params[:query].present?
       tagsquery = params[:query].split
-
       @artists = Artist.joins(:tags).where(tags: {name: tagsquery} )
     else
       @artists = Artist.all

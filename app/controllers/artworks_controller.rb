@@ -2,7 +2,12 @@ class ArtworksController < ApplicationController
   before_action :set_artwork, only: %i[show edit update destroy]
 
   def index
-    @artworks = Artwork.all
+    if params[:query].present?
+      tagsquery = params[:query].split
+      @artworks = Artwork.joins(:tags).where(tags: {name: tagsquery} )
+    else
+      @artworks = Artwork.all
+    end
   end
 
   def new
