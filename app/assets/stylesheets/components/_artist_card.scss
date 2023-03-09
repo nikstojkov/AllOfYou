@@ -1,0 +1,22 @@
+.artist-card {
+  border: 4px solid black;
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1em;
+  max-width: 1000px;
+}
+
+.artist-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  width: 100%;
+  p, h3 {margin: 0}
+}
+
+.artist-card__image {
+  width: 100%;
+  min-height: 240px;
+  background-color: aquamarine;
+}

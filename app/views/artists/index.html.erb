@@ -11,6 +11,10 @@
 
 <h1>All Artists</h1>
 <% @artists.each do |artist| %>
+
+
+  <%= render partial: "shared/artist_card", locals: {artist: artist} %>
+
   <ul>
     <li>First name: <%= artist.first_name %></li>
     <li>Last name:<%= artist.last_name %></li>
