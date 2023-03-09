@@ -4,4 +4,6 @@ class Opportunity < ApplicationRecord
   has_many :tags, through: :opportunity_tags
   has_many :applications, dependent: :destroy
   has_many :artists, through: :applications
+
+  has_one_attached :photo
 end
