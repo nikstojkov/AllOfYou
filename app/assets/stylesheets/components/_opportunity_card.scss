@@ -1,0 +1,39 @@
+.opportunity-card {
+  border: $frame-border;
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: 150px auto;
+  gap: 1em;
+  max-width: 1000px;
+  background-color: white;
+  box-shadow: $frame-shadow;
+
+}
+
+.opportunity-card:hover {
+  box-shadow: $frame-shadow-hover;
+}
+
+.opportunity-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  width: 100%;
+  padding: 0.5em;
+
+  p, h3 {margin: 0}
+}
+
+.opportunity-card__image {
+  width: 100%;
+  min-height: 180px;
+  background-color: aquamarine;
+}
+
+.opportunity-card__link {
+  color: $body-color;
+
+  :hover {
+    color: $body-color;
+  }
+}

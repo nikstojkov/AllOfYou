@@ -1,34 +1,48 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-aoy">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       All of You
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <%= form_with url: artists_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an artist"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+
         <% if user_signed_in? || artist_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <% if current_user %>
             <li class="nav-item">
-              <%= link_to "My Shortlists", "#", class: "nav-link" %>
+              <%= link_to "My Shortlists", shortlists_path, class: "nav-link" %>
             </li>
           <% end %>
           <% if current_artist %>
             <li class="nav-item">
-              <%= link_to "My Applications", "#", class: "nav-link" %>
+              <%= link_to "My Applications", applications_path, class: "nav-link" %>
             </li>
           <% end %>
           <li class="nav-item dropdown">
             <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile", "#", class: "dropdown-item" %>
-              <%= link_to "My Account", "#", class: "dropdown-item" %>
+              <% if current_artist %>
+                <%= link_to "My Profile", artist_path(current_artist), class: "dropdown-item" %>
+                <%= link_to "My Account", edit_artist_path(current_artist), class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "My Account", edit_user_path(current_user), class: "dropdown-item" %>
+              <% end %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

@@ -9,4 +9,6 @@ class Artist < ApplicationRecord
   has_many :artworks, dependent: :destroy
   has_many :applications, dependent: :destroy
   has_many :opportunities, through: :applications
+
+  has_one_attached :photo
 end

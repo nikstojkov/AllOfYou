@@ -1,0 +1,5 @@
+<div class="tags-container">
+  <% tags.each do |hashtag| %>
+    <%= render partial: "shared/tag", locals: {tag: hashtag} %>
+  <% end %>
+</div>
