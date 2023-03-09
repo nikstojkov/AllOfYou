@@ -4,28 +4,29 @@ class ArtistsController < ApplicationController
 
   # @artists = Artist.where(title: params[:query])
 
+
+  # def index
+  #   @artist_tags = ArtistTag.all
+  #   if params[:query].present?
+  #     sql_query = <<~SQL
+  #       artist_tags.artists @@ :query
+  #     SQL
+  #     @artists = Artist.joins(:tags).where(sql_query, query: "%#{params[:query]}%")
+  #   else
+  #     @artists = Artist.all
+  #   end
+  # end
+
   def index
-    @artist_tags = ArtistTag.all
     if params[:query].present?
-      @artists = Artist.joins(:tags).where(tags: { name: params[:query] })
+      tagsquery = params[:query].split
+
+      @artists = Artist.joins(:tags).where(tags: {name: tagsquery} )
     else
       @artists = Artist.all
     end
   end
 
-  # def index
-  #   if params[:query].present?
-  #     sql_query = <<~SQL
-  #       movies.title @@ :query
-  #       OR movies.synopsis @@ :query
-  #       OR directors.first_name @@ :query
-  #       OR directors.last_name @@ :query
-  #     SQL
-  #     @movies = Movie.joins(:director).where(sql_query, query: "%#{params[:query]}%")
-  #   else
-  #     @movies = Movie.all
-  #   end
-  # end
 
   def show
     @artworks = @artist.artworks
