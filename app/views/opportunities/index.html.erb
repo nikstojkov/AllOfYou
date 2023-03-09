@@ -1,14 +1,29 @@
-<div class="container mt-3 artist-card__container">
+<div class="page-wrapper">
 
-<h1>All Opportunities</h1>
-  <% @opportunities.each do |opportunity| %>
-    <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
-      <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
+  <%= link_to artists_path, class: "text-decoration-none" do %>
+    <div class="tab-button tab-button--artists">
+      <div class="sideways-text">Artists</div>
+    </div>
+  <% end %>
+
+  <div class="container mt-3 artist-card__container">
+
+    <h1>All Opportunities</h1>
+    <% @opportunities.each do |opportunity| %>
+      <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
+        <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
+      <% end %>
+      <% if opportunity.user == current_user %>
+      <%= link_to "Delete",
+            artwork_path(opportunity),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
     <% end %>
-    <% if opportunity.user == current_user %>
-    <%= link_to "Delete",
-          artwork_path(opportunity),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    <% end %>
+  </div>
+
+  <%= link_to artworks_path, class: "text-decoration-none" do %>
+    <div class="tab-button tab-button--artworks">
+      <div class="sideways-text">Artworks</div>
+    </div>
   <% end %>
 </div>
