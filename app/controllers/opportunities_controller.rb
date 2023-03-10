@@ -1,8 +1,15 @@
 class OpportunitiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_artist!, only: %i[index]
   before_action :set_opportunities, only: %i[show edit update destroy]
 
   def index
-    @opportunities = Opportunity.all
+    if params[:query].present?
+      tagsquery = params[:query].split
+      @opportunities = Opportunity.joins(:tags).where(tags: {name: tagsquery} )
+    else
+      @opportunities = Opportunity.all
+    end
   end
 
   def new
