@@ -6,7 +6,6 @@ class ArtworksController < ApplicationController
   def index
     if params[:query].present?
       tagsquery = params[:query].split
-
       @artworks = Artwork.joins(:tags).where(tags: {name: tagsquery} )
     else
       @artworks = Artwork.all

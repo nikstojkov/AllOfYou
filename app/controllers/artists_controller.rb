@@ -15,6 +15,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artworks = @artist.artworks
+    @shortlisted_artist = ShortlistedArtist.new
+    @shortlist = Shortlist.find_by(user: current_user)
     @tags = @artist.tags
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities
