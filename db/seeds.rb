@@ -1,3 +1,13 @@
+require "open-uri"
+require "json"
+
+url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
+
+painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(80)
+p painting_ids
+
+
+
 locations = ["Bristol", "London", "Reading", "York", "Newcastle"]
 
 user_tags = ["male", "female"]
@@ -132,11 +142,13 @@ puts "----------------"
 puts "Artwork Creation"
 puts "----------------"
 
-100.times do
+painting_ids.each do |id|
+  data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
   artwork = Artwork.create!(
     artist_id: Artist.all.ids.sample,
-    name: Faker::Verb.base,
-    genre: Faker::Book.genre
+    name: data["title"],
+    genre: Faker::Book.genre,
+    image_url: data["primaryImageSmall"]
   )
   Tag.all.sample(5).each do |tag|
     ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
