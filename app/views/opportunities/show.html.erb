@@ -1,11 +1,147 @@
-<h1><%= @opportunity.title %></h1>
+<div class="opp-box d-flex">
 
-<div class="container">
-  <% @opportunities.each do |opportunity| %>
-    <ul>
-      <li><%= opportunity.location %></li>
-      <li><%= opportunity.description %></li>
-      <li><%= opportunity.status %></li>
-    </ul>
-  <% end %>
+  <div class="opp-headers w-75">
+    <div class="text-left w-100">
+      <%= link_to "< back to Opportunities", opportunities_path, class: "butt-opp link-back-opp" %>
+      <%# <div class="test-div">TESTER</div> %>
+    </div>
+
+    <div class="opportunity-info">
+      <h1><%= @opportunity.title %></h1>
+
+      <br>
+
+      <div class="tags-box">
+        <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
+
+        <br>
+
+        <% if current_user == @opportunity.user %>
+          <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags">
+            <input type="hidden" value="" name="tags" id="tag-box">
+            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
+              <% Tag.all.each do |tag| %>
+                <option value='<%= tag.name %>'><%= tag.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Add Tags" class="m-1 btn btn-primary rounded-pill">
+          </form>
+        <% end %>
+      </div>
+
+      <br>
+
+      <div class="opp-icons d-flex row text-left">
+
+          <%# <%= @opportunity.location %>
+          <div class="col-6 ic-1">
+            <%= @opportunity.location ? @opportunity.location : "" %> <%= icon('fa-solid', 'location-dot')%>  <br>
+            <i class="fa-solid fa-calendar-days"></i> <%# <%= @opportunity.date ? @opportunity.date : "" %>
+          </div>
+          <div class="col-6 ic-2">
+            <i class="fa-regular fa-user"></i> <%= @opportunity.user.first_name %> <%= @opportunity.user.last_name %> <br>
+            <i class="fa-regular fa-square-check"></i>
+          </div>
+
+      </div>
+
+      <br>
+
+      <div class="opp-desc">
+        <%= @opportunity.description %>
+      </div>
+
+      <br>
+
+    <div class="opp-applicants">
+
+      <% if current_user == @opportunity.user %>
+        <div class="apps-title my-1">
+          <h3>Applied Artists</h3>
+        </div>
+
+      <% end %>
+
+      <div class="applications-box d-flex flex-column">
+        <% if current_user == @opportunity.user %>
+          <%# TODO Add applied artists here %>
+          <% @opportunity.applications. each do |application| %>
+              <% artist = application.artist %>
+              <% if application.success == true %>
+                <% next %>
+              <% else %>
+                <div class="appl-card my-2">
+                  <div class="m-1">
+                    <%# Artist Avatar %>
+                    <%# <% if artist.photo.key %>
+                      <%# <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
+                    <%# <% else %>
+                      <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <%# <% end %>
+                    <br>
+                    <strong><%= artist.first_name %> <%= artist.last_name %></strong>
+                  </div>
+                  <div class="text-center d-flex align-items-center">
+                    <%= application.content %>
+                  </div>
+                  <div class="accept-deny">
+                    <button class="btn btn-primary rounded-pill">Accept</button>
+                    <button class="btn btn-danger rounded-pill">Decline</button>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% elsif current_artist %>
+            <h3>Apply Here</h3>
+            <%# TODO Render the app form if not already applied %>
+
+            <%= render 'applications/form' %>%
+          <% end %>
+        </div>
+    </div>
+
+  </div>
+
+    </div>
+
+
+  <aside class="w-25 side-info">
+    <div class="p-5">
+      <%# TODO: change below link path %>
+        <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
+        <%# <% if @opportunity.photo.key %>
+          <%# <% cl_image_tag opportunity.photo.key %>
+        <%# <% else %>
+          <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm" width="300">
+        <%# <% end %>
+      <% if current_user == @opportunity.user %>
+        <div class="button-box">
+          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "butt-opp" %>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+
+    <div class="successful-art text-center">
+      <% if current_user == @opportunity.user %>
+        <h5 class="success-header">Accepted Artists</h5>
+          <% @opportunity.applications.each do |application| %>
+            <% if application.success == true %>
+              <div class="appl-card-small my-1">
+                <div>
+                  <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <%= application.artist.first_name %> <%= application.artist.last_name %>
+                </div>
+                <div class="align-items-center d-flexs">
+                  <strong class="text-success">Accepted</strong>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      <% end %>
+    </div>
+
+  </aside>
+
 </div>
