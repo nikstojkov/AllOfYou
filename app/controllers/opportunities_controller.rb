@@ -7,6 +7,7 @@ class OpportunitiesController < ApplicationController
 
   def show
     @applications = @opportunity.applications
+    @application = Application.new
 
     if params[:tags]
       @new_tags = params[:tags].split(", ")
@@ -15,7 +16,6 @@ class OpportunitiesController < ApplicationController
         if @opportunity.tags.include?(tag_create) == false
           OpportunityTag.create(tag: tag_create, opportunity: @opportunity)
         end
-        # end
       end
     end
 
