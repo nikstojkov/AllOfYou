@@ -37,7 +37,11 @@
 
 
       <% if user_signed_in? %>
-        <%= link_to "Add to Shortlist", shortlist_path, class: "btn btn-secondary" %>
+
+        <%= simple_form_for [@artist, @shortlisted_artist] do |f| %>
+          <%= f.submit "Add to Shortlist", class: "btn btn-secondary" %>
+        <% end %>
+
       <% end %>
 
       <% if @artist == current_artist %>
