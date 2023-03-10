@@ -1,5 +1,8 @@
-<div class="container my-3 artist-card__container">
-    <h1>My Opportunities</h1>
+<div class="container my-4 artist-card__container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>My Opportunities</h1>
+      <%= link_to "Advertise a new opportunity", new_opportunity_path, class: "btn btn-primary" %>
+    </div>
     <% @opportunities.each do |opportunity| %>
       <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
         <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
