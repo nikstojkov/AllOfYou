@@ -1,0 +1,12 @@
+<div class="shortlist-wrap">
+  <div class="shortlist-artists">
+  </div>
+
+  <div class="shortlist-yellow">
+    <div class="shortlist-name">
+      <h1><%= @shortlist.name %></h1>
+      <%= link_to "Delete", shortlist_path(@shortlist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary shortlist-add text-decoration-none" %>
+      <%= render partial: "shared/edit_shortlist_modal", locals: { shortlist: @shortlist } %>
+    </div>
+  </div>
+</div>
