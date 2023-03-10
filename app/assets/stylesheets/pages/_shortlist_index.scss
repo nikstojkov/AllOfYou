@@ -1,0 +1,59 @@
+.shortlist-wrap {
+min-height: calc(100vh - 60px);
+overflow: hidden;
+display: flex;
+}
+
+
+.shortlist-name-column {
+
+  display: flex;
+  flex-direction: column;
+  background-color: $accent;
+  min-height: calc(100vh - 60px);
+  width: 400px;
+  justify-content: center;
+}
+
+
+
+.short-sideways-text {
+  transform: rotate(90deg);
+  transform-origin: center;
+  text-decoration: none;
+  font-size: 2rem;
+  color: $body-color;
+  width: 0px;
+  height: 200;
+}
+
+
+.shortlist-add {
+  background-color: $purple;
+  color: white;
+  border-color: $purple;
+  border-radius: $border-radius;
+  font-family: $body-font;
+  height: 50px;
+  width: 100px;
+  margin-top: 50px;
+
+  }
+
+  .shortlists-column {
+    display:flex;
+    flex-direction:column;
+    min-height: calc(100vh - 60px);
+    align-items:center;
+    width: 1328px;
+  }
+
+  .shortlist-container {
+    width: 1100px;
+    margin-top: 50px;
+  }
+
+  .delete {
+    color: red;
+
+  }
