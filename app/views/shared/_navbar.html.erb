@@ -42,7 +42,7 @@
                 <%= link_to "My Profile", artist_path(current_artist), class: "dropdown-item" %>
                 <%= link_to "My Account", edit_artist_path(current_artist), class: "dropdown-item" %>
               <% elsif current_user %>
-                <%= link_to "My Profile", user_path(@user), class: "dropdown-item" %>
+                <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
                 <%= link_to "My Account", edit_user_path(current_user), class: "dropdown-item" %>
               <% else %>
                 <%= link_to "My Profile", root_path, class: "dropdown-item" %>
