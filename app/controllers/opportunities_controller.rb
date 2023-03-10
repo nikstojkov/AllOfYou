@@ -12,6 +12,10 @@ class OpportunitiesController < ApplicationController
     end
   end
 
+  def mine
+    @opportunities = Opportunity.where(user: current_user)
+  end
+
   def new
     @opportunity = Opportunity.new
   end
