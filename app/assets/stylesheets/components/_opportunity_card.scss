@@ -1,8 +1,8 @@
-.artist-card {
+.opportunity-card {
   border: $frame-border;
   padding: 0.5em;
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 150px auto;
   gap: 1em;
   max-width: 1000px;
   background-color: white;
@@ -10,11 +10,11 @@
 
 }
 
-.artist-card:hover {
+.opportunity-card:hover {
   box-shadow: $frame-shadow-hover;
 }
 
-.artist-card__info {
+.opportunity-card__info {
   display: flex;
   flex-direction: column;
   gap: 0.25em;
@@ -24,15 +24,13 @@
   p, h3 {margin: 0}
 }
 
-.artist-card__image {
+.opportunity-card__image {
   width: 100%;
-  min-height: 240px;
+  min-height: 180px;
   background-color: aquamarine;
-  background-size: cover;
-  background-position: top;
 }
 
-.artist-card__link {
+.opportunity-card__link {
   color: $body-color;
 
   :hover {

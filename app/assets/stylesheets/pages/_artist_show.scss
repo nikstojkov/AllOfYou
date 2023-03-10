@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 100%;
   width: 100%;
-  min-height: 100vh;
+  min-height: $full-height;
 
   aside {
     background-color: $accent;
@@ -37,4 +37,9 @@
   gap: 2em;
   flex-wrap: wrap;
   max-width: 100%;
+}
+
+.artist-avatar {
+  background-image: url("https://source.unsplash.com/random/?face");
+  background-size: cover;
 }

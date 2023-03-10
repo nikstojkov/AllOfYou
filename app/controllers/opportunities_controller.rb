@@ -1,8 +1,23 @@
 class OpportunitiesController < ApplicationController
-  before_action :set_opportunities, only: %i[show edit update]
+
+
+
+  # skip_before_action :authenticate_user!, only: %i[show index]
+  # skip_before_action :authenticate_artist!, only: %i[index]
+  before_action :set_opportunities, only: %i[show edit update destroy]
+
 
   def index
-    @opportunities = Opportunity.all
+    if params[:query].present?
+      tagsquery = params[:query].split
+      @opportunities = Opportunity.joins(:tags).where(tags: {name: tagsquery} )
+    else
+      @opportunities = Opportunity.all
+    end
+  end
+
+  def mine
+    @opportunities = Opportunity.where(user: current_user)
   end
 
   def show
@@ -46,13 +61,15 @@ class OpportunitiesController < ApplicationController
   def destroy
     @opportunity = Opportunity.find(params[:id])
     @opportunity.destroy
+
     redirect_to opportunities_path
+
   end
 
   private
 
   def opportunity_params
-    params.require(:opportunity).permit(:title, :location, :description, :status)
+    params.require(:opportunity).permit(:title, :location, :description, :status, :photo)
   end
 
   def set_opportunities

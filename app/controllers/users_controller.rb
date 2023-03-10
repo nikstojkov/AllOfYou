@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  # skip_before_action :authenticate_user!, only: [:show]
   before_action :set_user, only: %i[show update edit destroy]
 
   def show
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:location, :first_name, :last_name, :bio)
+    params.require(:user).permit(:location, :first_name, :last_name, :bio, :photo)
   end
 
   def set_user

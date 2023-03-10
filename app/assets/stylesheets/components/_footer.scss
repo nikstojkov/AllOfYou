@@ -1,0 +1,39 @@
+.footer-aoy {
+  border-top: 4px solid black;
+  padding: 2em 0;
+
+  .footer-items {
+    font-size: .8rem;
+
+    span {
+      transition: 0.3s;
+    }
+
+    span:hover {
+      color: #1edd87e5;
+      cursor: pointer;
+    }
+
+    span + span {
+      margin-left: 2rem;
+    }
+
+  }
+
+  .footer-socials {
+    i {
+      transition: 0.5s;
+    }
+
+    i:hover {
+      color: #1EDD88;
+      cursor: pointer;
+    }
+
+    i + i {
+      margin-left: 2rem;
+    }
+
+  }
+
+}

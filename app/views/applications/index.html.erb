@@ -1,8 +1,5 @@
-<% @applications.each do |app| %>
-  <div>
-      <p><%= app.id %></p>
-      <p><%= app.opportunity %></p>
-      <p><%= app.artist %></p>
-      <p><%= app.content %></p>
-  </div>
-<% end %>
+<div class="artist-card__container my-3">
+  <% @applications.each do |app| %>
+    <%= render partial: "shared/application_card", locals: {application: app} %>
+  <% end %>
+</div>

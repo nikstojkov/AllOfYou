@@ -1,0 +1,27 @@
+<div class="opportunity-card">
+<div class="opportunity-card__image"></div>
+  <div class="opportunity-card__info">
+    <div class="d-flex justify-content-between">
+      <h3>
+        <%= opportunity.title %>
+      </h3>
+      <span><%= opportunity.status %></span>
+      <% if opportunity.user == current_user %>
+        <%= link_to opportunity_path(opportunity),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "text-danger text-decoration-none" do %>
+          <%= icon('fa-regular', 'trash-can') %> Delete
+        <% end %>
+      <% end %>
+    </div>
+    <p>
+      <%= icon('fa-solid', 'location-dot')%>  <%= opportunity.location ? opportunity.location : "" %>
+    </p>
+
+    <p class="flex-grow-1">
+      <%= opportunity.description %>
+    </p>
+
+    <%= render partial: "shared/tags_container", locals: { tags: opportunity.tags } %>
+  </div>
+</div>
