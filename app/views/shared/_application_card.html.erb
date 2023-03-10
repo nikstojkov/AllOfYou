@@ -1,0 +1,30 @@
+<div class="application-card">
+  <div class="application-card__info">
+    <div class="d-flex justify-content-between">
+      <h4>
+        <%= application.opportunity.title %>
+      </h4>
+        <% if application.success %>
+          <span class="text-success fw-bold">Accepted!</span>
+        <% else %>
+          <span class="text-warning fw-bold">Pending</span>
+        <% end %>
+    </div>
+    <div class="application-card__inner">
+      <div>
+        <p>
+      <strong>Curated by: </strong>
+        <%= "#{application.opportunity.user.first_name} #{application.opportunity.user.last_name}" %></p>
+        <p><strong>Location: </strong><%= application.opportunity.location %></p>
+      </div>
+
+      <div>
+        <p class="fw-bold"><%= "#{application.artist.first_name} #{application.artist.last_name}" %> wrote:</p>
+        <p>
+          <%= application.content %>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
