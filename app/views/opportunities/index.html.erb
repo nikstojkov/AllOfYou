@@ -1,18 +1,35 @@
 <div class="page-wrapper">
 
-  <%= link_to artists_path, class: "text-decoration-none" do %>
+
+<div class="container">
+  <% @opportunities.each do |opportunity| %>
+    <ul>
+      <li><%= link_to opportunity.title, opportunity_path(opportunity) %></li>
+      <li><%= opportunity.location %></li>
+      <li><%= opportunity.description %></li>
+      <li><%= opportunity.status %></li>
+      <% if current_user == opportunity.user %>
+        <%= link_to "Delete",
+            opportunity_path(opportunity),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <%# must add validation that its user, not artist for delete method %>
+      <% end %>
+    </ul>
+
+  <%= link_to artists_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--artists">
       <div class="sideways-text">Artists</div>
     </div>
   <% end %>
 
-  <%= link_to artworks_path, class: "text-decoration-none" do %>
+  <%= link_to artworks_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--artworks">
       <div class="sideways-text">Artworks</div>
     </div>
+
   <% end %>
 
-  <div class="container mt-3 artist-card__container">
+  <div class="container my-3 artist-card__container">
 
     <h1>All Opportunities</h1>
     <% @opportunities.each do |opportunity| %>

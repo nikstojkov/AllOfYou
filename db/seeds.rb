@@ -1,3 +1,13 @@
+require "open-uri"
+require "json"
+
+url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
+
+painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(80)
+p painting_ids
+
+
+
 locations = ["Bristol", "London", "Reading", "York", "Newcastle"]
 
 user_tags = ["male", "female"]
@@ -92,6 +102,9 @@ puts "--------------------"
     location: locations.sample,
     description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false)
   )
+  Tag.all.sample(5).each do |tag|
+    OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
+  end
   puts "Opportunity with id #{opportunity.id} created"
 end
 
@@ -129,11 +142,13 @@ puts "----------------"
 puts "Artwork Creation"
 puts "----------------"
 
-100.times do
+painting_ids.each do |id|
+  data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
   artwork = Artwork.create!(
     artist_id: Artist.all.ids.sample,
-    name: Faker::Verb.base,
-    genre: Faker::Book.genre
+    name: data["title"],
+    genre: Faker::Book.genre,
+    image_url: data["primaryImageSmall"]
   )
   Tag.all.sample(5).each do |tag|
     ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
@@ -166,14 +181,14 @@ puts "------------------"
 puts "Shortlist Creation"
 puts "------------------"
 
+
 10.times do
-  opportunity = Opportunity.find(Opportunity.all.ids.sample)
   shortlist = Shortlist.create!(
-    name: opportunity.title,
+    name: Faker::Book.title,
     user_id: User.all.ids.sample
   )
-  Tag.all.sample(5).each do |tag|
-    OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
+  Artist.all.sample(5).each do |artist|
+    ShortlistedArtist.create!(artist_id: artist.id, shortlist_id: shortlist.id)
   end
   puts "Shortlist with id #{shortlist.id} created"
 end

@@ -6,8 +6,11 @@
 
 .tab-button {
   width: 100px;
-  height: 100%;
+  min-height: 100%;
   padding-top: 4em;
+  align-self: flex-start;
+  justify-self: flex-start;
+  position: sticky;
 }
 
 // .tab-button:hover {

@@ -6,6 +6,13 @@
         <%= opportunity.title %>
       </h3>
       <span><%= opportunity.status %></span>
+      <% if opportunity.user == current_user %>
+        <%= link_to opportunity_path(opportunity),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "text-danger text-decoration-none" do %>
+          <%= icon('fa-regular', 'trash-can') %> Delete
+        <% end %>
+      <% end %>
     </div>
     <p>
       <%= icon('fa-solid', 'location-dot')%>  <%= opportunity.location ? opportunity.location : "" %>

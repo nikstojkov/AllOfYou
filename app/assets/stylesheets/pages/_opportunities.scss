@@ -1,0 +1,117 @@
+.opp-box {
+  height: 100%;
+  position: absolute;
+}
+
+.tags-box {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: margin;
+  align-items: center;
+  width: auto;
+}
+
+.current-tags {
+  width: 75%;
+}
+
+.opportunity-info {
+  text-align: center;
+  width: 75%;
+}
+
+.opp-headers {
+  height: 100%;
+  flex-grow: 1;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.opp-tags {
+  width: 40%;
+}
+
+.opp-pic {
+  border: 1pc solid black;
+}
+
+.artist-apps {
+  display: flex;
+  justify-content: center;
+}
+
+
+.apps-title {
+  width: 100%;
+  border-bottom: 1px black solid;
+}
+
+.applications-box {
+  align-items: center;
+}
+
+.accept-deny {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+// button rules
+
+.butt-opp {
+  background-color: grey;
+  color: white;
+  // width: 25%;
+  padding: 3px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 0.5em;
+}
+
+.butt-opp:hover {
+  transition: ease 0.3s;
+  color: black;
+  background-color: white;
+  border: 0.5px black solid;
+}
+
+.link-back-opp {
+  float: left;
+}
+
+.button-box {
+  margin: 1em;
+}
+
+// button end
+
+// icon boxes
+
+.ic-1 {
+  text-align: right;
+}
+
+.ic-2 {
+  text-align: left;
+}
+
+// icon box end
+.side-info {
+  height: 100%;
+  text-align: center;
+  background-color: $accent;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+}
+
+.successful-art {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
