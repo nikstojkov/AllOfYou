@@ -37,7 +37,7 @@
 
 
       <% if user_signed_in? %>
-        <%= link_to "Add to Shortlist", root_path, class: "btn btn-secondary" %>
+        <%= link_to "Add to Shortlist", shortlist_path, class: "btn btn-secondary" %>
       <% end %>
 
       <% if @artist == current_artist %>
