@@ -38,7 +38,6 @@
 
       <% if user_signed_in? %>
         <%= simple_form_for [@artist, @shortlisted_artist] do |f| %>
-          <%= f.input :shortlist, as: :select %>
           <%= f.submit "Add to Shortlist", class: "btn btn-secondary" %>
         <% end %>
       <% end %>
