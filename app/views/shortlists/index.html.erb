@@ -13,7 +13,7 @@
       <% @shortlists.each_with_index do |shortlist, index| %>
 
         <div class="d-flex w-100 justify-content-between align-items-center border-top py-4 <%= index < @shortlists.count - 1 ? "" : "border-bottom" %>">
-          <p class="mb-0"><%= shortlist.name %></p>
+          <p class="mb-0"><%= link_to shortlist.name, shortlist_path(shortlist), class: "text-decoration-none"%></p>
           <div class="delete">
             <%= link_to "Delete", shortlist_path(shortlist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none" %>
           </div>
