@@ -5,7 +5,7 @@
   <h4>Artists</h4>
   <p><% shortlist.artists.each do |artist| %></p>
   <div class="container">
-      <p> - <%= artist.first_name %></p>
+      <p> - <%= link_to "#{artist.first_name}", artist_path(artist.id) %></p>
   </div>
   <% end %>
 </div>
