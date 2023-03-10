@@ -6,6 +6,7 @@ class ShortlistsController < ApplicationController
 
   def index
     @shortlists = Shortlist.where(user: current_user)
+    # @shortlists = Shortlist.all
   end
 
   def new

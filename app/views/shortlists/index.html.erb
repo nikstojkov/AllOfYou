@@ -1,1 +1,12 @@
 <h1>HELLO</h1>
+<% @shortlists.each do |shortlist| %>
+<div class="container">
+  <h3>Shortlist Name: <%= shortlist.name %></h3>
+  <h4>Artists</h4>
+  <p><% shortlist.artists.each do |artist| %></p>
+  <div class="container">
+      <p> - <%= artist.first_name %></p>
+  </div>
+  <% end %>
+</div>
+<% end %>

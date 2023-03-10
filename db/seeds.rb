@@ -92,6 +92,9 @@ puts "--------------------"
     location: locations.sample,
     description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false)
   )
+  Tag.all.sample(5).each do |tag|
+    OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
+  end
   puts "Opportunity with id #{opportunity.id} created"
 end
 
@@ -166,14 +169,14 @@ puts "------------------"
 puts "Shortlist Creation"
 puts "------------------"
 
+
 10.times do
-  opportunity = Opportunity.find(Opportunity.all.ids.sample)
   shortlist = Shortlist.create!(
-    name: opportunity.title,
+    name: Faker::Book.title,
     user_id: User.all.ids.sample
   )
-  Tag.all.sample(5).each do |tag|
-    OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
+  Artist.all.sample(5).each do |artist|
+    ShortlistedArtist.create!(artist_id: artist.id, shortlist_id: shortlist.id)
   end
   puts "Shortlist with id #{shortlist.id} created"
 end
