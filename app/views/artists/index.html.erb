@@ -1,13 +1,13 @@
 <div class="page-wrapper">
-<div class="container mt-3 artist-card__container">
-<%= form_with url: artists_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
+<div class="container my-3 artist-card__container">
+<%# <%= form_with url: artists_path, method: :get, class: "d-flex" do %>
+  <%#= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find an artist"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+  <%#= submit_tag "Search", class: "btn btn-primary" %>
+<%# end %>
 
 <h1>All Artists</h1>
   <% @artists.each do |artist| %>
