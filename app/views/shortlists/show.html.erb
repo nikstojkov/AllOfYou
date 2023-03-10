@@ -1,5 +1,11 @@
 <div class="shortlist-wrap">
   <div class="shortlist-artists">
+    <h4>Artists</h4>
+    <% @shortlist.artists.each do |artist| %>
+    <div class="container">
+        <p class="card-text"> - <%= link_to "#{artist.first_name}", artist_path(artist.id) %></p>
+    </div>
+    <% end %>
   </div>
 
   <div class="shortlist-yellow">
