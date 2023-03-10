@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :artworks, except: :show
   resources :opportunities
   resources :applications, except: :edit
+
+  get "/my-opportunities", to: "opportunities#mine"
 end

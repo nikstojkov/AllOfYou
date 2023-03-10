@@ -8,6 +8,9 @@
   width: 100px;
   min-height: $full-height;
   padding-top: 4em;
+  align-self: flex-start;
+  justify-self: flex-start;
+  position: sticky;
 }
 
 // .tab-button:hover {
