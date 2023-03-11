@@ -4,3 +4,13 @@
 
   <%= render "form", artist: @artist %>
 </div>
+<div class="container">
+  <% @artist.artworks.each do |artwork| %>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title"><%= artwork.name %></h3>
+        <%= link_to "Delete", artworks_path(artwork), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary shortlist-add text-decoration-none" %>
+      </div>
+    </div>
+    <% end %>
+</div>

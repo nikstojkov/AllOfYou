@@ -4,6 +4,8 @@
       <%# TODO: change below link path %>
       <%= link_to "< back to results", :back %>
 
+
+
       <div class="artist-avatar"></div>
       <h2>
         <%= "#{@artist.first_name} #{@artist.last_name}" %>
@@ -46,15 +48,17 @@
       <% end %>
 
       <% if @artist == current_artist %>
-        <%= link_to "delete", artist_path, class: "btn btn-danger" %>
+        <%= link_to "Delete", artist_path, class: "btn btn-danger" %>
       <% end %>
   </aside>
 
   <main>
     <h2>Works</h2>
     <div class="artwork-container">
+      <% if @artist = current_artist %>
+        <%= link_to "Add Artwork", new_artwork_path, class: "btn btn-primary" %>
+      <% end %>
       <% @artworks.each do |artwork| %>
-
         <%= render partial: "shared/artwork", locals: { artwork: artwork } %>
 
       <% end %>

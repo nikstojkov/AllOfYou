@@ -6,9 +6,9 @@ class ShortlistedArtistsController < ApplicationController
     @shortlisted_artists.artist = @artist
     @shortlisted_artists.shortlist = current_user.shortlists.first
     if @shortlisted_artists.save
-      redirect_to shortlists_path(current_user)
+      redirect_to shortlists_path(@shortlist)
     else
-      redirect_to artist_path(@artist)
+      redirect_to shortlist_path(@shortlist)
     end
   end
 

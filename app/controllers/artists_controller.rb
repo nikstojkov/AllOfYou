@@ -8,7 +8,6 @@ class ArtistsController < ApplicationController
   def index
     if params[:query].present?
       tagsquery = params[:query].split
-
       @artists = Artist.joins(:tags).where(tags: {name: tagsquery} )
     else
       @artists = Artist.all
@@ -40,7 +39,7 @@ class ArtistsController < ApplicationController
 
   def update
     @artist.update(artist_params)
-    redirect_to current_user
+    redirect_to current_artist
   end
 
   def destroy

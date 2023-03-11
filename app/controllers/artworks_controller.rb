@@ -20,7 +20,7 @@ class ArtworksController < ApplicationController
     artwork = Artwork.new(artwork_params)
     artwork.artist = current_artist
     if artwork.save
-      redirect_to artwork_path(artwork)
+      redirect_to artist_path(artwork.artist)
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class ArtworksController < ApplicationController
 
   def delete
     @artwork.destroy
-    redirect_to artworks_path, status: see_other
+    redirect_to artist_path(current_artist), status: see_other
   end
 
   private
