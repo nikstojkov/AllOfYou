@@ -1,9 +1,16 @@
 class ShortlistsController < ApplicationController
+  # skip_before_action :authenticate_user!, only: %i[show index]
+  # skip_before_action :authenticate_artist!, only: %i[index]
   before_action :set_shortlist, only: %i[show edit update destroy]
-  
+
 
   def index
     @shortlists = Shortlist.where(user: current_user)
+
+    @shortlist = Shortlist.new
+
+    # @shortlists = Shortlist.all
+
   end
 
   def new
@@ -13,7 +20,7 @@ class ShortlistsController < ApplicationController
   def create
     @shortlist = Shortlist.new(shortlist_params)
     @shortlist.user = current_user
-    if @shortlists.save
+    if @shortlist.save
       redirect_to shortlist_path(@shortlist)
     else
       render :new, status: :unprocessable_entity

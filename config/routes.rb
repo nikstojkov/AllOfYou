@@ -4,15 +4,14 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :search
   resources :shortlists
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :artists
-
-  resources :users
-  # Defines the root path route ("/")
-  # root "articles#index"
-  resources :artworks, except: :show
-
-  resources :opportunities do
-    resources :applications, except: :edit
+  resources :artists do
+    resources :shortlisted_artists, only: :create
   end
+  resources :shortlisted_artists
+  resources :users
+  resources :artworks, except: :show
+  resources :opportunities
+  resources :applications, except: :edit
+
+  get "/my-opportunities", to: "opportunities#mine"
 end

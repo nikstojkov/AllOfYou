@@ -1,5 +1,8 @@
 class ArtistsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  # skip_before_action :authenticate_user!, only: %i[show index]
+
+  # skip_before_action :authenticate_artist!, only: %i[show index]
+
   before_action :set_artist, only: %i[show update edit destroy]
 
   def index
@@ -13,6 +16,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artworks = @artist.artworks
+    @shortlisted_artist = ShortlistedArtist.new
+    @shortlist = Shortlist.find_by(user: current_user)
     @tags = @artist.tags
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities

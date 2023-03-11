@@ -1,4 +1,4 @@
-<%= simple_form_for(@application) do |f| %>
+<%= simple_form_for [@opportunity, @application] do |f| %>
   <%= f.input :content %>
   <%= f.submit %>
 <% end %>

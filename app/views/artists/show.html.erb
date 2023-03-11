@@ -35,15 +35,19 @@
 
       <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
 
+    </div>
 
       <% if user_signed_in? %>
-        <%= link_to "Add to Shortlist", root_path, class: "btn btn-secondary" %>
+
+        <%= simple_form_for [@artist, @shortlisted_artist] do |f| %>
+          <%= f.submit "Add to Shortlist", class: "btn btn-secondary" %>
+        <% end %>
+
       <% end %>
 
       <% if @artist == current_artist %>
         <%= link_to "delete", artist_path, class: "btn btn-danger" %>
       <% end %>
-    </div>
   </aside>
 
   <main>

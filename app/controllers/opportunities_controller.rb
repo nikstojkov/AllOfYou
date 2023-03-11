@@ -1,5 +1,11 @@
 class OpportunitiesController < ApplicationController
+
+
+
+  # skip_before_action :authenticate_user!, only: %i[show index]
+  # skip_before_action :authenticate_artist!, only: %i[index]
   before_action :set_opportunities, only: %i[show edit update destroy]
+
 
   def index
     if params[:query].present?
@@ -8,6 +14,26 @@ class OpportunitiesController < ApplicationController
     else
       @opportunities = Opportunity.all
     end
+  end
+
+  def mine
+    @opportunities = Opportunity.where(user: current_user)
+  end
+
+  def show
+    @applications = @opportunity.applications
+    @application = Application.new
+
+    if params[:tags]
+      @new_tags = params[:tags].split(", ")
+      @new_tags.each do |tag|
+        tag_create = Tag.find_or_create_by(name: tag)
+        if @opportunity.tags.include?(tag_create) == false
+          OpportunityTag.create(tag: tag_create, opportunity: @opportunity)
+        end
+      end
+    end
+
   end
 
   def new
@@ -24,10 +50,6 @@ class OpportunitiesController < ApplicationController
     end
   end
 
-  def show
-    @applications = @opportunity.applications
-  end
-
   def edit
   end
 
@@ -37,8 +59,11 @@ class OpportunitiesController < ApplicationController
   end
 
   def destroy
+    @opportunity = Opportunity.find(params[:id])
     @opportunity.destroy
-    redirect_to opportunities_path, status: see_other
+
+    redirect_to opportunities_path
+
   end
 
   private
