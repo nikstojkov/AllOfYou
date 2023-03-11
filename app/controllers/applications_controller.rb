@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 
-  before_action :set_opportunity, only: %i[new create]
+  before_action :set_opportunity, only: %i[new create destroy]
 
   def index
     @applications = Application.where(artist: current_artist)
@@ -25,9 +25,18 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
   end
 
-  def delete
+  def destroy
+    # raise
+    @application = Application.find(params[:application])
     @application.destroy
     redirect_to opportunity_path(@opportunity)
+  end
+
+  def toggle_success
+    # raise
+    @application = Application.find(params[:id])
+    @application.update(success: true)
+    redirect_to opportunity_path(@application.opportunity)
   end
 
   private

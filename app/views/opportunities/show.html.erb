@@ -73,11 +73,11 @@
                 <div class="appl-card my-2">
                   <div class="m-1">
                     <%# Artist Avatar %>
-                    <%# <% if artist.photo.key %>
-                      <%# <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
-                    <%# <% else %>
+                    <% if artist.photo.key %>
+                      <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
+                    <% else %>
                       <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <%# <% end %>
+                    <% end %>
                     <br>
                     <strong><%= artist.first_name %> <%= artist.last_name %></strong>
                   </div>
@@ -85,8 +85,9 @@
                     <%= application.content %>
                   </div>
                   <div class="accept-deny">
-                    <button class="btn btn-primary rounded-pill">Accept</button>
-                    <button class="btn btn-danger rounded-pill">Decline</button>
+                    <%= button_to "accept", toggle_success_application_path(application), method: :patch, class: "accept-b app-btn" %>
+                    <% @application = Application.find(application.id) %>
+                    <%= link_to 'reject', opportunity_application_path(@opportunity, application: application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "reject-b app-btn" %>
                   </div>
                 </div>
               <% end %>
@@ -95,7 +96,7 @@
             <h3>Apply Here</h3>
             <%# TODO Render the app form if not already applied %>
 
-            <%= render 'applications/form' %>%
+            <%= render 'applications/form' %>
           <% end %>
         </div>
     </div>
