@@ -1,0 +1,24 @@
+.shortlist-artists {
+  display:flex;
+  flex-direction:column;
+  min-height: calc(100vh - 60px);
+  align-items:center;
+  width: 1328px;
+  margin-top: 20px;
+}
+
+.shortlist-yellow {
+  display: flex;
+  flex-direction: column;
+  background-color: $accent;
+  min-height: calc(100vh - 60px);
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+.shortlist-name {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}

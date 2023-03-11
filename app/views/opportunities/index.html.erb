@@ -1,5 +1,4 @@
 <div class="page-wrapper">
-
   <%= link_to artists_path(query: params[:query]), class: "text-decoration-none" do %>
     <div class="tab-button tab-button--artists">
       <div class="sideways-text">Artists</div>
@@ -10,10 +9,10 @@
     <div class="tab-button tab-button--artworks">
       <div class="sideways-text">Artworks</div>
     </div>
+
   <% end %>
 
   <div class="container my-3 artist-card__container">
-
     <h1>All Opportunities</h1>
     <% @opportunities.each do |opportunity| %>
       <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
