@@ -36,8 +36,9 @@
     </label>
     <div class="accslide">
       <div class="content">
-        <div class="artwork-container justify-content-center">
+      <div class="container my-3 artist-card__container">
         <h2>Artwork results</h2>
+        <div class="artwork-container justify-content-center">
 
           <% @artworks.each do |artwork| %>
             <%= link_to artist_path(artwork.artist), class: "text-decoration-none opportunity-card__link" do %>
@@ -45,6 +46,7 @@
             <% end %>
           <% end %>
         </div>
+      </div>
       </div>
     </div>
   </li>
