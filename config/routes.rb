@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :artworks, except: :show
   resources :opportunities do
-    resources :applications, only: %i[destroy toggle_success]
+    resources :applications, only: %i[destroy toggle_success new create]
   end
   resources :applications, except: :edit do
     member do
