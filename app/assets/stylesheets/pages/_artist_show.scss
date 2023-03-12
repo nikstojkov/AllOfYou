@@ -32,14 +32,42 @@
   }
 }
 
-.artwork-container {
-  display: flex;
-  gap: 2em;
-  flex-wrap: wrap;
-  max-width: 100%;
-}
+// .artwork-container {
+//   display: flex;
+//   gap: 2em;
+//   flex-wrap: wrap;
+//   max-width: 100%;
+// }
 
 .artist-avatar {
   background-image: url("https://source.unsplash.com/random/?face");
   background-size: cover;
+}
+
+.artwork-container {
+  columns: 3 250px;
+  column-gap: 2rem;
+  a {
+
+   margin: 0 2rem 2rem 0;
+    display: inline-block;
+    width: 100%;
+    // text-align: center;
+    // font-family: system-ui;
+    // font-weight: 900;
+    // font-size: 2rem;
+  }
+
+  .artwork__card {
+    width: 100%;
+    //break-inside: avoid-column;
+  }
+
+  // @for $i from 1 through 36 {
+  //   div:nth-child(#{$i}) {
+  //     $h: (random(400) + 100) + px;
+  //     height: $h;
+  //     line-height: $h;
+  //   }
+  // }
 }
