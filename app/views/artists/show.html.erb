@@ -53,14 +53,12 @@
   <main>
     <h2>Works</h2>
     <div class="artwork-container">
-      <% @artworks.each do |artwork| %>
-
-        <%= render partial: "shared/artwork", locals: { artwork: artwork } %>
-
+      <% if @artist = current_artist %>
+        <%= link_to "Add Artwork", new_artwork_path, class: "btn btn-primary" %>
       <% end %>
-
-      <%# THIS IS A TEST RENDER JUST TO SEE HOW IT LOOKS... delete later %>
-      <%#= render partial: "shared/artwork" %>
+      <% @artworks.each do |artwork| %>
+        <%= render partial: "shared/artwork", locals: { artwork: artwork } %>
+      <% end %>
     </div>
   </main>
 </div>

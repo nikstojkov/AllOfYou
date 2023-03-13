@@ -42,7 +42,7 @@ class OpportunitiesController < ApplicationController
     @opportunity = Opportunity.new(opportunity_params)
     @opportunity.user = current_user
     if @opportunity.save
-      redirect_to opportunity_path(opportunity)
+      redirect_to opportunity_path(@opportunity)
     else
       render :new, status: :unprocessable_entity
     end
