@@ -7,7 +7,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <% unless current_page?("/") %>
+
       <%= form_with url: artists_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
           params[:query],
@@ -16,7 +16,7 @@
         %>
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
-    <% end %>
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">

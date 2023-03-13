@@ -4,7 +4,6 @@ $max-tabs: 3;
 $tab-width: 150px;
 
 // Theming
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 $clr-bg: #e2e2e2;
 $clr-bg-light: lighten($clr-bg, 10%);
@@ -15,22 +14,7 @@ $clr-text: $body-color;
 $clr-text-hint: rgba($clr-text, .6);
 $clr-primary: $primary;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  background: $clr-bg;
-  color: $clr-text;
-  font-family: 'Open Sans', sans-serif;
-}
 
 /* LIST */
 ul {
@@ -40,7 +24,7 @@ ul {
 
 /* FORM */
 // Hide the input
-input {
+li input {
   position: absolute;
   top: -9999px;
   left: -9999px;
@@ -50,7 +34,7 @@ input {
 label {
   display: block;
   float: left;
-  height: 100vh;
+  height: 1000vh;
   width: $tab-width;
   overflow: hidden;
 
