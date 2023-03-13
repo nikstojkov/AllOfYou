@@ -1,4 +1,5 @@
 class ShortlistedArtistsController < ApplicationController
+  skip_before_action :authenticate_artist!
 
   def create
     @shortlisted_artists = ShortlistedArtist.new

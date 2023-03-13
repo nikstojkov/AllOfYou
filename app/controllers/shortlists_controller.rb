@@ -1,4 +1,5 @@
 class ShortlistsController < ApplicationController
+  skip_before_action :authenticate_artist!
 
   before_action :set_shortlist, only: %i[show edit update destroy]
 
