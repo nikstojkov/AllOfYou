@@ -1,0 +1,99 @@
+
+<%# <span style="display:block; width:33%;"><%= render :template => "artists/index" </span> %>
+<%# <span style="display:block; width:33%;"><%= render :template => "artworks/index" </span> %>
+<%# <span style="display:block; width:33%;"><%= render :template => "opportunities/index" </span> %>
+
+<!-- These variables help keep track of the input name and ID-->
+<!-- currentTab helps keep track of each individual input-->
+<!-- tabControlName is used as a unique identifier for the accordion-->
+<ul>
+  <li>
+    <!-- Using radio inputs means only one can be selected at a time-->
+    <!-- The ID must be unique so the label will point to the input-->
+    <input id="rad1" type="radio" name="rad" checked="checked"/>
+    <label for="rad1">
+      <div>Artists</div>
+    </label>
+    <div class="accslide">
+      <div class="content">
+      <div class="container my-3 artist-card__container">
+      <% if params[:query].present? %>
+        <h2><%= pluralize(@artists.size, "result") %> for <% params[:query].split.each do |tag| %>
+          <span class="badge bg-secondary"><%= tag %></span>
+        <% end %>
+        </h2>
+      <% else %>
+        <h2>All Artists</h2>
+      <% end %>
+          <% @artists.each do |artist| %>
+            <%= link_to artist_path(artist.id), class: "text-decoration-none artist-card__link" do %>
+              <%= render partial: "shared/artist_card", locals: {artist: artist} %>
+            <% end %>
+          <% end %>
+      </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <!-- Using radio inputs means only one can be selected at a time-->
+    <!-- The ID must be unique so the label will point to the input-->
+    <input id="rad2" type="radio" name="rad"/>
+    <label for="rad2">
+      <div>Artworks</div>
+    </label>
+    <div class="accslide">
+      <div class="content">
+      <div class="container my-3 artist-card__container">
+        <% if params[:query].present? %>
+          <h2><%= pluralize(@artworks.size, "result") %> for <% params[:query].split.each do |tag| %>
+            <span class="badge bg-secondary"><%= tag %></span>
+          <% end %>
+          </h2>
+        <% else %>
+          <h2>All Artwork</h2>
+        <% end %>
+        <div class="artwork-container justify-content-center">
+
+          <% @artworks.each do |artwork| %>
+            <%= link_to artist_path(artwork.artist), class: "text-decoration-none opportunity-card__link" do %>
+              <%= render partial: "shared/artwork_result", locals: { artwork: artwork } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <!-- Using radio inputs means only one can be selected at a time-->
+    <!-- The ID must be unique so the label will point to the input-->
+    <input id="rad3" type="radio" name="rad"/>
+    <label for="rad3">
+      <div>Opportunities</div>
+    </label>
+    <div class="accslide">
+      <div class="content">
+        <div class="container my-3 artist-card__container">
+          <% if params[:query].present? %>
+            <h2><%= pluralize(@opportunities.size, "result") %> for <% params[:query].split.each do |tag| %>
+              <span class="badge bg-secondary"><%= tag %></span>
+            <% end %>
+            </h2>
+          <% else %>
+            <h2>All Opportunities</h2>
+          <% end %>
+          <% @opportunities.each do |opportunity| %>
+            <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
+              <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
+            <% end %>
+            <% if opportunity.user == current_user %>
+            <%= link_to "Delete",
+                  artwork_path(opportunity),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

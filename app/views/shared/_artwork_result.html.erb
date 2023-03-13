@@ -1,8 +1,12 @@
 <div class="artwork__card">
   <div class="artwork__frame">
-    <%= image_tag artwork.image_url %>
-    <%# leaving this here for when we have cloudinary %>
-    <%#= image_tag artwork.image.key %>
+    <% if artwork.photo.key %>
+      <%= cl_image_tag artwork.photo.key %>
+    <% elsif artwork.image_url %>
+      <%= image_tag artwork.image_url %>
+    <% else %>
+        <h2>NAUGHT</h2>
+    <% end %>
   </div>
   <p class="artwork__title"><%= artwork.name %></p>
   <p><%= "#{artwork.artist.first_name} #{artwork.artist.last_name}" %></p>
