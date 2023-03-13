@@ -1,0 +1,168 @@
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #9c9c9c #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #9c9c9c;
+    border-radius: 10px;
+    border: 3px solid $light-gray;
+  }
+
+// Variables
+// Only generate rules up to the max tabs desired
+$max-tabs: 3;
+$tab-width: 150px;
+
+// Theming
+
+$clr-bg: #e2e2e2;
+$clr-bg-light: lighten($clr-bg, 10%);
+$clr-bg-lighter: lighten($clr-bg, 15%);
+$clr-bg-dark: darken($clr-bg, 2.5%);
+$clr-bg-darker: darken($clr-bg, 5%);
+$clr-text: $body-color;
+$clr-text-hint: rgba($clr-text, .6);
+$clr-primary: $primary;
+
+$clr-artist-tab: $artist-tab;
+$clr-art-tab: $artwork-tab;
+$clr-opp-tab: $opp-tab;
+
+
+
+/* LIST */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* FORM */
+// Hide the input
+li input {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+// Make the label a vertical bar
+label {
+  display: block;
+  float: left;
+  height: $full-height;
+  width: $tab-width;
+  overflow: hidden;
+
+  background: $clr-artist-tab;
+  text-align: center;
+  //font-size: 14px;
+  line-height: $tab-width + 10;
+
+  transition: background 300ms ease;
+
+  &:hover {
+    background: lighten($clr-artist-tab, 10%);
+    transition-duration: 0s;
+  }
+}
+
+li:nth-child(2) > input + label {
+  background: $clr-art-tab;
+}
+
+li:nth-child(2) > input + label:hover {
+  background: lighten($clr-art-tab, 5%);
+  // color: #fff;
+  cursor: pointer;
+}
+
+li:nth-child(3) > input + label {
+  background: $clr-opp-tab;
+}
+
+li:nth-child(3) > input + label:hover {
+  background: lighten($clr-opp-tab, 10%);
+  // color: #fff;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked ~ label {
+  background: linear-gradient(90deg, $clr-artist-tab, transparent);
+  color: transparent;
+  cursor: default !important;
+
+  // &:hover {
+    //background: transparent;
+  // }
+}
+
+// GRADIENTS ON ACTIVE TABS...
+
+li:nth-child(2) > input[type="radio"]:checked ~ label {
+  background: linear-gradient(90deg, $clr-art-tab, transparent);
+}
+
+li:nth-child(3) > input[type="radio"]:checked ~ label {
+  background: linear-gradient(90deg, $clr-opp-tab, transparent);
+}
+
+/* SLIDES */
+.accslide {
+  display: block;
+  height: $full-height;
+  width: 0px;
+  padding: 10px 0;
+  float: left;
+  overflow-x: hidden;
+
+  //font-size: 12px;
+  line-height: 1.5;
+
+  // Prevents text "squishing", but will cut off text if it is too long
+  //white-space: nowrap;
+
+  transition: all 500ms ease;
+
+  // * { padding-left: 10px }
+  // img { margin-top: 10px  }
+
+
+}
+
+input[type="radio"]:not(:checked) ~ label > * {
+  padding-left: 7px;
+  font-size: 2em;
+  white-space: nowrap;
+	transform: rotate(90deg);
+}
+
+input[type="radio"]:not(:checked) .content {
+  display: none;
+}
+
+input[type="radio"]:not(:checked) ~ .accslide > .content {
+  display: none;
+}
+
+input[type="radio"]:checked ~ label > * {
+  display: none;
+}
+
+@for $i from 2 through $max-tabs {
+  @for $j from 1 through $i {
+    li:nth-child(#{$j}):nth-last-child(#{$i - $j + 1}) input[type="radio"]:checked ~ .accslide {
+      width: calc(100% - #{$i * $tab-width});
+    }
+  }
+}
