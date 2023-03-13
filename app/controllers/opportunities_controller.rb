@@ -39,9 +39,9 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
-    opportunity = Opportunity.new(opportunity_params)
-    opportunity.user = current_user
-    if opportunity.save
+    @opportunity = Opportunity.new(opportunity_params)
+    @opportunity.user = current_user
+    if @opportunity.save
       redirect_to opportunity_path(opportunity)
     else
       render :new, status: :unprocessable_entity
@@ -52,8 +52,8 @@ class OpportunitiesController < ApplicationController
   end
 
   def update
-    opportunity.update(opportunity_params)
-    redirect_to opportunity_path(opportunity)
+    @opportunity.update(opportunity_params)
+    redirect_to opportunity_path(@opportunity)
   end
 
   def destroy
@@ -67,7 +67,7 @@ class OpportunitiesController < ApplicationController
   private
 
   def opportunity_params
-    params.require(:opportunity).permit(:title, :location, :description, :status, :photo)
+    params.require(:opportunity).permit(:title, :location, :description, :status, :date, :photo)
   end
 
   def set_opportunities
