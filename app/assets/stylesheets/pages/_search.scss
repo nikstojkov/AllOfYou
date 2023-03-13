@@ -34,7 +34,7 @@ li input {
 label {
   display: block;
   float: left;
-  height: 1000vh;
+  height: calc(100vh - 152px);
   width: $tab-width;
   overflow: hidden;
 
@@ -74,7 +74,7 @@ input[type="radio"]:checked ~ label {
 /* SLIDES */
 .accslide {
   display: block;
-  height: 100%;
+  height: calc(100vh - 152px);
   width: 0px;
   padding: 10px 0;
   float: left;
@@ -100,6 +100,10 @@ input[type="radio"]:not(:checked) ~ label > * {
 }
 
 input[type="radio"]:not(:checked) .content {
+  display: none;
+}
+
+input[type="radio"]:not(:checked) ~ .accslide > .content {
   display: none;
 }
 
