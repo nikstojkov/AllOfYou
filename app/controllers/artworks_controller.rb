@@ -1,5 +1,5 @@
 class ArtworksController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!
   skip_before_action :authenticate_artist!, only: %i[show index]
 
   before_action :set_artwork, only: %i[show edit update destroy]
@@ -7,7 +7,7 @@ class ArtworksController < ApplicationController
   def index
     if params[:query].present?
       tagsquery = params[:query].split
-      @artworks = Artwork.joins(:tags).where(tags: {name: tagsquery} )
+      @artworks = Artwork.joins(:tags).where(tags: {name: tagsquery} ).uniq
     else
       @artworks = Artwork.all
     end
