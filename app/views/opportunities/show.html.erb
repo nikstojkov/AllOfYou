@@ -2,7 +2,11 @@
 
   <div class="opp-headers w-75">
     <div class="text-left w-100">
-      <%= link_to "< back to opportunities", :back %>
+      <% if current_user == @opportunity.user %>
+        <%= link_to "< back to opportunities", my_opportunities_path %>
+      <% else %>
+        <%= link_to "< back to opportunities", :back %>
+      <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
 
