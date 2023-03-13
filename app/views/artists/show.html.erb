@@ -59,6 +59,10 @@
 
       <% end %>
 
+       <% if @artist == current_artist %>
+        <%= render "shared/add_artwork_modal", locals: { new_artwork: @new_artwork } %>
+       <% end %>
+
       <%# THIS IS A TEST RENDER JUST TO SEE HOW IT LOOKS... delete later %>
       <%#= render partial: "shared/artwork" %>
     </div>

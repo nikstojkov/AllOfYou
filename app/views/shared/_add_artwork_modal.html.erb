@@ -1,4 +1,3 @@
-
 <button type="button" class="circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
   <div class="circle::before"></div>
   <div class="plus-side"></div>
@@ -15,10 +14,13 @@
         </div>
         <div class="modal-body">
 
-          <%= simple_form_for(shortlist) do |f| %>
-          <%= f.input :name, required: true %>
-          <%= f.submit class:"create", value: "Create"  %>
-          <% end %>
+        <%= simple_form_for(@new_artwork) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :genre %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit class:"plus-side circle::before" %>
+        <% end %>
+
         </div>
         <div class="modal-footer">
         </div>
@@ -26,9 +28,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<%# class="btn btn-primary shortlist-add"  # no commas %>
