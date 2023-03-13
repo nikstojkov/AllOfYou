@@ -42,7 +42,7 @@ class OpportunitiesController < ApplicationController
     @opportunity = Opportunity.new(opportunity_params)
     @opportunity.user = current_user
     if @opportunity.save
-      redirect_to opportunity_path(opportunity)
+      redirect_to opportunity_path(@opportunity)
     else
       render :new, status: :unprocessable_entity
     end
@@ -59,8 +59,8 @@ class OpportunitiesController < ApplicationController
   def destroy
     @opportunity = Opportunity.find(params[:id])
     @opportunity.destroy
+    redirect_to my_opportunities_path
 
-    redirect_to opportunities_path
 
   end
 

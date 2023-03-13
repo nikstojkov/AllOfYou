@@ -19,7 +19,7 @@ class ShortlistsController < ApplicationController
     @shortlist = Shortlist.new(shortlist_params)
     @shortlist.user = current_user
     if @shortlist.save
-      redirect_to shortlist_path(@shortlist)
+      redirect_to shortlists_path
     else
       render :new, status: :unprocessable_entity
     end
