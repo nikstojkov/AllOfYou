@@ -5,5 +5,13 @@ class Opportunity < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :artists, through: :applications
 
+  validate :validate_date
+
   has_one_attached :photo
+
+  def validate_date
+    if date.present? && date < Date.today
+      errors.add(:date, "Invalid Date")
+    end
+  end
 end
