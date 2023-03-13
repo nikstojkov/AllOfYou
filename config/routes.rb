@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :artists
   devise_for :users
   root to: "pages#home"
-  resources :search
+  resources :search, only: :index
   resources :shortlists
   resources :artists do
     resources :shortlisted_artists, only: :create
