@@ -102,9 +102,9 @@ input[type="radio"]:checked ~ label {
   color: transparent;
   cursor: default !important;
 
-  &:hover {
-    background: transparent;
-  }
+  // &:hover {
+    //background: transparent;
+  // }
 }
 
 // GRADIENTS ON ACTIVE TABS...
