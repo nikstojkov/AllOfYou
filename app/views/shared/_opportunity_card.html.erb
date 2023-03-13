@@ -5,7 +5,7 @@
       <h3>
         <%= opportunity.title %>
       </h3>
-      <span><%= opportunity.status %></span>
+      <span><%= opportunity.status ? "Open" : "Closed"%></span>
       <% if opportunity.user == current_user %>
         <%= link_to opportunity_path(opportunity),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
