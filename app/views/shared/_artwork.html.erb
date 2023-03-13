@@ -2,7 +2,13 @@
 
   <div class="artwork__card">
     <div class="artwork__frame">
-      <%= image_tag artwork.image_url %>
+      <% if artwork.photo.key %>
+        <%= cl_image_tag artwork.photo.key %>
+      <% elsif artwork.image_url %>
+        <%= image_tag artwork.image_url %>
+      <% else %>
+         <h2>NAUGHT</h2>
+      <% end %>
       <%# leaving this here for when we have cloudinary %>
       <%#= image_tag artwork.image.key %>
     </div>
@@ -28,7 +34,7 @@
 
         <!-- Carousel -->
         <%# <img src="https://source.unsplash.com/random/" class="d-block carousel-img" alt="..."> %>
-        <%= image_tag artwork.image_url, class: "d-block carousel-img" %>
+        <%# <%= image_tag artwork.image_url, class: "d-block carousel-img" %> %>
         <%# <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner modal-carousel-height">
             <div class="carousel-item active" data-bs-interval="3000">
