@@ -17,7 +17,14 @@
     <div class="accslide">
       <div class="content">
       <div class="container my-3 artist-card__container">
-        <h2>Search results</h2>
+      <% if params[:query].present? %>
+        <h2><%= pluralize(@artists.size, "result") %> for <% params[:query].split.each do |tag| %>
+          <span class="badge bg-secondary"><%= tag %></span>
+        <% end %>
+        </h2>
+      <% else %>
+        <h2>All Artists</h2>
+      <% end %>
           <% @artists.each do |artist| %>
             <%= link_to artist_path(artist.id), class: "text-decoration-none artist-card__link" do %>
               <%= render partial: "shared/artist_card", locals: {artist: artist} %>
@@ -37,7 +44,14 @@
     <div class="accslide">
       <div class="content">
       <div class="container my-3 artist-card__container">
-        <h2>Artwork results</h2>
+        <% if params[:query].present? %>
+          <h2><%= pluralize(@artworks.size, "result") %> for <% params[:query].split.each do |tag| %>
+            <span class="badge bg-secondary"><%= tag %></span>
+          <% end %>
+          </h2>
+        <% else %>
+          <h2>All Artwork</h2>
+        <% end %>
         <div class="artwork-container justify-content-center">
 
           <% @artworks.each do |artwork| %>
@@ -60,7 +74,14 @@
     <div class="accslide">
       <div class="content">
         <div class="container my-3 artist-card__container">
-          <h1>All Opportunities</h1>
+          <% if params[:query].present? %>
+            <h2><%= pluralize(@opportunities.size, "result") %> for <% params[:query].split.each do |tag| %>
+              <span class="badge bg-secondary"><%= tag %></span>
+            <% end %>
+            </h2>
+          <% else %>
+            <h2>All Opportunities</h2>
+          <% end %>
           <% @opportunities.each do |opportunity| %>
             <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
               <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
