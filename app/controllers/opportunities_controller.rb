@@ -59,8 +59,8 @@ class OpportunitiesController < ApplicationController
   def destroy
     @opportunity = Opportunity.find(params[:id])
     @opportunity.destroy
+    redirect_to my_opportunities_path
 
-    redirect_to opportunities_path
 
   end
 

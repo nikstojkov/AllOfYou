@@ -118,7 +118,7 @@
       <%# TODO: change below link path %>
         <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
         <% if @opportunity.photo.key %>
-           <% cl_image_tag opportunity.photo.key %>
+           <% cl_image_tag @opportunity.photo.key %>
         <% else %>
           <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm" width="300">
         <% end %>
