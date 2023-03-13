@@ -36,6 +36,10 @@ $clr-text: $body-color;
 $clr-text-hint: rgba($clr-text, .6);
 $clr-primary: $primary;
 
+$clr-artist-tab: $artist-tab;
+$clr-art-tab: $artwork-tab;
+$clr-opp-tab: $opp-tab;
+
 
 
 /* LIST */
@@ -60,7 +64,7 @@ label {
   width: $tab-width;
   overflow: hidden;
 
-  background: $accent;
+  background: $clr-artist-tab;
   text-align: center;
   //font-size: 14px;
   line-height: $tab-width + 10;
@@ -68,17 +72,27 @@ label {
   transition: background 300ms ease;
 
   &:hover {
+    background: lighten($clr-artist-tab, 10%);
     transition-duration: 0s;
   }
 }
 
-li:nth-child(even) > input + label {
-  background: pink;
+li:nth-child(2) > input + label {
+  background: $clr-art-tab;
 }
 
-label:hover,
-li:nth-child(even) > input + label:hover {
-  background: lighten($accent, 10%);
+li:nth-child(2) > input + label:hover {
+  background: lighten($clr-art-tab, 5%);
+  // color: #fff;
+  cursor: pointer;
+}
+
+li:nth-child(3) > input + label {
+  background: $clr-opp-tab;
+}
+
+li:nth-child(3) > input + label:hover {
+  background: lighten($clr-opp-tab, 10%);
   // color: #fff;
   cursor: pointer;
 }
