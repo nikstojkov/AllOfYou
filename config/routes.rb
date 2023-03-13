@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :shortlists
   resources :artists do
     resources :shortlisted_artists, only: :create
+    resources :artworks, only: :destroy
   end
   resources :shortlisted_artists
   resources :users

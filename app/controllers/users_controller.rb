@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_artist!, only: [:show]
+
   before_action :set_user, only: %i[show update edit destroy]
 
   def show

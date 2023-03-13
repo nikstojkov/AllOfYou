@@ -1,25 +1,24 @@
 
 
 <div class="shortlist-wrap">
- <div class="shortlist-name-column">
+ <div class="shortlist-name-column fixed-top">
   <div class="short-sideways-text">
-    Shortlists
+    <h1>Shortlists</h1>
   </div>
  </div>
 
   <div class="shortlists-column">
     <%= render partial: "shared/create_shortlist_modal", locals: { shortlist: @shortlist } %>
-    <div class="shortlist-container">
+    <div id="shortlist-sortable" class="shortlist-container">
       <% @shortlists.each_with_index do |shortlist, index| %>
 
-        <div class="d-flex w-100 justify-content-between align-items-center border-top py-4 <%= index < @shortlists.count - 1 ? "" : "border-bottom" %>">
-          <p class="mb-0"><%= link_to shortlist.name, shortlist_path(shortlist), class: "text-decoration-none"%></p>
+        <div class="lines d-flex justify-content-between align-items-center py-4 <%= index < @shortlists.count - 1 ? "border-bottom" : "" %>">
+          <p class="mb-0"><%= link_to shortlist.name, shortlist_path(shortlist) %></p>
           <div class="delete">
-            <%= link_to "Delete", shortlist_path(shortlist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none" %>
+            <%= link_to "Delete", shortlist_path(shortlist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
