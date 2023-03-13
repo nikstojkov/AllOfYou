@@ -98,13 +98,23 @@ li:nth-child(3) > input + label:hover {
 }
 
 input[type="radio"]:checked ~ label {
-  background: transparent;
-  color: #fff;
+  background: linear-gradient(90deg, $clr-artist-tab, transparent);
+  color: transparent;
   cursor: default !important;
 
   &:hover {
     background: transparent;
   }
+}
+
+// GRADIENTS ON ACTIVE TABS...
+
+li:nth-child(2) > input[type="radio"]:checked ~ label {
+  background: linear-gradient(90deg, $clr-art-tab, transparent);
+}
+
+li:nth-child(3) > input[type="radio"]:checked ~ label {
+  background: linear-gradient(90deg, $clr-opp-tab, transparent);
 }
 
 /* SLIDES */
