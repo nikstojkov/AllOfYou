@@ -1,4 +1,7 @@
 class SearchController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_artist!, only: %i[show index]
+  
 
   def index
     if params[:query].present?
