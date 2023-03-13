@@ -57,10 +57,10 @@ li input {
 }
 
 // Make the label a vertical bar
-label {
+.acc-label {
   display: block;
   float: left;
-  height: $full-height;
+  height: $full-height__nofooter;
   width: $tab-width;
   overflow: hidden;
 
@@ -120,7 +120,7 @@ li:nth-child(3) > input[type="radio"]:checked ~ label {
 /* SLIDES */
 .accslide {
   display: block;
-  height: $full-height;
+  height: $full-height__nofooter;
   width: 0px;
   padding: 10px 0;
   float: left;
