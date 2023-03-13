@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
+
+import { initSortable } from "./sortable"
+initSortable()
