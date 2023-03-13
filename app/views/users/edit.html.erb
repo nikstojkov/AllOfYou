@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container mt-4">
   <h1>Hi <%= @user.first_name %></h1>
-  <p>Edit your profile</p>
+  <div class="custom-form">
+    <h3>Editing your profile</h3>
 
-  <%= render "form", user: @user %>
+    <%= render "form", user: @user %>
+  </div>
 </div>

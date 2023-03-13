@@ -10,8 +10,14 @@ Rails.application.routes.draw do
   resources :shortlisted_artists
   resources :users
   resources :artworks, except: :show
-  resources :opportunities
-  resources :applications, except: :edit
+  resources :opportunities do
+    resources :applications, only: %i[destroy toggle_success new create]
+  end
+  resources :applications, except: :edit do
+    member do
+      patch :toggle_success
+    end
+  end
 
   get "/my-opportunities", to: "opportunities#mine"
 end
