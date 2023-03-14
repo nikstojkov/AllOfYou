@@ -7,8 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LazyLoaderController from "./lazy_loader_controller"
+application.register("lazy-loader", LazyLoaderController)
+
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
-
-import { initSortable } from "./sortable"
-initSortable()
