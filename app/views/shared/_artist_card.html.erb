@@ -1,5 +1,5 @@
 <div class="artist-card">
-    <div class="artist-card__image" style="background-image: url('<%= artist.artworks.sample.image_url %>')"></div>
+<div class="artist-card__image" style="background-image: url('<%= artist.artworks.empty? ? "" : artist.artworks.sample.image_url %>')"></div>
     <div class="artist-card__info">
       <h3>
         <%= "#{artist.first_name} #{artist.last_name}" %>
