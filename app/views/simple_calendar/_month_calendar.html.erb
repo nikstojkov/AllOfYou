@@ -1,8 +1,9 @@
 <div class="container mt-4 simple-calendar">
+  <h2>Current Opportunities</h2>
   <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view %>
+    <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, id: "left" %>
+    <h3 class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h3>
+    <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view, id: "right" %>
   </div>
 
   <table class="table table-striped">
