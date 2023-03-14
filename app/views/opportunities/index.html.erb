@@ -1,30 +1,9 @@
-<div class="page-wrapper">
-  <%= link_to artists_path(query: params[:query]), class: "text-decoration-none" do %>
-    <div class="tab-button tab-button--artists">
-      <div class="sideways-text">Artists</div>
+<%= month_calendar(attribute: :date, events: @opportunities) do |date, opps| %>
+  <%= date %>
+
+  <%= opps.each do |opp| %>
+    <div>
+      <%= opp.title %>
     </div>
   <% end %>
-
-  <%= link_to artworks_path(query: params[:query]), class: "text-decoration-none" do %>
-    <div class="tab-button tab-button--artworks">
-      <div class="sideways-text">Artworks</div>
-    </div>
-
-  <% end %>
-
-  <div class="container my-3 artist-card__container">
-    <h1>All Opportunities</h1>
-    <% @opportunities.each do |opportunity| %>
-      <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
-        <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
-      <% end %>
-      <% if opportunity.user == current_user %>
-      <%= link_to "Delete",
-            artwork_path(opportunity),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      <% end %>
-    <% end %>
-  </div>
-
-
-</div>
+<% end %>
