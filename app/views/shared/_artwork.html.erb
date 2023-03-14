@@ -32,7 +32,11 @@
       </div>
       <div class="modal-body d-flex justify-content-center">
 
-        <%= image_tag artwork.image_url %>
+        <% if artwork.image_url %>
+          <%= image_tag artwork.image_url %>
+        <% else %>
+          <p>please add artwork</P>
+        <% end %>
 
       </div>
       <div class="modal-footer d-flex justify-content-between">
