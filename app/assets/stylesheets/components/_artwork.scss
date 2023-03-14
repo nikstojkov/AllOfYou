@@ -14,7 +14,11 @@
   width: 100%;
   box-shadow: $frame-shadow;
 
-  img {
+  .lazy {
+    max-width: 100%;
+  }
+
+  .lazy__loaded {
     width: 100%;
   }
 }
