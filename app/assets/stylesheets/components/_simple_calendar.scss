@@ -1,0 +1,24 @@
+.simple-calendar {
+  border: $frame-border;
+}
+
+.calendar-heading {
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
+
+.calendar-title {
+  font-size: 2rem;
+}
+
+.opportunity-calendar-event {
+  background-color: $opp-tab;
+  padding: 0.25em;
+  margin: 0.1em;
+  border-radius: $border-radius;
+
+  color: $body-color;
+}

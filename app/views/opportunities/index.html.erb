@@ -1,9 +1,11 @@
-<%= month_calendar(attribute: :date, events: @opportunities) do |date, opps| %>
-  <%= date %>
+<%= month_calendar(attribute: :created_at, events: @opportunities) do |date, opps| %>
+  <%= date.to_formatted_s(:short) %>
 
-  <%= opps.each do |opp| %>
-    <div>
+  <% opps.each do |opp| %>
+    <%= link_to opportunity_path(opp), class: "text-decoration-none" do %>
+    <span class="opportunity-calendar-event">
       <%= opp.title %>
-    </div>
+    </span>
+    <% end %>
   <% end %>
 <% end %>
