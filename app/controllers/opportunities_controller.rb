@@ -41,7 +41,9 @@ class OpportunitiesController < ApplicationController
   def create
     @opportunity = Opportunity.new(opportunity_params)
     @opportunity.user = current_user
+    @opportunity.date = params[:date]
     if @opportunity.save
+      raise
       redirect_to opportunity_path(@opportunity)
     else
       render :new, status: :unprocessable_entity
