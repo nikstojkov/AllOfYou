@@ -97,6 +97,7 @@
                 <% end %>
               <% end %>
             <% elsif current_artist %>
+
               <div class="application-form mt-5">
                 <h4>Apply Below</h4>
                 <%# TODO Render the app form if not already applied %>
@@ -104,8 +105,30 @@
                 <%= render 'applications/form' %>
               </div>
             <% end %>
+
+              <%# TODO Render the app form if not already applied %>
+
+              <% if current_artist.applications.empty? %>
+                  <div class="apply-here">
+                    <h3>Apply Here</h3>
+                  </div>
+                  <%= render 'applications/form' %>
+              <% else %>
+                <% unless current_artist.applications.where(artist_id: current_artist.id, opportunity_id: @opportunity.id).empty? %>
+                  <div class="applied">
+                    <h2>You've applied!</h2>
+                  </div>
+                <%else %>
+                  <div class="apply-here">
+                    <h3>Apply Here</h3>
+                  </div>
+                  <%= render 'applications/form' %>
+                <% end %>
+              <% end %>
+
           <% else %>
             <h3 class="border-bottom"><%= current_user ? "Opportunity is now over" : "This user has closed this Opportunity" %></h3>
+          <% end %>
           <% end %>
         </div>
     </div>
