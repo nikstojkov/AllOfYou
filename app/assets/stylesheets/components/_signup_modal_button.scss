@@ -2,3 +2,8 @@
   background: none;
   border: none;
 }
+
+.modal-backdrop {
+  background-color: transparent;
+  --bs-backdrop-zindex: hidden;
+}

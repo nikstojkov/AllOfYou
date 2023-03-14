@@ -71,10 +71,10 @@
 
         <% unless user_signed_in? || artist_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= render "shared/login_modal" %>
           </li>
           <li>
-           <%= render "shared/signup_modal_button" %>
+           <%= render "shared/signup_modal" %>
           </li>
         <% end %>
       </ul>
