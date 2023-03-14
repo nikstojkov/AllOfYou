@@ -1,3 +1,4 @@
+<!-- Button trigger modal -->
 <button type="button" class="border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal<%= artwork.id %>">
 
   <div class="artwork__card">
@@ -18,46 +19,27 @@
 
   <%# https://www.nationalgalleries.org/sites/default/files/styles/ngs-default/public/externals/40984.jpg?itok=faemvZEs %>
 
-<!-- Button trigger modal -->
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal<%= artwork.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-width">
     <div class="modal-content bg-dark text-light">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"><%= "#{artwork.artist.first_name} #{artwork.artist.last_name} ##{artwork.name}" %></h1>
-        <%#= "#{artist.last.first_name}" %>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header d-flex justify-content-between">
+        <h1 class="modal-title ms-0 fs-5" id="exampleModalLabel"><%= "#{artwork.artist.first_name} #{artwork.artist.last_name}" %></h1>
+        <p class="modal-title fs-5"> <%= "#{artwork.name}" %> </p>
+        <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
       </div>
       <div class="modal-body">
 
-        <!-- Carousel -->
-        <%# <img src="https://source.unsplash.com/random/" class="d-block carousel-img" alt="..."> %>
-        <%# <%= image_tag artwork.image_url, class: "d-block carousel-img" %> %>
-        <%# <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner modal-carousel-height">
-            <div class="carousel-item active" data-bs-interval="3000">
-            </div>
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="https://source.unsplash.com/random/300x300" class="d-block carousel-img" alt="...">
-            </div>
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="https://source.unsplash.com/random/300x300" class="d-block carousel-img" alt="...">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div> %>
+        <%= image_tag artwork.image_url %>
 
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer d-flex justify-content-between">
+        <% if @artist = current_artist %>
+          <%= link_to "Remove Art", artwork_path, class: "btn btn-primary" %>
+        <% end %>
+        <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> %>
         <%= render partial: "shared/tags_container", locals: { tags: artwork.tags } %>
       </div>
     </div>
