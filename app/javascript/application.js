@@ -2,5 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
+import "./animate"
 import "./modal"
 import "./lazyloader"
