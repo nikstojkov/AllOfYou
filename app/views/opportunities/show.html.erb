@@ -97,10 +97,12 @@
                 <% end %>
               <% end %>
             <% elsif current_artist %>
-              <h4>Apply Below</h4>
-              <%# TODO Render the app form if not already applied %>
+              <div class="application-form mt-5">
+                <h4>Apply Below</h4>
+                <%# TODO Render the app form if not already applied %>
 
-              <%= render 'applications/form' %>
+                <%= render 'applications/form' %>
+              </div>
             <% end %>
           <% else %>
             <h3 class="border-bottom"><%= current_user ? "Opportunity is now over" : "This user has closed this Opportunity" %></h3>

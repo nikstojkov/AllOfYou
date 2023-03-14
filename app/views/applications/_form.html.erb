@@ -1,5 +1,5 @@
 <%= simple_form_for [@opportunity, @application] do |f| %>
-  <%= f.label "Please add message" %>
-  <%= f.input :content %>
+  <%= f.label "Please add message:" %>
+  <%= f.input :content, label: false %>
   <%= f.submit "Apply", class: "btn btn-primary" %>
 <% end %>
