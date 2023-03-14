@@ -1,5 +1,5 @@
 class OpportunitiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[show index mine update destroy]
   skip_before_action :authenticate_artist!
 
   before_action :set_opportunities, only: %i[show edit update destroy]
