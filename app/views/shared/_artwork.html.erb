@@ -34,11 +34,15 @@
       </div>
       <div class="modal-body d-flex justify-content-center">
 
-        <% if artwork.image_url %>
+
+        <% if artwork.photo.key %>
+          <%= cl_image_tag artwork.photo.key %>
+        <% elsif artwork.image_url %>
           <%= image_tag artwork.image_url %>
         <% else %>
-          <p>please add artwork</P>
+          <h2>NAUGHT</h2>
         <% end %>
+
 
       </div>
       <div class="modal-footer d-flex justify-content-between">
