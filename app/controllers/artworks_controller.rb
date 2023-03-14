@@ -52,9 +52,9 @@ class ArtworksController < ApplicationController
     redirect_to artwork_path(artwork)
   end
 
-  def delete
+  def destroy
     @artwork.destroy
-    redirect_to artworks_path, status: see_other
+    redirect_to artist_path(current_artist)
   end
 
   private

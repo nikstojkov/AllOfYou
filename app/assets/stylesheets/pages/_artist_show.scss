@@ -49,14 +49,19 @@
   columns: 3 250px;
   column-gap: 2rem;
   a {
-
-   margin: 0 2rem 2rem 0;
+    margin: 0 2rem 2rem 0;
     display: inline-block;
     width: 100%;
-    // text-align: center;
+    // // text-align: center;
     // font-family: system-ui;
     // font-weight: 900;
     // font-size: 2rem;
+  }
+
+  button {
+    margin: 0 2rem 2rem 0;
+    display: inline-block;
+    width: 100%;
   }
 
   .artwork__card {
