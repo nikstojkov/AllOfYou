@@ -28,7 +28,7 @@
 
 
 
-<div class="wrapper">
+<div class="wrapper" id="ss-top">
   <div class="column column-1">
     <div class="image image-1"></div>
     <div class="image image-2"></div>
@@ -119,7 +119,48 @@
       <%= submit_tag "Discover", class: "btn btn-primary", class: "discover-btn" %>
     <% end %>
   </div>
+  <div class="text-center">
+    <a href="#ss-1" class="scroller-btn">More Info</a>
+  </div>
 </div>
+
+
+<div class="aoy-infos d-flex">
+  <div class="w-40 p-1 rand-box">
+    <div class="rand-artist">
+      <div>
+        <div class="artist-card__image rand-img" style="background-image: url('<%= @artist.artworks.empty? ? "" : @artist.artworks.sample.image_url %>')"></div>
+      </div>
+
+      <div class="rand-info">
+        <div class="w-50 m-auto">
+          <p>
+            <%= icon('fa-solid', 'location-dot')%>  <%= @artist.location ? @artist.location : "" %>
+          </p>
+          <p>
+            <%= icon('fa-solid', 'user')%>  <%= @artist.pronouns ? @artist.pronouns : "" %>
+          </p>
+        </div>
+        <div class="text-center">
+          <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
+        </div>
+
+        <p class="text-center">
+          <%= @artist.bio %>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="about-aoy" id="ss-1">
+  <h2>All Of You</h2>
+    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+  </div>
+</div>
+    <a href="#ss-top scroller-btn">Back to top</a>
 
 
 <%# create if statement that makes the landing page different depending on the user signed in %>

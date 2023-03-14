@@ -1,0 +1,33 @@
+.aoy-infos {
+  padding: 1.5em;
+}
+
+.rand-box {
+  width: 40%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.rand-artist {
+  width: 70%;
+  border: 5px solid black;
+  margin: auto;
+  text-align:left;
+  height: auto;
+  padding: 4px;
+
+  .rand-img {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+.rand-info {
+  padding: 10px;
+  overflow: scroll;
+}
+
+.about-aoy {
+  width: 60%;
+}
