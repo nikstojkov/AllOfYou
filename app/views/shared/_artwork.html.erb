@@ -1,5 +1,5 @@
 <button type="button" class="border border-0" data-bs-toggle="modal" data-bs-target="#exampleModal<%= artwork.id %>">
-
+<% artist = artwork.artist %>
   <div class="artwork__card">
     <div class="artwork__frame">
       <% if artwork.photo.key %>
@@ -25,7 +25,7 @@
 <div class="modal fade" id="exampleModal<%= artwork.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-width">
     <div class="modal-content bg-dark text-light">
-      <div class="modal-header">
+      <div class="modal-header"
         <h1 class="modal-title fs-5" id="exampleModalLabel"><%= "#{artwork.artist.first_name} #{artwork.artist.last_name} ##{artwork.name}" %></h1>
         <%#= "#{artist.last.first_name}" %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

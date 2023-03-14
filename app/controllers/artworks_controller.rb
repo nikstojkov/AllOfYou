@@ -20,7 +20,21 @@ class ArtworksController < ApplicationController
   def create
     @artwork = Artwork.new(artwork_params)
     @artwork.artist = current_artist
+    if params[:tags]
+      @incoming_tags = params[:tags].split(", ").map do |tag|
+        if tag.to_i.positive?
+          Tag.find(tag.to_i)
+        else
+          Tag.find_or_create_by(name: tag)
+        end
+      end
+      @incoming_tags.each do |tag|
+        tag_create = Tag.find_by(name: tag.name)
+        ArtworkTag.create(tag: tag_create, artwork: @artwork) unless @artwork.tags.include?(tag_create)
+      end
+    end
     if @artwork.save
+      # raise
       redirect_to artist_path(@artwork.artist)
     else
       render :new, status: :unprocessable_entity
@@ -46,7 +60,7 @@ class ArtworksController < ApplicationController
   private
 
   def artwork_params
-    params.require(:artwork).permit(:name, :genre, :photo)
+    params.require(:artwork).permit(:name, :genre, :photo, :tags_container)
   end
 
   def set_artwork
