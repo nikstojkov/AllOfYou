@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-between">
         <% if @artist = current_artist %>
-          <%= link_to artwork_path(artwork), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }  do %>
+          <%= link_to artwork_path(artwork), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'modal-link' do %>
             <i class="fa-regular fa-trash-can fs-5 text-light"></i>
           <% end %>
         <% end %>
