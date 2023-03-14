@@ -1,5 +1,16 @@
-<div class="artist-card__container my-3">
-  <% @applications.each do |app| %>
-    <%= render partial: "shared/application_card", locals: {application: app} %>
-  <% end %>
+
+<div class="shortlist-wrap">
+  <div class="shortlist-name-column fixed-top">
+    <div class="short-sideways-text">
+      <h1>Applications</h1>
+    </div>
+  </div>
+
+  <div class="shortlists-column">
+    <div class="artist-card__container my-3">
+      <% @applications.each do |app| %>
+        <%= render partial: "shared/application_card", locals: {application: app} %>
+      <% end %>
+    </div>
+  </div>
 </div>

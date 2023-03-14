@@ -2,7 +2,11 @@
 
   <div class="opp-headers w-75">
     <div class="text-left w-100">
-      <%= link_to "< back to opportunities", :back %>
+      <% if current_user == @opportunity.user %>
+        <%= link_to "< back to opportunities", my_opportunities_path %>
+      <% else %>
+        <%= link_to "< back to opportunities", :back %>
+      <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
 
@@ -114,7 +118,7 @@
       <%# TODO: change below link path %>
         <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
         <% if @opportunity.photo.key %>
-           <% cl_image_tag opportunity.photo.key %>
+           <% cl_image_tag @opportunity.photo.key %>
         <% else %>
           <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm" width="300">
         <% end %>

@@ -21,6 +21,7 @@ class ArtistsController < ApplicationController
     @tags = @artist.tags
     @applications = @artist.applications
     @artist_opportunities = @artist.opportunities
+    @new_artwork = Artwork.new
     if params[:tags]
       @new_tags = params[:tags].split(", ")
       @new_tags.each do |tag|
