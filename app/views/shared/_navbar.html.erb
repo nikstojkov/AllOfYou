@@ -61,7 +61,7 @@
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <% if current_artist %>
               <%= link_to "My Profile", artist_path(current_artist), class: "dropdown-item" %>
-              <%= link_to "My Account", edit_artist_path(current_artist), class: "dropdown-item" %>
+              <%= link_to "My Account", edit_artist_registration_path(current_artist), class: "dropdown-item" %>
             <% end %>
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
           </div>
@@ -71,10 +71,10 @@
 
         <% unless user_signed_in? || artist_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= render "shared/login_modal" %>
           </li>
           <li>
-           <%= render "shared/signup_modal_button" %>
+           <%= render "shared/signup_modal" %>
           </li>
         <% end %>
       </ul>

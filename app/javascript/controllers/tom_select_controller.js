@@ -1,13 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
+import TomSelect from "tom-select";
+
 
 // Connects to data-controller="tom-select"
 export default class extends Controller {
   static targets = ["selector"]
 
   connect() {
-    console.log("Connected stimulus")
+    console.log("Connected stimulus controller")
     new TomSelect(this.selectorTarget, {
       maxItems: 10,
+      plugins: ['remove_button'],
       create: true
     })
     console.log(this.selectorTarget.selectedOptions)
@@ -28,7 +31,7 @@ export default class extends Controller {
     const tagString = tagArray.join(", ")
     const tagBox = document.querySelector('#tag-box')
     tagBox.setAttribute('value', tagString)
-    // .item is the selector you need
+    // .item is the selector you Z
     // console.log(element.getAttribute('data-value'))
    // get the selected options, and add them as values to this.selectorTarget. Or in another hidden form field
   }
