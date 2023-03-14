@@ -9,7 +9,7 @@
     <div class="modal-content">
       <div class="modal-content bg-dark text-light">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Shortlist</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Artwork</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -18,7 +18,7 @@
         <%= f.input :name %>
         <%= f.input :genre %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit class:"plus-side circle::before" %>
+        <%= f.submit value: "Add", class:"art-add" %>
         <% end %>
 
         </div>
