@@ -1,13 +1,12 @@
+<%= link_to :back do %>
+  <i class="fa-solid fa-circle-arrow-left fs-5 mt-4 ms-4"></i>
+<% end %>
 <div class="opp-box d-flex">
-
   <div class="opp-headers w-75">
     <div class="text-left w-100">
       <% if current_user == @opportunity.user %>
         <%= link_to "< back to opportunities", my_opportunities_path %>
       <% else %>
-        <%= link_to :back do %>
-          <i class="fa-solid fa-circle-arrow-left fs-5 mt-4 ms-4"></i>
-        <% end %>
       <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
@@ -66,8 +65,6 @@
           <h3>Applied Artists</h3>
         </div>
 
-      <% end %>
-
       <div class="applications-box d-flex flex-column">
         <% if @opportunity.status == true %>
 
@@ -103,8 +100,9 @@
               </div>
             </div>
                 <% end %>
+            <% end %>
 
-              <% end %>
+            <% end %>
 
           <% elsif current_artist %>
 
