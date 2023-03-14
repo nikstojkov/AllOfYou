@@ -5,7 +5,9 @@
       <% if current_user == @opportunity.user %>
         <%= link_to "< back to opportunities", my_opportunities_path %>
       <% else %>
-        <%= link_to "< back to opportunities", :back %>
+        <%= link_to :back do %>
+          <i class="fa-solid fa-circle-arrow-left fs-5 mt-4 ms-4"></i>
+        <% end %>
       <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>

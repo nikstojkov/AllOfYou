@@ -2,7 +2,10 @@
   <aside class="d-flex justify-content-end">
     <div class="side">
       <%# TODO: change below link path %>
-      <%= link_to "< back to results", :back %>
+      <%= link_to :back do %>
+        <i class="fa-solid fa-circle-arrow-left fs-5"></i>
+      <% end %>
+      <%#= link_to "< back to results", :back %>
 
       <div class="artist-avatar"></div>
       <h2>
