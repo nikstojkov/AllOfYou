@@ -14,13 +14,10 @@
   width: 100%;
   box-shadow: $frame-shadow;
 
-  .lazy {
-    max-width: 100%;
+  img {
+    width: 100%
   }
 
-  .lazy__loaded {
-    width: 100%;
-  }
 }
 
 .artwork__frame:hover {
