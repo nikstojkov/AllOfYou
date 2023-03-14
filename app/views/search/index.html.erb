@@ -52,7 +52,7 @@
         <% else %>
           <h2>All Artwork</h2>
         <% end %>
-        <div class="artwork-container justify-content-center">
+        <div class="artwork-container justify-content-center" style="width: 100%; margin: 0 2rem 2rem 0;">
 
           <% @artworks.each do |artwork| %>
             <%= link_to artist_path(artwork.artist), class: "text-decoration-none opportunity-card__link" do %>
