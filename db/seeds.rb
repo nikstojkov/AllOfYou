@@ -3,18 +3,17 @@ require "json"
 
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
 
-painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(80)
+painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(100).reject!{ |ele| ele == "" }
 p painting_ids
-
 
 
 locations = ["Bristol", "London", "Reading", "York", "Newcastle"]
 
-user_tags = ["male", "female"]
+identity_tags = ["male", "female"]
 
 
 
-tags = %w('abstract aethetic angular avant-guard baroque bold contemporary
+tags = %w('abstract aesthetic angular avant-garde baroque bold contemporary
   creative cubist dynamic enigmatic expressive geometric inspiring linear
   minimalist modern monochromatic multimedia muted naturalistic portrait
   profound realistic representational rococo somber still-life sublime surreal
@@ -46,7 +45,7 @@ tags = %w('abstract aethetic angular avant-guard baroque bold contemporary
   visually stimulating voyeuristic'
 )
 
-pronouns_list = ["She", "Her", "Hers", "Herself", "He", "Him", "His", "Himself", "They", "Them", "Theirs", "Themself"]
+pronouns_list = ["she / her", "he / him", "they / them"]
 
 puts "Cleaning DB"
 
@@ -100,7 +99,8 @@ puts "--------------------"
     user_id: User.all.ids.sample,
     title: Faker::Book.title,
     location: locations.sample,
-    description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false)
+    description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
+    date: Date.today + rand(1..10)
   )
   Tag.all.sample(5).each do |tag|
     OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
@@ -126,7 +126,7 @@ puts "----------------"
     password: "Artist123",
     bio: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
     location: locations.sample,
-    pronouns: pronouns_list.sample(3).join(" / ")
+    pronouns: pronouns_list.sample
   )
   Tag.all.sample(5).each do |tag|
     ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
