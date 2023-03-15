@@ -12,3 +12,9 @@ application.register("lazy-loader", LazyLoaderController)
 
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
+
+import { initSortable } from "./sortable"
+initSortable()
+
+import TomsNo2Controller from "./toms_no2_controller"
+application.register("toms-no2", TomsNo2Controller)
