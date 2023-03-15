@@ -27,7 +27,7 @@
 <div class="landing-bottom"></div> %>
 
 
-
+<span id="ss-tp"></span>
 <div class="wrapper" id="ss-top">
   <div class="column column-1">
     <div class="image image-1"></div>
@@ -107,23 +107,28 @@
 
 <div class="landing-bottom">
   <div class="discover">
-
     <h1>Find the Artists you need</h1>
-    <p>start searching All of You by genre, location, medium....</p>
-    <%= form_with url: search_index_path, method: :get, class: "d-flex landing-search" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find an artist"
-      %>
-      <%= submit_tag "Discover", class: "btn btn-primary", class: "discover-btn" %>
-    <% end %>
-  </div>
-  <div class="text-center">
-    <a href="#ss-1" class="scroller-btn">More Info</a>
-  </div>
-</div>
+    <h3>Discover the Opportunities you need</h3>
+    <div class="d-flex" style="width: 30em; justify-content:space-between; align-items:center;">
+      <a href="/search" style="text-decoration:none;">
+        <div class=""  id="discover-btn" >
+          Discover
+        </div>
+      </a>
+      <div>
+        <a href="#ss-1" id="ss"><div class="" style="display: flex;
+      justify-content: center; flex-direction:column;" id="more-btn">More Info <br>
+        <i class="fa-solid fa-angle-down"></i></div></a>
+      </div>
+    </div>
 
+    <br>
+
+  </div>
+
+  <br>
+</div>
+<br>
 
 <div class="aoy-infos d-flex">
   <div class="w-40 p-1 rand-box">
@@ -133,7 +138,7 @@
       </div>
 
       <div class="rand-info">
-        <div class="w-50 m-auto">
+        <div class="w-60 text-center">
           <p>
             <%= icon('fa-solid', 'location-dot')%>  <%= @artist.location ? @artist.location : "" %>
           </p>
@@ -153,14 +158,19 @@
     </div>
   </div>
 
-  <div class="about-aoy" id="ss-1">
-  <h2>All Of You</h2>
-    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+  <div class="about-aoy" id="">
+    <div style="background-color:white; border-radius:8px; padding:1em;">
+      <h1>All Of You</h1>
+      <br>
+      <p class="info-text">All of you are invited to share and source the creativity you need. A space for artists to share who they are and
+      the work they make, and for opportunity makers to find the artists they need.</p>
+    </div>
   </div>
 </div>
-    <a href="#ss-top scroller-btn">Back to top</a>
-
-
-<%# create if statement that makes the landing page different depending on the user signed in %>
+  <div class="text-center" style="display:flex; justify-content:center;">
+    <a href="#ss-tp" id="ss-1"><div id="more-btn" style="display: flex; flex-direction: column; align-items: center;" >
+    <i class="fa-solid fa-chevron-up"></i>
+    Back to top</div></a>
+  </div>
+  <br>
+<i class="fa-solid fa-chevron-up"></i> br

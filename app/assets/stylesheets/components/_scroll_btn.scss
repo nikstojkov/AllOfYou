@@ -1,14 +1,62 @@
 .scroller-btn {
-  padding: 10px;
-  background-color: grey;
+  padding: 1em;
+  width: 5em;
+  height: 5em;
   border-radius: 50%;
+  text-align: center;
+  color:white;
+  background-color: grey;
   text-decoration: none;
   transition: ease-in-out 0.3s;
+  margin: auto;
+  padding: auto;
+}
+
+
+#ss-1 {
+  text-decoration: none;
+}
+
+#ss {
+  text-decoration: none;
 }
 
 .scroller-btn:hover {
-  background-color: white;
+  background-color: slategray;
   color: black;
+}
+
+#discover-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  border-radius: 8px;
+  color: white;
+  padding: 1.25em;
+  transition: ease-in-out 0.3s;
+  justify-content: space-between;
+}
+
+#discover-btn:hover {
+  background-color: purple;
+}
+
+#more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: grey;
+  border-radius: 8px;
+  color: black;
+  text-decoration: none;
   width: fit-content;
-  height: fit-content;
+  padding: 0.5em;
+  transition: ease-in-out 0.3s;
+  // padding: 1.25em;
+
+}
+
+#more-btn:hover {
+  color: slategray;
 }

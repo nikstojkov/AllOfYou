@@ -34,6 +34,9 @@
 
 .discover {
   height: 35vh;
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
   width: 55%;
   background-color: white;
   margin-top: 20vh;

@@ -1,39 +1,44 @@
-<<<<<<< HEAD
 .aoy-infos {
   padding: 1.5em;
 }
 
 .rand-box {
-  width: 40%;
+  width: 50%;
   padding: 10px;
   display: flex;
   align-items: center;
 }
 
 .rand-artist {
-  width: 70%;
+  background-color: $artist-tab;
+
+  width: 60%;
   border: 5px solid black;
   margin: auto;
   text-align:left;
-  height: auto;
+  height: 95%;
   padding: 4px;
 
   .rand-img {
     width: 75%;
     margin: 0 auto;
+    border: 2px solid black;
   }
 }
 
 .rand-info {
   padding: 10px;
-  overflow: scroll;
+  overflow:auto;
 }
 
 .about-aoy {
   width: 60%;
-=======
-.rand-artist {
-  width: 40%;
-  border: 2px solid black;
->>>>>>> 4b610f3163bd437823b697aa6e5af01c9a2a7372
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.info-text {
+  font-size: 1.5em;
 }
