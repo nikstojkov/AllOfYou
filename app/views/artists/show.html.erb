@@ -56,16 +56,15 @@
   </aside>
 
   <main>
-    <h2>Works</h2>
+    <%# <h2>Works</h2> %>
     <% if current_artist == @artist %>
-    <div class="add_top_div">
+    <div class="add_top_div d-flex justify-content-start align-items-center mb-4">
       <button type="button" class="circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <div class="circle::before"></div>
         <div class="plus-side"></div>
       </button>
+      <div class="add_top_div mb-0 ms-2" id="show"><h6>Add artwork</h6></div>
     </div>
-    <div class="add_top_div" id="show">
-        <h6>Add artwork</h6></div>
     <% end %>
     <div class="artwork-container">
 
