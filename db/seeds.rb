@@ -127,7 +127,7 @@ puts "----------------"
 puts "Artists Creation"
 puts "----------------"
 
-10.times do
+15.times do
   first = Faker::Name.first_name
   last = Faker::Name.last_name
   artist = Artist.create!(
@@ -161,17 +161,19 @@ puts "----------------"
 
 painting_ids.each do |id|
   data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
-  artwork = Artwork.create!(
-    artist_id: Artist.all.ids.sample,
-    name: data["title"],
-    genre: Faker::Book.genre,
-    image_url: data["primaryImageSmall"]
-  )
-  hashtags.sample(5).each do |tag|
-    ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+  unless data["primaryImageSmall"] == ""
+    artwork = Artwork.create!(
+      artist_id: Artist.all.ids.sample,
+      name: data["title"],
+      genre: Faker::Book.genre,
+      image_url: data["primaryImageSmall"]
+    )
+    hashtags.sample(5).each do |tag|
+      ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+    end
+    ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
+    puts "Artwork with id #{artwork.id} created"
   end
-  ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
-  puts "Artwork with id #{artwork.id} created"
 end
 
 puts "-------------"
