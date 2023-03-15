@@ -1,7 +1,10 @@
 <%= simple_form_for(@opportunity) do |f| %>
   <%= f.input :title %>
   <%= f.input :location %>
-  <%= f.input :date, as: :date %>
+
+  <%# date picker %>
+  <%= f.input :date, as: :date, html5: true %>
+
   <%= f.input :description %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit, "Save Details", class: "btn btn-primary w-100"%>
