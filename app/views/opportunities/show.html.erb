@@ -1,7 +1,6 @@
 <div class="opp-box d-flex">
-
   <div class="opp-headers w-75">
-    <div class="text-left w-100">
+    <div class="back text-left w-100">
       <% if current_user == @opportunity.user %>
         <%= link_to "< back to opportunities", my_opportunities_path %>
       <% else %>
@@ -9,63 +8,50 @@
       <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
-
     <div class="opportunity-info">
-      <h1><%= @opportunity.title %></h1>
+      <h1 class="mb-4"><%= @opportunity.title %></h1>
 
-      <br>
-
-      <div class="tags-box">
-        <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
-
-        <br>
-
-        <% if current_user == @opportunity.user %>
-          <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags">
-            <input type="hidden" value="" name="tags" id="tag-box">
-            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
-              <% Tag.all.each do |tag| %>
-                <option value='<%= tag.name %>'><%= tag.name %></option>
-              <% end %>
-            </select>
-            <input type="submit" value="Add Tags" class="m-1 btn btn-primary rounded-pill">
-          </form>
-        <% end %>
-      </div>
-
-      <br>
-
-      <div class="opp-icons d-flex row text-left">
-
+      <div class="opp-icons d-flex row text-left fs-5">
           <%# <%= @opportunity.location %>
           <div class="col-6 ic-1">
             <%= @opportunity.location ? @opportunity.location : "" %> <%= icon('fa-solid', 'location-dot')%>  <br>
-            <i class="fa-solid fa-calendar-days"></i> <%= @opportunity.date ? @opportunity.date.strftime("%d-%m-%Y") : "" %>
+            <%= @opportunity.date ? @opportunity.date.strftime("%d-%m-%Y") : "" %> <i class="fa-solid fa-calendar-days"></i>
           </div>
           <div class="col-6 ic-2">
             <i class="fa-regular fa-user"></i> <%= @opportunity.user.first_name %> <%= @opportunity.user.last_name %> <br>
             <i class="fa-regular fa-square-check"></i> <%= @opportunity.status ? "Open for Applications" : "This Opportunity is now Closed!" %>
           </div>
-
       </div>
-
       <br>
+      <div class="tags-box my-2">
+        <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
+        <% if current_user == @opportunity.user %>
+          <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags my-2">
+            <div class="d-flex flex-row w-100">
+            <input type="hidden" value="" name="tags" id="tag-box">
+            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="flex-grow-1">
+              <% Tag.all.each do |tag| %>
+                <option value='<%= tag.name %>'><%= tag.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Add Tags" class="btn btn-primary btn-sm">
+            </div>
+          </form>
+        <% end %>
+      </div>
+      <br>
+
 
       <div class="opp-desc">
         <%= @opportunity.description %>
       </div>
-
       <br>
-
     <div class="opp-applicants">
-
       <% if current_user == @opportunity.user && @opportunity.status%>
         <div class="apps-title my-1">
-          <h3>Applied Artists</h3>
+          <h3>These artists have applied:</h3>
         </div>
-
       <% end %>
-
       <div class="applications-box d-flex flex-column">
         <% if @opportunity.status == true %>
           <% if current_user == @opportunity.user %>
@@ -97,9 +83,7 @@
                 <% end %>
               <% end %>
             <% elsif current_artist %>
-
               <%# TODO Render the app form if not already applied %>
-
               <% if current_artist.applications.empty? %>
                   <div class="apply-here">
                     <h3>Apply Here</h3>
@@ -123,14 +107,10 @@
           <% end %>
         </div>
     </div>
-
   </div>
-
     </div>
-
-
   <aside class="w-25 side-info">
-    <div class="p-5">
+    <div class="px-4 pt-5">
       <%# TODO: change below link path %>
         <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
         <% if @opportunity.photo.key %>
@@ -140,13 +120,11 @@
         <% end %>
       <% if current_user == @opportunity.user && @opportunity.status %>
         <div class="button-box">
-          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "butt-opp" %>
+          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "btn btn-secondary w-100" %>
         </div>
       <% end %>
     </div>
-
     <br>
-
     <div class="successful-art text-center">
       <% if current_user == @opportunity.user %>
         <h5 class="success-header">Accepted Artists</h5>
@@ -157,7 +135,7 @@
                   <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <%= application.artist.first_name %> <%= application.artist.last_name %>
                 </div>
-                <div class="align-items-center d-flexs">
+                <div class="align-items-center d-flex">
                   <strong class="text-success">Accepted</strong>
                 </div>
               </div>
@@ -165,7 +143,5 @@
           <% end %>
       <% end %>
     </div>
-
   </aside>
-
 </div>
