@@ -67,7 +67,7 @@
       <div class="applications-box d-flex flex-column">
         <% if @opportunity.status == true %>
           <% if current_user == @opportunity.user %>
-            <% @opportunity.applications. each do |application| %>
+            <% @opportunity.applications.each do |application| %>
                 <% artist = application.artist %>
                 <% if application.success == true %>
                   <% next %>
@@ -75,13 +75,16 @@
                   <div class="appl-card my-2">
                     <div class="m-1">
                       <%# Artist Avatar %>
-                      <% if artist.photo.key %>
-                        <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
-                      <% else %>
-                        <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% end %>
+
+                     <a id="applied-click" href='/artists/<%= artist.id %>'>
+                        <% if artist.photo.key %>
+                          <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
+                        <% else %>
+                          <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% end %>
                       <br>
                       <strong><%= artist.first_name %> <%= artist.last_name %></strong>
+                      </a>
                     </div>
                     <div class="text-center d-flex align-items-center">
                       <%= application.content %>
