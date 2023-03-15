@@ -13,6 +13,11 @@ class ShortlistedArtistsController < ApplicationController
     end
   end
 
+  # def destroy
+  #   @shortlisted_artist.find(params[:id]).destroy
+  #   redirect_to
+  # end
+
 end
 
 
