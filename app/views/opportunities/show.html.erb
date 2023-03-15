@@ -9,14 +9,25 @@
       <%# <div class="test-div">TESTER</div> %>
     </div>
     <div class="opportunity-info">
-      <h1><%= @opportunity.title %></h1>
+      <h1 class="mb-4"><%= @opportunity.title %></h1>
+
+      <div class="opp-icons d-flex row text-left fs-5">
+          <%# <%= @opportunity.location %>
+          <div class="col-6 ic-1">
+            <%= @opportunity.location ? @opportunity.location : "" %> <%= icon('fa-solid', 'location-dot')%>  <br>
+            <%= @opportunity.date ? @opportunity.date.strftime("%d-%m-%Y") : "" %> <i class="fa-solid fa-calendar-days"></i>
+          </div>
+          <div class="col-6 ic-2">
+            <i class="fa-regular fa-user"></i> <%= @opportunity.user.first_name %> <%= @opportunity.user.last_name %> <br>
+            <i class="fa-regular fa-square-check"></i> <%= @opportunity.status ? "Open for Applications" : "This Opportunity is now Closed!" %>
+          </div>
+      </div>
       <br>
-      <div class="tags-box">
+      <div class="tags-box my-2">
         <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
-        <br>
         <% if current_user == @opportunity.user %>
-          <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags">
-                      <div class="d-flex flex-row w-100">
+          <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags my-2">
+            <div class="d-flex flex-row w-100">
             <input type="hidden" value="" name="tags" id="tag-box">
             <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="flex-grow-1">
               <% Tag.all.each do |tag| %>
@@ -29,18 +40,8 @@
         <% end %>
       </div>
       <br>
-      <div class="opp-icons d-flex row text-left">
-          <%# <%= @opportunity.location %>
-          <div class="col-6 ic-1">
-            <%= @opportunity.location ? @opportunity.location : "" %> <%= icon('fa-solid', 'location-dot')%>  <br>
-            <%= @opportunity.date ? @opportunity.date.strftime("%d-%m-%Y") : "" %> <i class="fa-solid fa-calendar-days"></i>
-          </div>
-          <div class="col-6 ic-2">
-            <i class="fa-regular fa-user"></i> <%= @opportunity.user.first_name %> <%= @opportunity.user.last_name %> <br>
-            <i class="fa-regular fa-square-check"></i> <%= @opportunity.status ? "Open for Applications" : "This Opportunity is now Closed!" %>
-          </div>
-      </div>
-      <br>
+
+
       <div class="opp-desc">
         <%= @opportunity.description %>
       </div>
@@ -48,7 +49,7 @@
     <div class="opp-applicants">
       <% if current_user == @opportunity.user && @opportunity.status%>
         <div class="apps-title my-1">
-          <h3>Applied Artists</h3>
+          <h3>These artists have applied:</h3>
         </div>
       <% end %>
       <div class="applications-box d-flex flex-column">
@@ -109,7 +110,7 @@
   </div>
     </div>
   <aside class="w-25 side-info">
-    <div class="p-5">
+    <div class="px-4 pt-5">
       <%# TODO: change below link path %>
         <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
         <% if @opportunity.photo.key %>
@@ -119,7 +120,7 @@
         <% end %>
       <% if current_user == @opportunity.user && @opportunity.status %>
         <div class="button-box">
-          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "butt-opp" %>
+          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "btn btn-secondary w-100" %>
         </div>
       <% end %>
     </div>
@@ -134,7 +135,7 @@
                   <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <%= application.artist.first_name %> <%= application.artist.last_name %>
                 </div>
-                <div class="align-items-center d-flexs">
+                <div class="align-items-center d-flex">
                   <strong class="text-success">Accepted</strong>
                 </div>
               </div>
