@@ -41,7 +41,7 @@ class OpportunitiesController < ApplicationController
   def create
     @opportunity = Opportunity.new(opportunity_params)
     @opportunity.user = current_user
-    @opportunity.date = params[:date]
+    @opportunity.date = params[:opportunity][:date]
     if @opportunity.save
       redirect_to opportunity_path(@opportunity)
     else

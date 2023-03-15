@@ -3,8 +3,11 @@
     <div class="side">
       <%# TODO: change below link path %>
       <%= link_to :back, class: "text-decoration-none" do %>
-        <i class="fa-solid fa-circle-arrow-left fs-5"></i> back
-      <% end %>
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+        <% end %>
+          <p class="mb-0 ms-2">back</p>
+        </div>
       <%#= link_to "< back to results", :back %>
 
       <div class="artist-avatar"></div>
@@ -54,6 +57,7 @@
 
   <main>
     <h2>Works</h2>
+    <% if current_artist == @artist %>
     <div class="add_top_div">
       <button type="button" class="circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <div class="circle::before"></div>
@@ -62,7 +66,7 @@
     </div>
     <div class="add_top_div" id="show">
         <h6>Add artwork</h6></div>
-
+    <% end %>
     <div class="artwork-container">
 
       <% @artworks.each do |artwork| %>

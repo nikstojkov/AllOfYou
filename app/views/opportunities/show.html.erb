@@ -2,9 +2,19 @@
   <div class="opp-headers w-75">
     <div class="back text-left w-100">
       <% if current_user == @opportunity.user %>
-        <%= link_to "< back to opportunities", my_opportunities_path %>
+          <%= link_to my_opportunities_path, class: "text-decoration-none" do %>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+          <% end %>
+              <p class="mb-0 ms-2">back</p>
+            </div>
       <% else %>
-        <%= link_to "< back to opportunities", :back %>
+          <%= link_to :back, class: "text-decoration-none" do %>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+          <% end %>
+              <p class="mb-0 ms-2">back</p>
+            </div>
       <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
@@ -25,7 +35,7 @@
       <br>
       <div class="tags-box my-2">
         <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
-        <% if current_user == @opportunity.user %>
+        <% if current_user == @opportunity.user && @opportunity.status %>
           <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags my-2">
             <div class="d-flex flex-row w-100">
             <input type="hidden" value="" name="tags" id="tag-box">
@@ -51,6 +61,8 @@
         <div class="apps-title my-1">
           <h3>These artists have applied:</h3>
         </div>
+        <% elsif @opportunity.status == false %>
+        <h3 class="border-bottom">Opportunity now closed</h3>
       <% end %>
       <div class="applications-box d-flex flex-column">
         <% if @opportunity.status == true %>
@@ -101,8 +113,6 @@
                   <%= render 'applications/form' %>
                 <% end %>
               <% end %>
-          <% else %>
-            <h3 class="border-bottom"><%= current_user ? "Opportunity is now over" : "This user has closed this Opportunity" %></h3>
           <% end %>
           <% end %>
         </div>

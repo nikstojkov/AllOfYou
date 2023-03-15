@@ -6,6 +6,7 @@
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.6",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.2.3",
     "sortablejs": "^1.15.0",
     "tom-select": "^2.2.2",
