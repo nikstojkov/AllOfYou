@@ -33,6 +33,9 @@
         # required: true,
         input_html: { autocomplete: "pronouns" }%>
 
+<%= f.input :photo,
+        input_html: {autocomplete: "profile photo" }%>
+
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
