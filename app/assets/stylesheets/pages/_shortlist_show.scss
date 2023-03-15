@@ -7,11 +7,11 @@ background-color: $light-gray;
 
 .shortlist-artists {
   display:flex;
+  flex-grow: 1;
   flex-direction:column;
   height: 100%;
   overflow: scroll;
   align-items:center;
-  width: 1328px;
   grid-gap: 2em;
   margin-bottom: 20px;
 
@@ -26,7 +26,7 @@ background-color: $light-gray;
   flex-direction: column;
   background-color: $accent;
   min-height: 100%;
-  width: 450px;
+  width:30%;
   align-items: center;
   background: linear-gradient(.25turn, $accent, 80%, $light-gray);
 }
