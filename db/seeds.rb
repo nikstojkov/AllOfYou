@@ -182,14 +182,18 @@ puts "Shortlist Creation"
 puts "------------------"
 
 
-10.times do
-  shortlist = Shortlist.create!(
-    name: Faker::Book.title,
-    user_id: User.all.ids.sample
-  )
-  Artist.all.sample(5).each do |artist|
-    ShortlistedArtist.create!(artist_id: artist.id, shortlist_id: shortlist.id)
-  end
+# 10.times do
+#   shortlist = Shortlist.create!(
+#     name: Faker::Book.title,
+#     user_id: User.all.ids.sample
+#   )
+#   Artist.all.sample(5).each do |artist|
+#     ShortlistedArtist.create!(artist_id: artist.id, shortlist_id: shortlist.id)
+#   end
+# end
+
+User.all.each do |user|
+  shortlist = Shortlist.create!(name: "My Shortlist", user_id: user.id)
   puts "Shortlist with id #{shortlist.id} created"
 end
 
