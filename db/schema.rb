@@ -114,7 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_092543) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "date"
+    t.date "date"
     t.boolean "status", default: true
     t.index ["user_id"], name: "index_opportunities_on_user_id"
   end

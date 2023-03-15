@@ -100,9 +100,7 @@
             <% elsif current_artist %>
               <%# TODO Render the app form if not already applied %>
               <% if current_artist.applications.empty? %>
-                  <div class="apply-here">
-                    <h3>Apply Here</h3>
-                  </div>
+
                   <%= render 'applications/form' %>
               <% else %>
                 <% unless current_artist.applications.where(artist_id: current_artist.id, opportunity_id: @opportunity.id).empty? %>
