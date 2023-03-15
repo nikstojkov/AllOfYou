@@ -55,6 +55,15 @@
 
   <main>
     <h2>Works</h2>
+    <div class="add_top_div">
+      <button type="button" class="circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="circle::before"></div>
+        <div class="plus-side"></div>
+      </button>
+    </div>
+    <div class="add_top_div" id="show">
+        <h6>Add artwork</h6></div>
+
     <div class="artwork-container">
 
       <% @artworks.each do |artwork| %>
