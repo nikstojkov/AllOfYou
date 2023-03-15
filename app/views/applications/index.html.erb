@@ -1,13 +1,13 @@
 
 <div class="shortlist-wrap">
-  <div class="shortlist-name-column fixed-top">
-    <div class="short-sideways-text">
+  <div class="shortlist-yellow">
+    <div class="shortlist-name">
       <h1>Applications</h1>
     </div>
   </div>
 
-  <div class="shortlists-column">
-    <div class="artist-card__container my-3">
+  <div class="shortlist-artists">
+    <div class="artist-card__container marg">
       <% @applications.each do |app| %>
         <%= render partial: "shared/application_card", locals: {application: app} %>
       <% end %>
