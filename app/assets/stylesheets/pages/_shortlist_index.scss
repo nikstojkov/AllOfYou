@@ -46,11 +46,12 @@ background-color: white;
   }
 
   .shortlists-column {
+    padding-top: 20px;
     display:flex;
     flex-direction:column;
     min-height: calc(100vh - 60px);
     align-items:center;
-    justify-content: center;
+    justify-content: middle;
     width: 1328px;
     // background: linear-gradient(transparent, rgb(191, 57, 57) 80%);
     background-color: white;
