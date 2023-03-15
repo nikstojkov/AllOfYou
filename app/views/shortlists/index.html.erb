@@ -1,16 +1,17 @@
 
 
 <div class="shortlist-wrap">
- <div class="shortlist-name-column fixed-top">
-  <div class="short-sideways-text">
+ <div class="shortlist-yellow">
+  <div class="shortlist-name">
     <h1>Shortlists</h1>
   </div>
  </div>
 
-  <div class="shortlists-column">
+
+  <div class="shortlist-artists">
     <h4>Click  to create a new shortlist and save your favorite artists for later</h4>
     <%= render partial: "shared/create_shortlist_modal", locals: { shortlist: @shortlist } %>
-    <div class="shortlist-container">
+    <%# <div class="shortlist-container"> %>
       <% @shortlists.each_with_index do |shortlist, index| %>
         <div class="lines d-flex justify-content-between align-items-center py-4 <%= index < @shortlists.count - 1 ? "border-bottom" : "" %>">
           <p class="mb-0"><%= link_to shortlist.name, shortlist_path(shortlist) %></p>
@@ -19,6 +20,6 @@
           </div>
         </div>
       <% end %>
-    </div>
+    <%# </div> %>
   </div>
 </div>
