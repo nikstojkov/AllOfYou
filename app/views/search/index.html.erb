@@ -13,7 +13,7 @@
     <input id="rad1" type="radio" name="rad" checked="checked"/>
     <label for="rad1" class="acc-label">
       <% if params[:query].present? %>
-        <div>Artists (<%= @artists.size %>)</div>
+        <div>Artists <span class="fs-4">(<%= @artists.size %>)</span></div>
       <% else %>
         <div>Artists</div>
       <% end %>
@@ -44,7 +44,7 @@
     <input id="rad2" type="radio" name="rad"/>
     <label for="rad2" class="acc-label">
       <% if params[:query].present? %>
-        <div>Artworks (<%= @artworks.size %>)</div>
+        <div>Artworks <span class="fs-4">(<%= @artworks.size %>)</span></div>
       <% else %>
         <div>Artworks</div>
       <% end %>
@@ -78,7 +78,7 @@
     <input id="rad3" type="radio" name="rad"/>
     <label for="rad3" class="acc-label">
       <% if params[:query].present? %>
-        <div>Opportunities (<%= @opportunities.size %>)</div>
+        <div>Opportunities <span class="fs-4">(<%= @opportunities.size %>)</span></div>
       <% else %>
         <div>Opportunities</div>
       <% end %>
