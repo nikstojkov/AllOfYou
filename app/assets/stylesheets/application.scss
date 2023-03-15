@@ -6,6 +6,7 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "animate.css";
 
 // Your CSS partials
 @import "components/index";
@@ -13,7 +14,7 @@
 
 body {
   display: flex;
-  min-height: 100vh;
+  min-height: $full-height;
   flex-direction: column;
   justify-content: space-between;
 }

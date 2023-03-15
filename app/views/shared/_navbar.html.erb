@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-      <%= form_with url: search_index_path, method: :get, class: "d-flex" do %>
+      <%= form_with url: search_index_path, method: :get, class: "d-flex navbar-search" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
@@ -30,7 +30,11 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My Shortlists", shortlists_path, class: "nav-link" %>
+          <% if current_user.shortlists.empty? %>
+            <%= link_to "My Shortlist", shortlists_path, class: "nav-link" %>
+          <% else %>
+            <%= link_to "My Shortlist", shortlist_path(current_user.shortlists.first), class: "nav-link" %>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to "My Opportunities", my_opportunities_path, class: "nav-link" %>

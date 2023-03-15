@@ -1,0 +1,5 @@
+meta_product_name: "All of You"
+meta_title: "All of You - An easily searchable space, allowing creatives to share their work and wider life experiences"
+meta_description: "All of You empowers you to discover and support up-and-coming talent, while offering artists a platform to showcase their work. Join us and be part of the art revolution!"
+meta_image: "AllofYou.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

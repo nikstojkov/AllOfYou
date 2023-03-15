@@ -1,4 +1,9 @@
-<%= simple_form_for [@opportunity, @application] do |f| %>
-  <%= f.input :content, label: "Please add message:" %>
-  <%= f.submit "Apply", class: "btn btn-primary" %>
-<% end %>
+<div class="apply">
+  <div class="apply-here">
+    <h4>Interested? Apply Here!</h4>
+  </div>
+  <%= simple_form_for [@opportunity, @application] do |f| %>
+    <%= f.input :content, label: "Please add your message to the curator:" %>
+    <%= f.submit "Send", class: "btn btn-primary w-100" %>
+  <% end %>
+</div>

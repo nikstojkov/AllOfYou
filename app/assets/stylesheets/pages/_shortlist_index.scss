@@ -1,24 +1,19 @@
-.shortlist-wrap {
-min-height: calc(100vh - 60px);
-overflow: hidden;
-display: flex;
-background-color: white;
-}
 
 
-.shortlist-name-column {
-  top: 60px;
-  z-index: 1;
-  // bottom: 0;
-  // position: sticky;
-  display: flex;
-  flex-direction: column;
-  // background-color: $accent;
-  min-height: 100vh;
-  width: 400px;
-  background: linear-gradient(.25turn, $accent, 75%, rgb(255, 255, 255));
 
-}
+// .shortlist-name-column {
+//   top: 60px;
+//   z-index: 1;
+//   // bottom: 0;
+//   // position: sticky;
+//   display: flex;
+//   flex-direction: column;
+//   // background-color: $accent;
+//   min-height: 100vh;
+//   width: 400px;
+//   background: linear-gradient(.25turn, $accent, 75%, rgb(255, 255, 255));
+
+// }
 
 
 
@@ -46,11 +41,12 @@ background-color: white;
   }
 
   .shortlists-column {
+    padding-top: 20px;
     display:flex;
     flex-direction:column;
     min-height: calc(100vh - 60px);
     align-items:center;
-    justify-content: center;
+    justify-content: middle;
     width: 1328px;
     // background: linear-gradient(transparent, rgb(191, 57, 57) 80%);
     background-color: white;
@@ -87,16 +83,22 @@ background-color: white;
   }
 
   .circle {
-  max-width: 60px;
-  max-height:60px;
+  width: 60px;
+  height:60px;
   border-radius: 50%;
-  background-color: rgb(182, 179, 179);
+  background-color: $primary;
   border: none;
-  margin-bottom: 80px;
-  margin-top:135px;
-  display: flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 80px !important;
+  margin-top:135px !important;
+  display: flex !important;
+  transition: ease-in-out 0.25s;
+  }
 
-
+  .circle:hover {
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
+  transition: ease-in-out 0.25s;
   }
 
   // .plus-up {
@@ -112,16 +114,16 @@ background-color: white;
 
 .circle::before {
   content: "+";
-  max-height:60px;
-  max-width:60px;
+  max-height:63px;
+  max-width:63px;
   font-size:60px;
   display:flex;
   flex-direction:row;
   align-items:center;
   justify-content:center;
-  font-weight:lighter;
+  font-weight:medium;
   font-family: $body-font;
-  color:rgb(65, 64, 64);
+  color:rgb(255, 253, 253);
   border-radius: 30%;
 }
 

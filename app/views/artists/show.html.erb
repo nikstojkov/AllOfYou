@@ -2,9 +2,12 @@
   <aside class="d-flex justify-content-end">
     <div class="side">
       <%# TODO: change below link path %>
-      <%= link_to :back do %>
-        <i class="fa-solid fa-circle-arrow-left fs-5"></i>
-      <% end %>
+      <%= link_to :back, class: "text-decoration-none" do %>
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+        <% end %>
+          <p class="mb-0 ms-2">back</p>
+        </div>
       <%#= link_to "< back to results", :back %>
 
       <div class="artist-avatar"></div>
@@ -18,34 +21,33 @@
         <%= icon('fa-solid', 'location-dot')%> <%= @artist.location ? @artist.location : "" %>
       </p>
 
+      <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
+
+    <div class="tags-holder">
+      <% if current_artist == @artist %>
+        <form action='/artists/<%= @artist.id %>' data-controller="tom-select">
+          <div class="d-flex flex-row w-100">
+            <input type="hidden" value="" name="tags" id="tag-box">
+            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-0 flex-grow-1">
+              <% Tag.all.each do |tag| %>
+                <option value='<%= tag.name %>'><%= tag.name %></option>
+              <% end %>
+            </select>
+          <input type="submit" value="Add Tags" class="btn btn-primary btn-sm">
+          </div>
+        </form>
+      <% end %>
+
+    </div>
+
       <p>
         <%= @artist.bio %>
       </p>
 
-    <div class="tags-holder">
-    <hr>
-      <% if current_artist == @artist %>
-        <p class="mb-2"><strong>Add Tags Here:</strong></p>
-        <form action='/artists/<%= @artist.id %>' data-controller="tom-select">
-          <input type="hidden" value="" name="tags" id="tag-box">
-          <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-0">
-
-            <% Tag.all.each do |tag| %>
-              <option value='<%= tag.name %>'><%= tag.name %></option>
-            <% end %>
-
-          </select>
-          <input type="submit" value="Add Tags" class="btn btn-primary mt-2 mb-2">
-        </form>
-      <% end %>
-
-      <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
-    </div>
-
       <% if current_user %>
 
         <%= simple_form_for [@artist, @shortlisted_artist] do |f| %>
-          <%= f.submit "Add to Shortlist", class: "btn btn-secondary" %>
+          <%= f.submit "+ Favourite", class: "btn btn-primary" %>
         <% end %>
 
       <% end %>
@@ -55,14 +57,25 @@
 
   <main>
     <h2>Works</h2>
+    <% if current_artist == @artist %>
+    <div class="add_top_div">
+      <button type="button" class="circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="circle::before"></div>
+        <div class="plus-side"></div>
+      </button>
+    </div>
+    <div class="add_top_div" id="show">
+        <h6>Add artwork</h6></div>
+    <% end %>
     <div class="artwork-container">
 
       <% @artworks.each do |artwork| %>
         <%= render partial: "shared/artwork", locals: { artwork: artwork } %>
       <% end %>
-       <% if @artist == current_artist %>
+
+      <% if @artist == current_artist %>
         <%= render "shared/add_artwork_modal", locals: { new_artwork: @new_artwork } %>
-       <% end %>
+      <% end %>
 
       <%# THIS IS A TEST RENDER JUST TO SEE HOW IT LOOKS... delete later %>
       <%#= render partial: "shared/artwork" %>

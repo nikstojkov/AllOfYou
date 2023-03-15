@@ -36,7 +36,7 @@
 
 
         <% if artwork.photo.key %>
-          <%= cl_image_tag artwork.photo.key %>
+          <%= cl_image_tag artwork.photo.key, :class => "img-size" %>
         <% elsif artwork.image_url %>
           <%= image_tag artwork.image_url %>
         <% else %>
