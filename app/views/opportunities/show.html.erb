@@ -33,7 +33,7 @@
           <%# <%= @opportunity.location %>
           <div class="col-6 ic-1">
             <%= @opportunity.location ? @opportunity.location : "" %> <%= icon('fa-solid', 'location-dot')%>  <br>
-            <i class="fa-solid fa-calendar-days"></i> <%= @opportunity.date ? @opportunity.date.strftime("%d-%m-%Y") : "" %>
+            <%= @opportunity.date ? @opportunity.date.strftime("%d-%m-%Y") : "" %> <i class="fa-solid fa-calendar-days"></i>
           </div>
           <div class="col-6 ic-2">
             <i class="fa-regular fa-user"></i> <%= @opportunity.user.first_name %> <%= @opportunity.user.last_name %> <br>
