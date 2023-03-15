@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :authenticate_artist!, only: %i[destroy toggle_success]
 
   before_action :set_opportunity, only: %i[new create destroy]
 
@@ -27,14 +28,12 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
-    # raise
     @application = Application.find(params[:application])
     @application.destroy
     redirect_to opportunity_path(@opportunity)
   end
 
   def toggle_success
-    # raise
     @application = Application.find(params[:id])
     @application.update(success: true)
     redirect_to opportunity_path(@application.opportunity)

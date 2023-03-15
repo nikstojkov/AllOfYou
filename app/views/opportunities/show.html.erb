@@ -25,7 +25,7 @@
       <br>
       <div class="tags-box my-2">
         <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
-        <% if current_user == @opportunity.user %>
+        <% if current_user == @opportunity.user && @opportunity.status %>
           <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags my-2">
             <div class="d-flex flex-row w-100">
             <input type="hidden" value="" name="tags" id="tag-box">
@@ -51,6 +51,8 @@
         <div class="apps-title my-1">
           <h3>These artists have applied:</h3>
         </div>
+        <% elsif @opportunity.status == false %>
+        <h3 class="border-bottom">Opportunity now closed</h3>
       <% end %>
       <div class="applications-box d-flex flex-column">
         <% if @opportunity.status == true %>
@@ -101,8 +103,6 @@
                   <%= render 'applications/form' %>
                 <% end %>
               <% end %>
-          <% else %>
-            <h3 class="border-bottom"><%= current_user ? "Opportunity is now over" : "This user has closed this Opportunity" %></h3>
           <% end %>
           <% end %>
         </div>
