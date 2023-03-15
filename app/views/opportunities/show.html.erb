@@ -124,13 +124,20 @@
         <% if @opportunity.photo.key %>
            <% cl_image_tag @opportunity.photo.key %>
         <% else %>
-          <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm" width="300">
+          <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm w-100">
         <% end %>
       <% if current_user == @opportunity.user && @opportunity.status %>
         <div class="button-box">
-          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "btn btn-secondary w-100" %>
+          <%= link_to 'Edit This Opportunity', edit_opportunity_path(@opportunity), class: "btn btn-secondary" %>
+        <%= link_to opportunity_path(@opportunity),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "text-danger fw-bold text-decoration-none w-100 mt-2" do %>
+          <%= icon('fa-regular', 'trash-can') %> Remove Opportunity
+        <% end %>
         </div>
+
       <% end %>
+
     </div>
     <br>
     <div class="successful-art text-center">
