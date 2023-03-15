@@ -35,7 +35,7 @@
 }
 
 .opp-pic {
-  border: 1pc solid black;
+  border: $frame-border;
 }
 
 .artist-apps {
@@ -83,7 +83,11 @@
 }
 
 .button-box {
-  margin: 1em;
+  width: max-content;
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 // button end

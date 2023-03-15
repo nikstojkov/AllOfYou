@@ -98,11 +98,6 @@
             <%= link_to opportunity_path(opportunity), class: "text-decoration-none opportunity-card__link" do %>
               <%= render partial: "shared/opportunity_card", locals: {opportunity: opportunity} %>
             <% end %>
-            <% if opportunity.user == current_user %>
-            <%= link_to "Delete",
-                  artwork_path(opportunity),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-            <% end %>
           <% end %>
         </div>
       </div>
