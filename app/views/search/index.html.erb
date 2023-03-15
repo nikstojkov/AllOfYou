@@ -12,7 +12,11 @@
     <!-- The ID must be unique so the label will point to the input-->
     <input id="rad1" type="radio" name="rad" checked="checked"/>
     <label for="rad1" class="acc-label">
-      <div>Artists</div>
+      <% if params[:query].present? %>
+        <div>Artists <span class="fs-4">(<%= @artists.size %>)</span></div>
+      <% else %>
+        <div>Artists</div>
+      <% end %>
     </label>
     <div class="accslide">
       <div class="content">
@@ -39,7 +43,11 @@
     <!-- The ID must be unique so the label will point to the input-->
     <input id="rad2" type="radio" name="rad"/>
     <label for="rad2" class="acc-label">
-      <div>Artworks</div>
+      <% if params[:query].present? %>
+        <div>Artworks <span class="fs-4">(<%= @artworks.size %>)</span></div>
+      <% else %>
+        <div>Artworks</div>
+      <% end %>
     </label>
     <div class="accslide">
       <div class="content">
@@ -69,7 +77,11 @@
     <!-- The ID must be unique so the label will point to the input-->
     <input id="rad3" type="radio" name="rad"/>
     <label for="rad3" class="acc-label">
-      <div>Opportunities</div>
+      <% if params[:query].present? %>
+        <div>Opportunities <span class="fs-4">(<%= @opportunities.size %>)</span></div>
+      <% else %>
+        <div>Opportunities</div>
+      <% end %>
     </label>
     <div class="accslide">
       <div class="content">
