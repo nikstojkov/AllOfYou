@@ -3,8 +3,11 @@
     <div class="side">
       <%# TODO: change below link path %>
       <%= link_to :back, class: "text-decoration-none" do %>
-        <i class="fa-solid fa-circle-arrow-left fs-5"></i> back
-      <% end %>
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+        <% end %>
+          <p class="mb-0 ms-2">back</p>
+        </div>
       <%#= link_to "< back to results", :back %>
 
       <div class="artist-avatar"></div>
