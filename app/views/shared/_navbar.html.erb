@@ -30,7 +30,7 @@
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My Shortlists", shortlists_path, class: "nav-link" %>
+          <%= link_to "My Shortlist", shortlist_path(current_user.shortlists.first), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "My Opportunities", my_opportunities_path, class: "nav-link" %>
