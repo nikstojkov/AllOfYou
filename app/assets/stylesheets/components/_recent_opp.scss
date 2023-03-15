@@ -1,0 +1,28 @@
+.recent-opp {
+  gap: 1em;
+  width: 100%;
+
+  a {
+    width: 33%
+  }
+}
+
+.opp-poster {
+  border: $frame-border;
+  background-color: white;
+  color: $body-color;
+  box-shadow: $frame-shadow;
+  margin-top: 0;
+  transition: all 0.1s ease;
+
+  &:hover {
+    margin-top: -0.1em;
+    box-shadow: rgba(0,0,0,0.2) 2px 4px 8px;
+  }
+}
+
+.color-bar {
+  width: 100%;
+  background-color: $opp-tab;
+  height: 1.5em;
+}
