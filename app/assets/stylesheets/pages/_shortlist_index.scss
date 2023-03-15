@@ -87,14 +87,14 @@ background-color: white;
   }
 
   .circle {
-  width: 60px;
+  width: 60px !important;
   height:60px;
   border-radius: 50%;
   background-color: rgb(182, 179, 179);
   border: none;
-  margin-bottom: 80px;
-  margin-top:135px;
-  display: flex;
+  margin-bottom: 80px !important;
+  margin-top:135px !important;
+  display: flex !important;
 
 
   }
