@@ -2,8 +2,8 @@
   <aside class="d-flex justify-content-end">
     <div class="side">
       <%# TODO: change below link path %>
-      <%= link_to :back do %>
-        <i class="fa-solid fa-circle-arrow-left fs-5"></i>
+      <%= link_to :back, class: "text-decoration-none" do %>
+        <i class="fa-solid fa-circle-arrow-left fs-5"></i> back
       <% end %>
       <%#= link_to "< back to results", :back %>
 
@@ -18,29 +18,28 @@
         <%= icon('fa-solid', 'location-dot')%> <%= @artist.location ? @artist.location : "" %>
       </p>
 
-      <p>
-        <%= @artist.bio %>
-      </p>
+      <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
 
     <div class="tags-holder">
-    <hr>
       <% if current_artist == @artist %>
-        <p class="mb-2"><strong>Add Tags Here:</strong></p>
         <form action='/artists/<%= @artist.id %>' data-controller="tom-select">
-          <input type="hidden" value="" name="tags" id="tag-box">
-          <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-0">
-
-            <% Tag.all.each do |tag| %>
-              <option value='<%= tag.name %>'><%= tag.name %></option>
-            <% end %>
-
-          </select>
-          <input type="submit" value="Add Tags" class="btn btn-primary mt-2 mb-2">
+          <div class="d-flex flex-row w-100">
+            <input type="hidden" value="" name="tags" id="tag-box">
+            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-0 flex-grow-1">
+              <% Tag.all.each do |tag| %>
+                <option value='<%= tag.name %>'><%= tag.name %></option>
+              <% end %>
+            </select>
+          <input type="submit" value="Add Tags" class="btn btn-primary btn-sm">
+          </div>
         </form>
       <% end %>
 
-      <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
     </div>
+
+      <p>
+        <%= @artist.bio %>
+      </p>
 
       <% if current_user %>
 
