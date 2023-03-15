@@ -87,8 +87,10 @@ background-color: white;
   }
 
   .circle {
+
   width: 60px !important;
   height:60px;
+
   border-radius: 50%;
   background-color: rgb(182, 179, 179);
   border: none;
@@ -112,8 +114,8 @@ background-color: white;
 
 .circle::before {
   content: "+";
-  height:60px;
-  width:60px;
+  max-height:60px;
+  max-width:60px;
   font-size:60px;
   display:flex;
   flex-direction:row;

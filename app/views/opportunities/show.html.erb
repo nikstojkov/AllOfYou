@@ -5,7 +5,9 @@
       <% if current_user == @opportunity.user %>
         <%= link_to "< back to opportunities", my_opportunities_path %>
       <% else %>
-        <%= link_to "< back to opportunities", :back %>
+        <%= link_to :back do %>
+          <i class="fa-solid fa-circle-arrow-left fs-5 mt-4 ms-4"></i>
+        <% end %>
       <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
@@ -68,60 +70,85 @@
 
       <div class="applications-box d-flex flex-column">
         <% if @opportunity.status == true %>
+
           <% if current_user == @opportunity.user %>
+
             <% @opportunity.applications. each do |application| %>
-                <% artist = application.artist %>
-                <% if application.success == true %>
-                  <% next %>
+              <% artist = application.artist %>
+              <% if application.success == true %>
+              <% next %>
+
+          <% else %>
+
+            <div class="appl-card my-2">
+              <div class="m-1">
+
+                <% if artist.photo.key %>
+                  <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
                 <% else %>
-                  <div class="appl-card my-2">
-                    <div class="m-1">
-                      <%# Artist Avatar %>
-                      <% if artist.photo.key %>
-                        <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
-                      <% else %>
-                        <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% end %>
-                      <br>
-                      <strong><%= artist.first_name %> <%= artist.last_name %></strong>
-                    </div>
-                    <div class="text-center d-flex align-items-center">
-                      <%= application.content %>
-                    </div>
-                    <div class="accept-deny">
-                      <%= button_to "accept", toggle_success_application_path(application), method: :patch, class: "accept-b app-btn" %>
-                      <% @application = Application.find(application.id) %>
-                      <%= link_to 'reject', opportunity_application_path(@opportunity, application: application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "reject-b app-btn" %>
-                    </div>
-                  </div>
+                  <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
+                <br>
+                <strong><%= artist.first_name %> <%= artist.last_name %></strong>
+              </div>
+
+              <div class="text-center d-flex align-items-center">
+                <%= application.content %>
+              </div>
+
+              <div class="accept-deny">
+                <%= button_to "accept", toggle_success_application_path(application), method: :patch, class: "accept-b app-btn" %>
+                <% @application = Application.find(application.id) %>
+                <%= link_to 'reject', opportunity_application_path(@opportunity, application: application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "reject-b app-btn" %>
+              </div>
+            </div>
+                <% end %>
+
               <% end %>
-            <% elsif current_artist %>
+
+          <% elsif current_artist %>
+
+            <div class="application-form mt-5">
+              <h4>Apply Below</h4>
+              <%# TODO Render the app form if not already applied %>
+
+              <%= render 'applications/form' %>
+            </div>
+
+          <% end %>
 
               <%# TODO Render the app form if not already applied %>
 
-              <% if current_artist.applications.empty? %>
-                  <div class="apply-here">
-                    <h3>Apply Here</h3>
-                  </div>
-                  <%= render 'applications/form' %>
-              <% else %>
-                <% unless current_artist.applications.where(artist_id: current_artist.id, opportunity_id: @opportunity.id).empty? %>
-                  <div class="applied">
-                    <h2>You've applied!</h2>
-                  </div>
-                <%else %>
-                  <div class="apply-here">
-                    <h3>Apply Here</h3>
-                  </div>
-                  <%= render 'applications/form' %>
-                <% end %>
-              <% end %>
+          <% if current_artist.applications.empty? %>
+            <div class="apply-here">
+              <h3>Apply Here</h3>
+            </div>
+            <%= render 'applications/form' %>
+
+          <% else %>
+
+            <% unless current_artist.applications.where(artist_id: current_artist.id, opportunity_id: @opportunity.id).empty? %>
+              <div class="applied">
+                <h2>You've applied!</h2>
+              </div>
+            <%else %>
+              <div class="apply-here">
+                <h3>Apply Here</h3>
+              </div>
+              <%= render 'applications/form' %>
+            <% end %>
+
+          <% end %>
+
           <% else %>
             <h3 class="border-bottom"><%= current_user ? "Opportunity is now over" : "This user has closed this Opportunity" %></h3>
           <% end %>
-          <% end %>
-        </div>
+
+          <%# ******************************************* %>
+          <%# Commented out below end line as a temp fix %>
+          <%# ******************************************* %>
+        <%# end %>
+      </div>
     </div>
 
   </div>
