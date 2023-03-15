@@ -3,18 +3,18 @@ require "json"
 
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
 
-painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(80)
+painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(100)
 p painting_ids
-
 
 
 locations = ["Bristol", "London", "Reading", "York", "Newcastle"]
 
-user_tags = ["male", "female"]
+identity_tags = %w(working-class millenial gen-z lgbtq trans woc)
+medium_tags = %w(watercolour oil digital acrylic photography sculpture)
 
 
 
-tags = %w('abstract aethetic angular avant-guard baroque bold contemporary
+tags = %w('abstract aesthetic angular avant-garde baroque bold contemporary
   creative cubist dynamic enigmatic expressive geometric inspiring linear
   minimalist modern monochromatic multimedia muted naturalistic portrait
   profound realistic representational rococo somber still-life sublime surreal
@@ -46,7 +46,7 @@ tags = %w('abstract aethetic angular avant-guard baroque bold contemporary
   visually stimulating voyeuristic'
 )
 
-pronouns_list = ["She", "Her", "Hers", "Herself", "He", "Him", "His", "Himself", "They", "Them", "Theirs", "Themself"]
+pronouns_list = ["she / her", "he / him", "they / them"]
 
 puts "Cleaning DB"
 
@@ -63,9 +63,19 @@ puts "-------------"
 puts "Tags Creation"
 puts "-------------"
 
-tags.uniq.each do |tag|
+hashtags = tags.uniq.map do |tag|
   Tag.create!(name: tag)
 end
+
+medium_taggs = medium_tags.map do |tag|
+  Tag.create!(name: tag)
+end
+identity_taggs = identity_tags.map do |tag|
+  Tag.create!(name: tag)
+end
+
+p medium_taggs
+
 puts "-------------"
 puts "Tags DONE----"
 puts "-------------"
@@ -100,7 +110,8 @@ puts "--------------------"
     user_id: User.all.ids.sample,
     title: Faker::Book.title,
     location: locations.sample,
-    description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false)
+    description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
+    date: Date.today + rand(1..10)
   )
   Tag.all.sample(5).each do |tag|
     OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
@@ -116,7 +127,7 @@ puts "----------------"
 puts "Artists Creation"
 puts "----------------"
 
-10.times do
+15.times do
   first = Faker::Name.first_name
   last = Faker::Name.last_name
   artist = Artist.create!(
@@ -126,9 +137,15 @@ puts "----------------"
     password: "Artist123",
     bio: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
     location: locations.sample,
-    pronouns: pronouns_list.sample(3).join(" / ")
+    pronouns: pronouns_list.sample
   )
   Tag.all.sample(5).each do |tag|
+    ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
+  end
+  medium_taggs.sample(2).each do |tag|
+    ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
+  end
+  identity_taggs.sample(2).each do |tag|
     ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
   end
   puts "Artist with id #{artist.id} created"
@@ -144,16 +161,19 @@ puts "----------------"
 
 painting_ids.each do |id|
   data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
-  artwork = Artwork.create!(
-    artist_id: Artist.all.ids.sample,
-    name: data["title"],
-    genre: Faker::Book.genre,
-    image_url: data["primaryImageSmall"]
-  )
-  Tag.all.sample(5).each do |tag|
-    ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+  unless data["primaryImageSmall"] == ""
+    artwork = Artwork.create!(
+      artist_id: Artist.all.ids.sample,
+      name: data["title"],
+      genre: Faker::Book.genre,
+      image_url: data["primaryImageSmall"]
+    )
+    hashtags.sample(5).each do |tag|
+      ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+    end
+    ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
+    puts "Artwork with id #{artwork.id} created"
   end
-  puts "Artwork with id #{artwork.id} created"
 end
 
 puts "-------------"
@@ -182,15 +202,21 @@ puts "Shortlist Creation"
 puts "------------------"
 
 
-10.times do
-  shortlist = Shortlist.create!(
-    name: Faker::Book.title,
-    user_id: User.all.ids.sample
-  )
-  Artist.all.sample(5).each do |artist|
+# 10.times do
+#   shortlist = Shortlist.create!(
+#     name: Faker::Book.title,
+#     user_id: User.all.ids.sample
+#   )
+
+# end
+
+User.all.each do |user|
+  shortlist = Shortlist.create!(name: "My Shortlist", user_id: user.id)
+  puts "Shortlist with id #{shortlist.id} created"
+
+  Artist.all.sample(rand(0..2)).each do |artist|
     ShortlistedArtist.create!(artist_id: artist.id, shortlist_id: shortlist.id)
   end
-  puts "Shortlist with id #{shortlist.id} created"
 end
 
 puts "----------------"
