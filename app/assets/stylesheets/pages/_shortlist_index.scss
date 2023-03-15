@@ -1,24 +1,19 @@
-.shortlist-wrap {
-min-height: calc(100vh - 60px);
-overflow: hidden;
-display: flex;
-background-color: white;
-}
 
 
-.shortlist-name-column {
-  top: 60px;
-  z-index: 1;
-  // bottom: 0;
-  // position: sticky;
-  display: flex;
-  flex-direction: column;
-  // background-color: $accent;
-  min-height: 100vh;
-  width: 400px;
-  background: linear-gradient(.25turn, $accent, 75%, rgb(255, 255, 255));
 
-}
+// .shortlist-name-column {
+//   top: 60px;
+//   z-index: 1;
+//   // bottom: 0;
+//   // position: sticky;
+//   display: flex;
+//   flex-direction: column;
+//   // background-color: $accent;
+//   min-height: 100vh;
+//   width: 400px;
+//   background: linear-gradient(.25turn, $accent, 75%, rgb(255, 255, 255));
+
+// }
 
 
 

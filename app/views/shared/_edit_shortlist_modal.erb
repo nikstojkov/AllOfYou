@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary shortlist-add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<%# <button class="shortlist-add" data-bs-toggle="modal" data-bs-target="#exampleModal">
     edit
   </button>
 
@@ -12,11 +12,11 @@
         <div class="modal-body">
 
           <%= simple_form_for(shortlist) do |f| %>
-          <%= f.input :name %>
-          <%= f.submit "Update", data: {turbo_method: :update} %>
-          <% end %>
+          <%# <%= f.input :name %>
+          <%# <%= f.submit "Update", data: {turbo_method: :update} %>
+          <%# <% end %>
 
-        </div>
+        <%# </div>
       </div>
     </div>
-  </div>
+  </div> %>

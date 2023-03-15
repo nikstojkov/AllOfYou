@@ -1,24 +1,39 @@
+.shortlist-wrap {
+height: $full-height;
+overflow: hidden;
+display: flex;
+background-color: $light-gray;
+}
+
 .shortlist-artists {
   display:flex;
   flex-direction:column;
-  min-height: calc(100vh - 60px);
+  height: 100%;
+  overflow: scroll;
   align-items:center;
   width: 1328px;
-  margin-top: 20px;
+  grid-gap: 2em;
+  margin-bottom: 20px;
+
+  h1 {
+    margin-top:60px;
+    margin-bottom:30px;
+  }
 }
 
 .shortlist-yellow {
   display: flex;
   flex-direction: column;
   background-color: $accent;
-  min-height: calc(100vh - 60px);
-  width: 400px;
-  justify-content: center;
+  min-height: 100%;
+  width: 450px;
   align-items: center;
+  background: linear-gradient(.25turn, $accent, 80%, $light-gray);
 }
 
 .shortlist-name {
   width: 300px;
   height: 300px;
   text-align: center;
+  margin-top: 300px;
 }
