@@ -16,13 +16,15 @@
         <br>
         <% if current_user == @opportunity.user %>
           <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags">
+                      <div class="d-flex flex-row w-100">
             <input type="hidden" value="" name="tags" id="tag-box">
-            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="p-1">
+            <select data-tom-select-target="selector" data-action="input->tom-select#change" multiple name="newtag" id="select-tags" class="flex-grow-1">
               <% Tag.all.each do |tag| %>
                 <option value='<%= tag.name %>'><%= tag.name %></option>
               <% end %>
             </select>
-            <input type="submit" value="Add Tags" class="m-1 btn btn-primary rounded-pill">
+            <input type="submit" value="Add Tags" class="btn btn-primary btn-sm">
+            </div>
           </form>
         <% end %>
       </div>

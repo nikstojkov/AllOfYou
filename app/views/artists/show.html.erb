@@ -44,7 +44,7 @@
       <% if current_user %>
 
         <%= simple_form_for [@artist, @shortlisted_artist] do |f| %>
-          <%= f.submit "Add to Shortlist", class: "btn btn-secondary" %>
+          <%= f.submit "+ Favourite", class: "btn btn-primary" %>
         <% end %>
 
       <% end %>
