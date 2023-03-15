@@ -46,7 +46,7 @@
 
 .apps-title {
   width: 100%;
-  border-bottom: 1px black solid;
+  // border-bottom: 1px black solid;
 }
 
 .applications-box {
@@ -141,4 +141,8 @@
   background-color: white;
   margin-left: 396px;
   margin-bottom: 55px;
+}
+
+#applied-click {
+  text-decoration: none;
 }
