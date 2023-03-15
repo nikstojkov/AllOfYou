@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
+import FadingController from "./fading_controller"
+application.register("fading", FadingController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
-
-import { initSortable } from "./sortable"
-initSortable()
