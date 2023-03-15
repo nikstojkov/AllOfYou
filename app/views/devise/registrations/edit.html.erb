@@ -1,8 +1,9 @@
 <div class="container">
-  <%= link_to :back do %>
-    <i class="fa-solid fa-circle-arrow-left fs-5 mt-3"></i>
+<div class="custom-form">
+  <%= link_to :back, class: "text-decoration-none" do %>
+    <i class="fa-solid fa-circle-arrow-left fs-5 mb-3"></i> back
   <% end %>
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit Profile</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -16,7 +17,6 @@
       <%# <% end %>
     <%# <% end %>
 
-
     <%= f.input :bio,
         # required: true,
         input_html: { autocomplete: "bio" }%>
@@ -24,7 +24,7 @@
 <%= f.input :location,
         # required: true,
         autofocus: true,
-        input_html: { autocomplete: "location" }%>
+        input_html: { autocomplete: "location" } %>
 
 <%= f.input :pronouns,
         # required: true,
@@ -51,9 +51,14 @@
   <div class="form-actions">
     <%= f.button :submit, "Update", class: "btn btn-lg btn-default btn-success" %>
   </div>
-<% end %>
+  <% end %>
+    <div class="" style="text-align: right;">
+    <p>Thinking of leaving us?
+    <%= link_to "Delete Account", registration_path(resource_name),
+            data: { confirm: "Are you sure?",
+            turbo_confirm: "Are you sure?" },
+            method: :delete %>
+    </p>
+    </div>
+  </div>
 </div>
-
-
-
-<div class="container" style="text-align: right"><p>Thinking of leaving us? <%= link_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></p></div>
