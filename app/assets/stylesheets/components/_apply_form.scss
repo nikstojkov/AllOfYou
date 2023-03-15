@@ -1,28 +1,19 @@
 .apply {
   width: 34vw;
-  padding: 2em 4em;
-  border: 4px solid;
-  margin: 4em auto 4em auto;
+  padding: 1.5em 4em;
+  border: $frame-border;
+  //margin: 4em auto;
   background-color: white;
-  .form-label {
-    margin-bottom:30px;
-    font-size: 20px;
 
+  .form-label {
+    //margin-bottom:30px;
+    //font-size: 20px;
   }
   .form-control {
     height: 90px;
   }
 }
 
-
-.apply-now {
-margin-top: 18px;
-}
-
-
-.apply-here {
-  margin-top: 50px;
-}
 
 .applied {
   color: green;
