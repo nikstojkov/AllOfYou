@@ -20,22 +20,7 @@ def random_opp_url
   return image
 end
 
-# random_faces = []
-
-# 100.times do
-#   url = random_face_url
-#   random_faces << url
-# end
-
-# random_face = random_face_url
-# random_artwork = random_artwork_url
-# random_gallery = random_gallery_url
-
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
-
-# @faces = Cloudinary::Api.resources(type: 'upload', prefix: 'faces')
-# @artwork = Cloudinary::Api.resources(type: 'upload', prefix: 'artworks')
-# opp_image =
 
 painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(100)
 p painting_ids
