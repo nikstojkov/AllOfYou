@@ -3,14 +3,15 @@ require "json"
 require "cloudinary"
 
 def random_face_url
-  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'faces')['resources'].sample['url']
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 8, prefix: 'artist_profiles')['resources']
   return image
 end
 
 def random_opp_url
-  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'opps')['resources'].sample['url']
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'opps')['resources']
   return image
 end
+
 def random_art_url
   image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'artwork')['resources']
   return image
@@ -19,6 +20,13 @@ end
 @all_artwork = random_art_url
 p @all_artwork.count
 
+@all_faces = random_face_url
+p @all_faces.count
+
+@all_opps = random_opp_url
+p @all_opps.count
+
+sleep(10)
 
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
 
@@ -124,14 +132,14 @@ puts "--------------------"
 puts "Opportunity Creation"
 puts "--------------------"
 
-10.times do
+@all_opps.each do |opp|
   opportunity = Opportunity.create!(
     user_id: User.all.ids.sample,
     title: Faker::Book.title,
     location: locations.sample,
     description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
     date: Date.today + rand(1..10),
-    opp_image: random_opp_url
+    opp_image: opp['url']
   )
   Tag.all.sample(5).each do |tag|
     OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
@@ -147,7 +155,7 @@ puts "----------------"
 puts "Artists Creation"
 puts "----------------"
 
-15.times do
+@all_faces.each do |face|
   first = Faker::Name.first_name
   last = Faker::Name.last_name
   artist = Artist.create!(
@@ -158,7 +166,7 @@ puts "----------------"
     bio: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
     location: locations.sample,
     pronouns: pronouns_list.sample,
-    profile_image: random_face_url
+    profile_image: face['url']
   )
   Tag.all.sample(5).each do |tag|
     ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
