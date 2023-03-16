@@ -109,9 +109,7 @@
   <div class="discover">
     <h1 class="animate__animated animate__bounce">Welcome to All of You</h1>
     <p class="m-0 fs-5">
-      All of you are invited to share and source the creativity you need.
-      A space for artists to share who they are and
-      the work they make, and for opportunity makers to find the artists they need.
+      Start discovering new artistic talent today, or sign up as an artist to share your work with people that matter.
     </p>
     <div class="d-flex flex-row w-70 align-items-center">
       <a href="/search" style="text-decoration:none;" class="mr-2 h-100 d-flex" id="discover-btn">
@@ -134,42 +132,53 @@
 </div>
 <div class="aoy-infos__wrapper">
 <div class="aoy-infos container">
-  <div class="aoy-infos__card rand-box">
+  <div class="aoy-infos__card rand-artist">
+      <h4>
       This week's featured artist:
+      </h4>
+      <%= link_to artist_path(@artist), class: "text-decoration-none" do %>
       <div class="artist-card__image rand-img" style="background-image: url('<%= @artist.artworks.empty? ? "" : @artist.artworks.sample.image_url %>')"></div>
-
+      <% end %>
 
       <div class="rand-info">
-        <h4><%= @artist.first_name %> <%= @artist.last_name %></h4>
-        <div class="text-center d-flex flex-row justify-content-evenly">
-          <span>
-            <%= icon('fa-solid', 'location-dot')%>  <%= @artist.location ? @artist.location : "" %>
-          </span>
-          <span>
-            <%= icon('fa-solid', 'user')%>  <%= @artist.pronouns ? @artist.pronouns : "" %>
-          </span>
-        </div>
+        <h3 class="text-center"><%= @artist.first_name %> <%= @artist.last_name %></h3>
+
         <div class="text-center">
           <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
         </div>
-
-        <p class="text-center">
-          <%= @artist.bio.truncate(180) %>
-        </p>
       </div>
 
   </div>
 
   <div class="aoy-infos__card about-aoy" id="">
-      <p class="info-text">
-      All of you are invited to share and source the creativity you need.
-      A space for artists to share who they are and
-      the work they make, and for opportunity makers to find the artists they need.
+      <p class="info-text fs-4">
+      <strong class="text-primary fs-3">
+      All of you</strong> are invited to share and source the creativity you need.
+      </p><p class="info-text">
+      A space for artists to share <strong class="text-primary">who they are</strong> and
+      the work they make, and for opportunity makers to <strong class="text-primary">find the artists they need.</strong>
       </p>
   </div>
 
   <div class="aoy-infos__card">
-    DUMMY CONTENT
+    <h4>
+      Upcoming Opportunity
+    </h4>
+    <%= link_to opportunity_path(@opportunity), class: "text-decoration-none" do %>
+      <div class="artist-card__image rand-img" style="background-image: url('')"></div>
+      <% end %>
+
+      <div class="rand-info">
+        <h3 class="text-center"><%= @opportunity.title %></h3>
+
+        <div class="text-center">
+        <p class="m-0">
+          <%= icon('fa-regular', 'calendar')%>  <%= @opportunity.date.strftime("%d of %B, %Y") %>
+        </p>
+        <p class="m-0">
+          <%= icon('fa-solid', 'location-dot')%>  <%= @opportunity.location ? @opportunity.location : "" %>
+        </p>        </div>
+      </div>
   </div>
 </div>
   <div class="text-center" style="display:flex; justify-content:center;">
