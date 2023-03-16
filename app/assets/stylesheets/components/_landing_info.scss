@@ -1,0 +1,47 @@
+
+.aoy-infos__wrapper {
+  width: 100%;
+  background-color: $opp-tab;
+  padding: 2em 0;
+
+}
+
+.aoy-infos {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  margin: 2em auto;
+}
+
+.aoy-infos__card {
+  width: 33%;
+  border: $frame-border;
+  box-shadow: $frame-shadow;
+  padding: 0.5em;
+  background-color: white;
+}
+
+.rand-artist {
+  background-color: $artist-tab;
+
+  // width: 60%;
+  // border: 5px solid black;
+  margin: auto;
+  text-align:left;
+  display: flex;
+  flex-direction: column;
+  // height: 95%;
+  // padding: 4px;
+
+  .rand-img {
+    width: 100%;
+    // border: 2px solid black;
+  }
+}
+
+.about-aoy {
+  // width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
