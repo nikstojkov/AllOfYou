@@ -15,12 +15,12 @@ class ShortlistedArtistsController < ApplicationController
     end
   end
 
-  def destroy
-    raise
-    @shortlisted_artist = ShortlistedArtist.find(params[:id])
-    @shortlisted_artist.destroy
-    redirect_to shortlist_path(current_user.shortlist)
-  end
+  # def destroy
+  #   raise
+  #   @shortlisted_artist = ShortlistedArtist.find(params[:id])
+  #   @shortlisted_artist.destroy
+  #   redirect_to shortlist_path(current_user.shortlist)
+  # end
 
 end
 

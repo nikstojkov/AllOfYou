@@ -1,12 +1,9 @@
 <div class="artist-card">
 <div class="artist-card__image" style="background-image: url('<%= artist.artworks.empty? ? "" : artist.artworks.sample.image_url %>')"></div>
     <div class="artist-card__info">
-    <div class="d-flex">
       <h3>
         <%= "#{artist.first_name} #{artist.last_name}" %>
       </h3>
-      <%= link_to 'Remove Artist', shortlisted_artist_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "reject-b app-btn" %>
-    </div>
       <p>
         <%= icon('fa-solid', 'location-dot')%>  <%= artist.location ? artist.location : "" %>
       </p>
