@@ -8,9 +8,13 @@ def random_face_url
 end
 
 def random_art_url
-  image = Cloudinary::Api.resources(type: 'upload', prefix: 'artwork')['resources'].sample['url']
+  image = Cloudinary::Api.resources(type: 'upload', prefix: 'artwork')['resources']
+
   return image
 end
+
+@all_artwork = random_art_url
+p @all_artwork.count
 
 def random_opp_url
   image = Cloudinary::Api.resources(type: 'upload', prefix: 'opps')['resources'].sample['url']
@@ -192,21 +196,38 @@ puts "----------------"
 puts "Artwork Creation"
 puts "----------------"
 
-painting_ids.each do |id|
-  data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
-  unless data["primaryImageSmall"] == ""
-    artwork = Artwork.create!(
-      artist_id: Artist.all.ids.sample,
-      name: data["title"],
-      genre: Faker::Book.genre,
-      image_url: random_art_url
-    )
-    hashtags.sample(5).each do |tag|
-      ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+# painting_ids.each do |id|
+#   data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
+#   unless data["primaryImageSmall"] == ""
+#     artwork = Artwork.create!(
+#       artist_id: Artist.all.ids.sample,
+#       name: data["title"],
+#       genre: Faker::Book.genre,
+#       image_url: random_art_url
+#     )
+#     hashtags.sample(5).each do |tag|
+#       ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+#     end
+#     ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
+#     puts "Artwork with id #{artwork.id} created"
+#   end
+# end
+
+p @all_artwork
+
+@all_artwork.each do |artwork|
+
+  new_artwork = Artwork.create!(
+    artist_id: Artist.all.ids.sample,
+    name: "ART",
+    genre: Faker::Book.genre,
+    image_url: artwork['url']
+   )
+   hashtags.sample(5).each do |tag|
+        ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: tag.id)
     end
-    ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
-    puts "Artwork with id #{artwork.id} created"
-  end
+      ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: medium_taggs.sample.id)
+      puts "Artwork with id #{new_artwork.id} created"
 end
 
 puts "-------------"
