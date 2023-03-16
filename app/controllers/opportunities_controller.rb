@@ -68,7 +68,7 @@ class OpportunitiesController < ApplicationController
   private
 
   def opportunity_params
-    params.require(:opportunity).permit(:title, :location, :description, :status, :date, :photo)
+    params.require(:opportunity).permit(:title, :location, :description, :status, :date, :opp_image)
   end
 
   def set_opportunities
