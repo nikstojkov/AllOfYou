@@ -6,7 +6,7 @@
       <div class="p-3">
         <h4><%= opportunity.title %></h4>
         <p class="m-0">
-          <%= icon('fa-regular', 'calendar')%>  <%= opportunity.date.strftime("%d of %B, %Y") %>
+          <%= icon('fa-regular', 'calendar')%>  <%= opportunity.date ? opportunity.date.strftime("%d %B, %Y") : "No Date Set" %>
         </p>
         <p class="m-0">
           <%= icon('fa-solid', 'location-dot')%>  <%= opportunity.location ? opportunity.location : "" %>
