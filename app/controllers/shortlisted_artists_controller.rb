@@ -2,20 +2,24 @@ class ShortlistedArtistsController < ApplicationController
   skip_before_action :authenticate_artist!
 
   def create
+    shortlist = current_user.shortlist
+
     @shortlisted_artists = ShortlistedArtist.new
     @artist = Artist.find(params[:artist_id])
     @shortlisted_artists.artist = @artist
-    @shortlisted_artists.shortlist = current_user.shortlists.first
+    @shortlisted_artists.shortlist = current_user.shortlist
     if @shortlisted_artists.save
-      redirect_to shortlists_path(current_user)
+      redirect_to shortlist_path(shortlist)
     else
       redirect_to artist_path(@artist)
     end
   end
 
   # def destroy
-  #   @shortlisted_artist.find(params[:id]).destroy
-  #   redirect_to
+  #   raise
+  #   @shortlisted_artist = ShortlistedArtist.find(params[:id])
+  #   @shortlisted_artist.destroy
+  #   redirect_to shortlist_path(current_user.shortlist)
   # end
 
 end
