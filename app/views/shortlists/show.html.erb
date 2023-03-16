@@ -8,10 +8,17 @@
       <%= render partial: "shared/edit_shortlist_modal", locals: { shortlist: @shortlist } %>
     </div>
   </div>
+<div>
+  <%= link_to artists_path, class: "text-decoration-none" do %>
+    <div class="d-flex align-items-center mt-4">
+      <i class="fa-solid fa-circle-arrow-left fs-2"></i>
+  <% end %>
+      <p class="mb-0 ms-2">back</p>
+  </div>
+</div>
 
-
-  <div class="shortlist-artists">
     <%# <h1>Artists</h1> %>
+  <div class="shortlist-artists">
     <% @shortlist.artists.each do |artist| %>
       <%= link_to artist_path(artist.id), class: "text-decoration-none artist-card__link my-4" do %>
 

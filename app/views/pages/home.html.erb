@@ -107,19 +107,21 @@
 
 <div class="landing-bottom">
   <div class="discover">
-<<<<<<< HEAD
-    <h1 class="animate__animated animate__bounce">Find the Artists you need</h1>
-    <p style="font-weight:none; font-size:1.5em; margin:0;">Discover the Opportunities you need</p>
-    <div class="d-flex" style="width: 30em; justify-content:space-between; align-items:center;">
-      <a href="/search" style="text-decoration:none;">
-        <div class="text-center"  id="discover-btn" >
-          Discover
+    <h1 class="animate__animated animate__bounce">Welcome to All of You</h1>
+    <p class="m-0 fs-5">
+      Start discovering new artistic talent today, or sign up as an artist to share your work with people that matter.
+    </p>
+    <div class="d-flex flex-row w-70 align-items-center">
+      <a href="/search" style="text-decoration:none;" class="mr-2 h-100 d-flex" id="discover-btn">
+          <span class="my-auto">Discover</span>
+      </a>
+
+      <a href="#ss-1" id="ss">
+        <div class="bg-image learn-more" style="" id="more-btn">
+        <p class="m-0">Learn More</p>
+        <i class="fa-solid fa-angle-down fa-bounce"></i>
         </div>
       </a>
-      <div>
-        <a href="#ss-1" id="ss"><div class="bg-image" style="" id="more-btn">More Info <br>
-        <i class="fa-solid fa-angle-down"></i></div></a>
-      </div>
     </div>
 
     <br>
@@ -128,51 +130,63 @@
 
   <br>
 </div>
-<br>
-
-<div class="aoy-infos d-flex">
-  <div class="w-40 p-1 rand-box">
-    <div class="rand-artist">
-      <div>
-        <div class="artist-card__image rand-img" style="background-image: url('<%= @artist.artworks.empty? ? "" : @artist.artworks.sample.image_url %>')"></div>
-      </div>
+<div class="aoy-infos__wrapper">
+<div class="aoy-infos container">
+  <div class="aoy-infos__card rand-artist">
+      <h4>
+      This week's featured artist:
+      </h4>
+      <%= link_to artist_path(@artist), class: "text-decoration-none" do %>
+      <div class="artist-card__image rand-img" style="background-image: url('<%= @artist.artworks.empty? ? "" : @artist.artworks.sample.image_url %>')"></div>
+      <% end %>
 
       <div class="rand-info">
-        <div class="w-60 text-center">
-          <p>
-            <%= icon('fa-solid', 'location-dot')%>  <%= @artist.location ? @artist.location : "" %>
-          </p>
-          <p>
-            <%= icon('fa-solid', 'user')%>  <%= @artist.pronouns ? @artist.pronouns : "" %>
-          </p>
-        </div>
+        <h3 class="text-center"><%= @artist.first_name %> <%= @artist.last_name %></h3>
+
         <div class="text-center">
           <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
         </div>
-
-        <p class="text-center">
-          <%= @artist.bio %>
-        </p>
-
       </div>
-    </div>
+
   </div>
 
-  <div class="about-aoy" id="">
-    <div style="background-color:white; border-radius:8px; padding:1em;">
-      <h1>All Of You</h1>
-      <br>
-      <p class="info-text">All of you are invited to share and source the creativity you need. A space for artists to share who they are and
-      the work they make, and for opportunity makers to find the artists they need.</p>
-    </div>
+  <div class="aoy-infos__card about-aoy" id="">
+      <p class="info-text fs-4">
+      <strong class="text-primary fs-3">
+      All of you</strong> are invited to share and source the creativity you need.
+      </p><p class="info-text">
+      A space for artists to share <strong class="text-primary">who they are</strong> and
+      the work they make, and for opportunity makers to <strong class="text-primary">find the artists they need.</strong>
+      </p>
+  </div>
 
+  <div class="aoy-infos__card">
+    <h4>
+      Upcoming Opportunity
+    </h4>
+    <%= link_to opportunity_path(@opportunity), class: "text-decoration-none" do %>
+      <div class="artist-card__image rand-img" style="background-image: url('')"></div>
+      <% end %>
+
+      <div class="rand-info">
+        <h3 class="text-center"><%= @opportunity.title %></h3>
+
+        <div class="text-center">
+        <p class="m-0">
+          <%= icon('fa-regular', 'calendar')%>  <%= @opportunity.date.strftime("%d of %B, %Y") %>
+        </p>
+        <p class="m-0">
+          <%= icon('fa-solid', 'location-dot')%>  <%= @opportunity.location ? @opportunity.location : "" %>
+        </p>        </div>
+      </div>
   </div>
 </div>
   <div class="text-center" style="display:flex; justify-content:center;">
-    <a href="#ss-tp" id="ss-1"><div id="more-btn" style="display: flex; flex-direction: column; align-items: center;" >
-    <i class="fa-solid fa-chevron-up"></i>
-    Back to top</div></a>
+    <a href="#ss-tp" id="ss-1" class="text-decoration-none text-white">
+      <div style="" class="to-top" id="more-btn">
+        <i class="fa-solid fa-chevron-up fa-bounce"></i>
+        <p class="m-0 text-white">Back to Top</p>
+    </a>
   </div>
-  <br>
-<i class="fa-solid fa-chevron-up"></i>
+</div>
 </div>

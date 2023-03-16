@@ -10,12 +10,23 @@
         </div>
         <div class="modal-body">
 
+        <div data-controller="toms-no2">
         <%= simple_form_for(@new_artwork) do |f| %>
         <%= f.input :name %>
         <%= f.input :genre %>
+
+        <label class="form-label string optional" for="tags">Tags</label>
+          <input type="hidden" value="" name="tags" id="worktag-box">
+            <select data-toms-no2-target="artwork" data-action="input->toms-no2#tagger" multiple name="newtags" id="select-tags" class="p-0 flex-grow-1">
+              <% Tag.all.each do |tag| %>
+                <option value='<%= tag.name %>'><%= tag.name %></option>
+              <% end %>
+            </select>
+
         <%= f.input :photo, as: :file %>
         <%= f.submit value: "Add", class:"art-add" %>
         <% end %>
+        </div>
 
         </div>
         <div class="modal-footer">
