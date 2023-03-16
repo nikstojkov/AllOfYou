@@ -27,12 +27,16 @@
   height: 60vh;
   background: linear-gradient(transparent, white 30%);
   display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .discover {
   height: 35vh;
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
   width: 55%;
   background-color: white;
   margin-top: 20vh;

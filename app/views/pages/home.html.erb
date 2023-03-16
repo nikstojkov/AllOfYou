@@ -27,8 +27,8 @@
 <div class="landing-bottom"></div> %>
 
 
-
-<div class="wrapper">
+<span id="ss-tp"></span>
+<div class="wrapper" id="ss-top">
   <div class="column column-1">
     <div class="image image-1"></div>
     <div class="image image-2"></div>
@@ -107,19 +107,72 @@
 
 <div class="landing-bottom">
   <div class="discover">
-
+<<<<<<< HEAD
     <h1 class="animate__animated animate__bounce">Find the Artists you need</h1>
-    <p>start searching All of You by genre, location, medium....</p>
-    <%= form_with url: search_index_path, method: :get, class: "d-flex landing-search" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find an artist"
-      %>
-      <%= submit_tag "Discover", class: "btn btn-primary", class: "discover-btn" %>
-    <% end %>
+    <p style="font-weight:none; font-size:1.5em; margin:0;">Discover the Opportunities you need</p>
+    <div class="d-flex" style="width: 30em; justify-content:space-between; align-items:center;">
+      <a href="/search" style="text-decoration:none;">
+        <div class="text-center"  id="discover-btn" >
+          Discover
+        </div>
+      </a>
+      <div>
+        <a href="#ss-1" id="ss"><div class="bg-image" style="" id="more-btn">More Info <br>
+        <i class="fa-solid fa-angle-down"></i></div></a>
+      </div>
+    </div>
+
+    <br>
+
+  </div>
+
+  <br>
+</div>
+<br>
+
+<div class="aoy-infos d-flex">
+  <div class="w-40 p-1 rand-box">
+    <div class="rand-artist">
+      <div>
+        <div class="artist-card__image rand-img" style="background-image: url('<%= @artist.artworks.empty? ? "" : @artist.artworks.sample.image_url %>')"></div>
+      </div>
+
+      <div class="rand-info">
+        <div class="w-60 text-center">
+          <p>
+            <%= icon('fa-solid', 'location-dot')%>  <%= @artist.location ? @artist.location : "" %>
+          </p>
+          <p>
+            <%= icon('fa-solid', 'user')%>  <%= @artist.pronouns ? @artist.pronouns : "" %>
+          </p>
+        </div>
+        <div class="text-center">
+          <%= render partial: "shared/tags_container", locals: { tags: @artist.tags } %>
+        </div>
+
+        <p class="text-center">
+          <%= @artist.bio %>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="about-aoy" id="">
+    <div style="background-color:white; border-radius:8px; padding:1em;">
+      <h1>All Of You</h1>
+      <br>
+      <p class="info-text">All of you are invited to share and source the creativity you need. A space for artists to share who they are and
+      the work they make, and for opportunity makers to find the artists they need.</p>
+    </div>
+
   </div>
 </div>
-
-
-<%# create if statement that makes the landing page different depending on the user signed in %>
+  <div class="text-center" style="display:flex; justify-content:center;">
+    <a href="#ss-tp" id="ss-1"><div id="more-btn" style="display: flex; flex-direction: column; align-items: center;" >
+    <i class="fa-solid fa-chevron-up"></i>
+    Back to top</div></a>
+  </div>
+  <br>
+<i class="fa-solid fa-chevron-up"></i>
+</div>
