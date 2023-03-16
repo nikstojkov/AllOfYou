@@ -10,7 +10,7 @@ export default class extends Controller {
     console.log("Connected (second TOMS) stimulus controller")
     new TomSelect(this.artworkTarget, {
       maxItems: 10,
-      plugins: ['remove_button'],
+      // plugins: ['remove_button'],
       create: true
     })
     console.log(this.artworkTarget.selectedOptions)
