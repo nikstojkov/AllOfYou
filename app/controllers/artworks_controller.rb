@@ -21,13 +21,11 @@ class ArtworksController < ApplicationController
     @artwork = Artwork.new(artwork_params)
     @artwork.artist = current_artist
     @new_tags = params[:tags].split(", ")
-
     @new_tags.each do |tag|
-      tag_create = Tag.find_by(name: tag)
-      ArtworkTag.create(tag: tag_create, artwork: @artwork) unless @artwork.tags.include?(tag_create)
+      tag_create = Tag.find_or_create_by(name: tag)
+      ArtworkTag.create(tag: tag_create, artwork: @artwork)
     end
     if @artwork.save
-      # raise
       redirect_to artist_path(@artwork.artist)
     else
       render :new, status: :unprocessable_entity
