@@ -17,8 +17,12 @@
   width: 33%;
   border: $frame-border;
   box-shadow: $frame-shadow;
-  padding: 0.5em;
+  padding: 1em;
   background-color: white;
+
+  &:hover {
+    box-shadow: $frame-shadow-hover;
+  }
 }
 
 .rand-artist {

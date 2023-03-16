@@ -1,0 +1,18 @@
+<div class="d-flex flex-row recent-opp">
+  <% Opportunity.last(3).each do |opportunity| %>
+    <%= link_to opportunity_path(opportunity), class: "text-decoration-none" do %>
+    <div class="opp-poster">
+      <div class="color-bar"></div>
+      <div class="p-3">
+        <h4><%= opportunity.title %></h4>
+        <p class="m-0">
+          <%= icon('fa-regular', 'calendar')%>  <%= opportunity.date.strftime("%d of %B, %Y") %>
+        </p>
+        <p class="m-0">
+          <%= icon('fa-solid', 'location-dot')%>  <%= opportunity.location ? opportunity.location : "" %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
