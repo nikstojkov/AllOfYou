@@ -33,10 +33,10 @@
 
       </div>
 
-      <div class="modal-body d-flex justify-content-center w-100">
+      <div class="modal-body d-flex justify-content-center w-100 artwork-modal">
 
         <% if artwork.photo.key %>
-          <%= cl_image_tag artwork.image_url %>
+          <%= cl_image_tag artwork.image_url, class: "img-fluid" %>
         <% elsif artwork.image_url %>
           <%= image_tag artwork.image_url %>
         <% else %>

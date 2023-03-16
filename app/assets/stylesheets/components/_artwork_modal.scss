@@ -1,5 +1,10 @@
 .modal-width {
   max-width: 50vw;
+  justify-content: center;
+}
+
+.artwork-modal > img {
+  max-width: 49vw;
 }
 
 .artwork-container .modal-link {
