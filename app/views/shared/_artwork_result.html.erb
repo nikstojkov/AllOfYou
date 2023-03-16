@@ -1,11 +1,11 @@
 <div class="artwork__card">
   <div class="artwork__frame">
     <% if artwork.photo.key %>
-      <%= cl_image_tag "blobload.gif", class: "lazy", data: {src: artwork.photo.key, lazy_loader_target: "image" } %>
+      <%= image_tag "blobload.gif", class: "lazy", data: {src: cl_image_path(artwork.photo.key), lazy_loader_target: "image" } %>
     <% elsif artwork.image_url %>
       <%= image_tag "blobload.gif", class: "lazy", data: {src: artwork.image_url, lazy_loader_target: "image" } %>
     <% else %>
-        <div class="w-100" height="200px">nothing here yet</div>
+      <div class="w-100" height="200px">nothing here yet</div>
     <% end %>
   </div>
   <p class="artwork__title"><%= artwork.name %></p>
