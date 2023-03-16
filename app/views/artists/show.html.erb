@@ -10,7 +10,7 @@
         </div>
       <%#= link_to "< back to results", :back %>
 
-      <div class="artist-avatar animate__animated animate__fadeIn animate__delay-1s" style="background-image: url('<%= cl_image_path(@artist.profile_image) %>'); width: 300px;">
+      <div class="artist-avatar animate__animated animate__fadeIn animate__delay-1s" style="background-image: url('<%= image_path (@artist.profile_image) %>'); width: 300px;">
       </div>
       <h2>
         <%= "#{@artist.first_name} #{@artist.last_name}" %>
