@@ -1,7 +1,10 @@
 
 .aoy-infos__wrapper {
   width: 100%;
-  background: linear-gradient(217deg, rgba(243, 72, 255, 0.8), rgba(255,0,0,0) 70.71%),            linear-gradient(127deg, rgba(251, 255, 33, 0.8), rgba(0,255,0,0) 70.71%),            linear-gradient(336deg, rgba(44, 255, 255, 0.8), rgba(0,0,255,0) 70.71%);
+  background: linear-gradient( white 5%, transparent),
+  linear-gradient(217deg, rgba(243, 72, 255, 0.8), rgba(255,0,0,0) 70.71%),
+  linear-gradient(127deg, rgba(251, 255, 33, 0.8), rgba(0,255,0,0) 70.71%),
+  linear-gradient(336deg, rgba(44, 255, 255, 0.8), rgba(0,0,255,0) 70.71%);
   padding: 2em 0;
 
 }
