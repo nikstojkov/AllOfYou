@@ -202,7 +202,7 @@ puts "----------------"
 @all_artwork.each do |artwork|
   new_artwork = Artwork.create!(
     artist_id: Artist.all.ids.sample,
-    name: "ART",
+    name: Faker::Verb.base.capitalize,
     genre: Faker::Book.genre,
     image_url: artwork['url']
    )
