@@ -3,13 +3,12 @@ require "json"
 require "cloudinary"
 
 def random_face_url
-  image = Cloudinary::Api.resources(type: 'upload', prefix: 'faces')['resources'].sample['url']
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'faces')['resources'].sample['url']
   return image
 end
 
 def random_art_url
-  image = Cloudinary::Api.resources(type: 'upload', prefix: 'artwork')['resources']
-
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'artwork')['resources']
   return image
 end
 
@@ -17,7 +16,7 @@ end
 p @all_artwork.count
 
 def random_opp_url
-  image = Cloudinary::Api.resources(type: 'upload', prefix: 'opps')['resources'].sample['url']
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'opps')['resources'].sample['url']
   return image
 end
 
@@ -213,18 +212,17 @@ puts "----------------"
 #   end
 # end
 
-p @all_artwork
+# p @all_artwork
 
 @all_artwork.each do |artwork|
-
   new_artwork = Artwork.create!(
     artist_id: Artist.all.ids.sample,
     name: "ART",
     genre: Faker::Book.genre,
     image_url: artwork['url']
    )
-   hashtags.sample(5).each do |tag|
-        ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: tag.id)
+    hashtags.sample(5).each do |tag|
+      ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: tag.id)
     end
       ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: medium_taggs.sample.id)
       puts "Artwork with id #{new_artwork.id} created"
