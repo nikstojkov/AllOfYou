@@ -7,6 +7,10 @@ def random_face_url
   return image
 end
 
+def random_opp_url
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'opps')['resources'].sample['url']
+  return image
+end
 def random_art_url
   image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'artwork')['resources']
   return image
@@ -15,10 +19,6 @@ end
 @all_artwork = random_art_url
 p @all_artwork.count
 
-def random_opp_url
-  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'opps')['resources'].sample['url']
-  return image
-end
 
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
 
