@@ -1,44 +1,15 @@
-.aoy-infos {
-  padding: 1.5em;
-}
 
 .rand-box {
-  width: 50%;
-  padding: 10px;
-  display: flex;
-  align-items: center;
+  // width: 50%;
+  // padding: 10px;
+
+  // align-items: center;
 }
 
-.rand-artist {
-  background-color: $artist-tab;
 
-  width: 60%;
-  border: 5px solid black;
-  margin: auto;
-  text-align:left;
-  height: 95%;
-  padding: 4px;
-
-  .rand-img {
-    width: 75%;
-    margin: 0 auto;
-    border: 2px solid black;
-  }
-}
 
 .rand-info {
-  padding: 10px;
-  overflow:auto;
-}
+  // padding: 10px;
+  // overflow:auto;
 
-.about-aoy {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-.info-text {
-  font-size: 1.5em;
 }

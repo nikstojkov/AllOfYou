@@ -59,9 +59,9 @@
     <div class="opp-applicants">
       <% if current_user == @opportunity.user && @opportunity.status%>
         <div class="apps-title my-1">
-          <h3>These artists have applied:</h3>
+          <h3>These Artists Have Applied</h3>
         </div>
-        <% elsif @opportunity.status == false %>
+      <% elsif @opportunity.status == false %>
         <h3 class="border-bottom">Opportunity now closed</h3>
       <% end %>
       <div class="applications-box d-flex flex-column">
@@ -75,15 +75,14 @@
                   <div class="appl-card my-2">
                     <div class="m-1">
                       <%# Artist Avatar %>
-
-                     <a id="applied-click" href='/artists/<%= artist.id %>'>
+                     <a id="applied-click" href='/artists/<%= artist.id %>' style="color:black;">
                         <% if artist.photo.key %>
                           <%= cl_image_tag artist.photo.key, crop: fill, class: "avatar" %>
                         <% else %>
-                          <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar" %>
                         <% end %>
-                      <br>
-                      <strong><%= artist.first_name %> <%= artist.last_name %></strong>
+                        <br>
+                        <strong><%= artist.first_name %> <%= artist.last_name %></strong>
                       </a>
                     </div>
                     <div class="text-center d-flex align-items-center">
@@ -120,10 +119,12 @@
     </div>
   </div>
     </div>
+
   <aside class="side-info">
     <div class="px-4 pt-5">
       <%# TODO: change below link path %>
         <%# HERE FOR WHEN IMAGES ARE ATTACHED %>
+
 
            <img class="opp-img" src="<%= cl_image_path(@opportunity.opp_image)%>">
 
@@ -150,8 +151,12 @@
             <% if application.success == true %>
               <div class="appl-card-small my-1">
                 <div>
-                  <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <%= application.artist.first_name %> <%= application.artist.last_name %>
+                  <a href='/artists/<%= application.artist.id %>' style="text-decoration:none; color: black;">
+                    <div>
+                      <%= image_tag "https://news.artnet.com/app/news-upload/2022/05/SHGH2-e1652097979660-256x256.jpg", class: "avatar" %>
+                    </div>
+                    <%= application.artist.first_name %> <%= application.artist.last_name %>
+                  </a>
                 </div>
                 <div class="align-items-center d-flex">
                   <strong class="text-success">Accepted</strong>

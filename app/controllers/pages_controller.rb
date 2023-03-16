@@ -4,5 +4,6 @@ class PagesController < ApplicationController
 
   def home
     @artist = Artist.all.sample
+    @opportunity = Opportunity.where(status: true).sample
   end
 end

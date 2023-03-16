@@ -17,7 +17,7 @@
     <div class="application-card__inner">
       <div>
         <p><strong>Location: </strong><%= application.opportunity.location %></p>
-        <p><strong>Date: </strong><%= application.opportunity.date.strftime("%d %B, %Y") %></p>
+        <p><strong>Date: </strong><%= application.opportunity.date ? application.opportunity.date.strftime("%d %B, %Y") : "No Date Set" %></p>
       </div>
 
       <div>
