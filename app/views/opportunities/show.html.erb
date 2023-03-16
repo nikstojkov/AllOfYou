@@ -18,7 +18,7 @@
       <% end %>
       <%# <div class="test-div">TESTER</div> %>
     </div>
-    <div class="opportunity-info">
+    <div class="opportunity-info mt-5">
       <h1 class="mb-4"><%= @opportunity.title %></h1>
 
       <div class="opp-icons d-flex row text-left fs-5">
@@ -33,7 +33,7 @@
           </div>
       </div>
       <br>
-      <div class="tags-box my-2">
+      <div class="tags-box my-2 mt-3">
         <%= render partial: "shared/tags_container", locals: { tags: @opportunity.tags }, class: "current-tags" %>
         <% if current_user == @opportunity.user && @opportunity.status %>
           <form action='/opportunities/<%= @opportunity.id %>' data-controller="tom-select" class="opp-tags my-2">
@@ -56,7 +56,7 @@
         <%= @opportunity.description %>
       </div>
       <br>
-    <div class="opp-applicants">
+    <div class="opp-applicants mt-5">
       <% if current_user == @opportunity.user && @opportunity.status%>
         <div class="apps-title my-1">
           <h3>These Artists Have Applied</h3>
@@ -127,7 +127,7 @@
         <% if @opportunity.photo.key %>
            <%= cl_image_tag @opportunity.photo.key, crop: :fill, width: 300, class: "opp-pic shadow-sm " %>
         <% else %>
-          <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm w-100">
+          <img src="https://www.scotsman.com/webimg/b25lY21zOmFiMTA0ZTA1LTgzOWEtNDhiNy04N2FjLTZkNTVmNTJhNmU1MjoyZjZhNzRlYS0yNWIyLTQzNzItYmNiNi00NGE1MWI3MWFiNzE=.jpg?crop=61%3A45%2Csmart&width=800" class="opp-pic shadow-sm w-75">
         <% end %>
       <% if current_user == @opportunity.user && @opportunity.status %>
         <div class="button-box">
