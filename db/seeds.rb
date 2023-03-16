@@ -8,13 +8,14 @@ def random_face_url
 end
 
 def random_art_url
-  image = Cloudinary::Api.resources(type: 'upload', prefix: 'artworks')['resources'].sample['url']
+  image = Cloudinary::Api.resources(type: 'upload', prefix: 'artwork')['resources'].sample['url']
   return image
 end
 
-# def random_opp_url
-#   image = Cloudinary::Api.resources(type: 'upload', prefix: 'artworks')['resources'].sample['url']
-# end
+def random_opp_url
+  image = Cloudinary::Api.resources(type: 'upload', prefix: 'opps')['resources'].sample['url']
+  return image
+end
 
 # random_faces = []
 
@@ -141,7 +142,8 @@ puts "--------------------"
     title: Faker::Book.title,
     location: locations.sample,
     description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
-    date: Date.today + rand(1..10)
+    date: Date.today + rand(1..10),
+    opp_image: random_opp_url
   )
   Tag.all.sample(5).each do |tag|
     OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)

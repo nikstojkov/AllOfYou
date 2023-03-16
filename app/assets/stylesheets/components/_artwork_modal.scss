@@ -8,10 +8,13 @@
 }
 
 .img-size {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 50vw !important;
+  // max-height: 100%;
 }
 
+#image-size {
+  max-width: 50vw !important;
+}
 // .modal-carousel-height {
 //   height: 50vh;
 // }
