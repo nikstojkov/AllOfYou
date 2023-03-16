@@ -1,4 +1,11 @@
 <%= simple_form_for(@opportunity) do |f| %>
+<br>
+
+<div class="d-flex w-50 justify-content-between">
+  <strong><label for="status">Open/Close Opportunity</label></strong>
+  <%= f.input :status, as: :boolean %>
+</div>
+
   <%= f.input :title %>
   <%= f.input :location %>
 

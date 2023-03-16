@@ -65,13 +65,14 @@
         <h3 class="border-bottom">Opportunity now closed</h3>
       <% end %>
       <div class="applications-box d-flex flex-column">
-        <% if @opportunity.status == true %>
-          <% if current_user == @opportunity.user %>
+        <% if @opportunity.status == true %> <%# IF opportunity is open for apps %>
+
+          <% if current_user == @opportunity.user %>  <%# If current USER is this opportunitys' user, show applications %>
             <% @opportunity.applications.each do |application| %>
                 <% artist = application.artist %>
-                <% if application.success == true %>
+                <% if application.success %> <%# IF application is successful skip over it %>
                   <% next %>
-                <% else %>
+                <% elsif application.success == false %> <%# Applications that are pednign iterate %>
                   <div class="appl-card my-2">
                     <div class="m-1">
                       <%# Artist Avatar %>
@@ -95,7 +96,11 @@
                       <%= link_to 'reject', opportunity_application_path(@opportunity, application: application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "reject-b app-btn" %>
                     </div>
                   </div>
+
                 <% end %>
+              <% end %>
+              <% if (@opportunity.applications.empty? || @opportunity.applications.where(success: false).empty?)%>
+                <h3>Sorry mate</h3>
               <% end %>
             <% elsif current_artist %>
               <%# TODO Render the app form if not already applied %>
