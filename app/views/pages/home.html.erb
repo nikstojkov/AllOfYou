@@ -168,7 +168,7 @@
       Upcoming Opportunity
     </h4>
     <%= link_to opportunity_path(@opportunity), class: "text-decoration-none" do %>
-      <div class="artist-card__image rand-img" style="background-image: url('')"></div>
+      <div class="artist-card__image rand-img" style="background-image: url('<%= image_path (@opportunity.opp_image)%>')"></div>
       <% end %>
 
       <div class="rand-info">
