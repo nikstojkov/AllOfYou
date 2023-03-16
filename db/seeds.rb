@@ -1,7 +1,37 @@
 require "open-uri"
 require "json"
+require "cloudinary"
+
+def random_face_url
+  image = Cloudinary::Api.resources(type: 'upload', prefix: 'faces')['resources'].sample['url']
+  return image
+end
+
+def random_art_url
+  image = Cloudinary::Api.resources(type: 'upload', prefix: 'artworks')['resources'].sample['url']
+  return image
+end
+
+# def random_opp_url
+#   image = Cloudinary::Api.resources(type: 'upload', prefix: 'artworks')['resources'].sample['url']
+# end
+
+# random_faces = []
+
+# 100.times do
+#   url = random_face_url
+#   random_faces << url
+# end
+
+# random_face = random_face_url
+# random_artwork = random_artwork_url
+# random_gallery = random_gallery_url
 
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
+
+# @faces = Cloudinary::Api.resources(type: 'upload', prefix: 'faces')
+# @artwork = Cloudinary::Api.resources(type: 'upload', prefix: 'artworks')
+# opp_image =
 
 painting_ids = JSON.parse(URI.open(url).read)["objectIDs"].sample(100)
 p painting_ids
@@ -137,7 +167,8 @@ puts "----------------"
     password: "Artist123",
     bio: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
     location: locations.sample,
-    pronouns: pronouns_list.sample
+    pronouns: pronouns_list.sample,
+    profile_image: random_face_url
   )
   Tag.all.sample(5).each do |tag|
     ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
@@ -166,7 +197,7 @@ painting_ids.each do |id|
       artist_id: Artist.all.ids.sample,
       name: data["title"],
       genre: Faker::Book.genre,
-      image_url: data["primaryImageSmall"]
+      image_url: random_art_url
     )
     hashtags.sample(5).each do |tag|
       ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
