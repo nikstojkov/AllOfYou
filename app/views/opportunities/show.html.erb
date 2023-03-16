@@ -59,7 +59,7 @@
     <div class="opp-applicants">
       <% if current_user == @opportunity.user && @opportunity.status%>
         <div class="apps-title my-1">
-          <h3>These artists have applied:</h3>
+          <h3>These artists have applied</h3>
         </div>
         <% elsif @opportunity.status == false %>
         <h3 class="border-bottom">Opportunity now closed</h3>
@@ -100,7 +100,7 @@
                 <% end %>
               <% end %>
               <% if (@opportunity.applications.empty? || @opportunity.applications.where(success: false).empty?)%>
-                <h3>Sorry mate</h3>
+                <h3>Sorry no pending applications yet!</h3>
               <% end %>
             <% elsif current_artist %>
               <%# TODO Render the app form if not already applied %>
