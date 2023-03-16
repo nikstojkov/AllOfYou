@@ -20,18 +20,11 @@ class ArtworksController < ApplicationController
   def create
     @artwork = Artwork.new(artwork_params)
     @artwork.artist = current_artist
-    if params[:tags]
-      @incoming_tags = params[:tags].split(", ").map do |tag|
-        if tag.to_i.positive?
-          Tag.find(tag.to_i)
-        else
-          Tag.find_or_create_by(name: tag)
-        end
-      end
-      @incoming_tags.each do |tag|
-        tag_create = Tag.find_by(name: tag.name)
-        ArtworkTag.create(tag: tag_create, artwork: @artwork) unless @artwork.tags.include?(tag_create)
-      end
+    @new_tags = params[:tags].split(", ")
+
+    @new_tags.each do |tag|
+      tag_create = Tag.find_by(name: tag)
+      ArtworkTag.create(tag: tag_create, artwork: @artwork) unless @artwork.tags.include?(tag_create)
     end
     if @artwork.save
       # raise
