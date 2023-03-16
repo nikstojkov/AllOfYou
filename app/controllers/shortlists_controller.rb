@@ -8,7 +8,6 @@ class ShortlistsController < ApplicationController
 
     @shortlist = Shortlist.new
 
-    # @shortlists = Shortlist.all
   end
 
   def new

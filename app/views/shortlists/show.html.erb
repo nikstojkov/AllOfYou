@@ -2,10 +2,10 @@
   <div class="shortlist-yellow">
     <div class="shortlist-name">
       <h1>My Favourites</h1>
-      <p>* A collection of your favourite Artists</p>
+      <p>A collection of your favourited Artists</p>
       <%# <h1><%= @shortlist.name</h1>  %>
       <%# <%= link_to "Delete", shortlist_path(@shortlist), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary text-decoration-none" %>
-      <%= render partial: "shared/edit_shortlist_modal", locals: { shortlist: @shortlist } %>
+      <%# <%= render partial: "shared/edit_shortlist_modal", locals: { shortlist: @shortlist } %>
     </div>
   </div>
 <div>
@@ -22,7 +22,7 @@
     <% @shortlist.artists.each do |artist| %>
       <%= link_to artist_path(artist.id), class: "text-decoration-none artist-card__link my-4" do %>
 
-        <%= render partial: "shared/artist_card", locals: {artist: artist} %>
+        <%= render partial: "shared/shortlisted_artist_card", locals: {artist: artist} %>
       <% end %>
     <% end %>
   </div>
