@@ -8,9 +8,15 @@
 
   <div class="shortlist-artists">
     <div class="artist-card__container marg">
+    <% if @applications.empty? %>
+      <h5 class="m-0">You haven't made any applications yet! Why not look at these opportunities?</h5>
+    <% else %>
       <% @applications.each do |app| %>
         <%= render partial: "shared/application_card", locals: {application: app} %>
       <% end %>
+      <h5 class="m-0">Why not look at these recent opportunities?</h5>
+    <% end %>
+      <%= render partial: "shared/recent_opp" %>
     </div>
   </div>
 </div>

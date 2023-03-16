@@ -21,5 +21,5 @@ document.addEventListener("turbo:before-render", (event) => {
 
     event.detail.resume();
 
-  }, 800);
+  }, 500);
 })

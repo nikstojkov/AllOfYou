@@ -6,12 +6,12 @@
 <!-- These variables help keep track of the input name and ID-->
 <!-- currentTab helps keep track of each individual input-->
 <!-- tabControlName is used as a unique identifier for the accordion-->
-<ul>
+<ul data-controller="persist-checked">
   <li>
     <!-- Using radio inputs means only one can be selected at a time-->
     <!-- The ID must be unique so the label will point to the input-->
-    <input id="rad1" type="radio" name="rad" checked="checked"/>
-    <label for="rad1" class="acc-label">
+    <input id="artists" type="radio" name="rad" checked="checked" data-persist-checked-target="artists"/>
+    <label for="artists" class="acc-label" data-action="click->persist-check#storevalue" data-id="artists">
       <% if params[:query].present? %>
         <div>Artists <span class="fs-4">(<%= @artists.size %>)</span></div>
       <% else %>
@@ -41,8 +41,8 @@
   <li>
     <!-- Using radio inputs means only one can be selected at a time-->
     <!-- The ID must be unique so the label will point to the input-->
-    <input id="rad2" type="radio" name="rad"/>
-    <label for="rad2" class="acc-label">
+    <input id="artworks" type="radio" name="rad" data-persist-checked-target="artworks"/>
+    <label for="artworks" class="acc-label" data-action="click->persist-check#storevalue" data-id="artworks">
       <% if params[:query].present? %>
         <div>Artworks <span class="fs-4">(<%= @artworks.size %>)</span></div>
       <% else %>
@@ -75,8 +75,8 @@
   <li>
     <!-- Using radio inputs means only one can be selected at a time-->
     <!-- The ID must be unique so the label will point to the input-->
-    <input id="rad3" type="radio" name="rad"/>
-    <label for="rad3" class="acc-label">
+    <input id="opportunities" type="radio" name="rad" data-persist-checked-target="opportunities"/>
+    <label for="opportunities" class="acc-label" data-action="click->persist-check#storevalue" data-id="opportunities">
       <% if params[:query].present? %>
         <div>Opportunities <span class="fs-4">(<%= @opportunities.size %>)</span></div>
       <% else %>

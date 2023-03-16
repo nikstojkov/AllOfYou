@@ -10,5 +10,8 @@ application.register("hello", HelloController)
 import LazyLoaderController from "./lazy_loader_controller"
 application.register("lazy-loader", LazyLoaderController)
 
+import PersistCheckedController from "./persist_checked_controller"
+application.register("persist-checked", PersistCheckedController)
+
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
