@@ -1,5 +1,24 @@
 require "open-uri"
 require "json"
+require "cloudinary"
+
+def random_face_url
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'faces')['resources'].sample['url']
+  return image
+end
+
+def random_art_url
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'artwork')['resources']
+  return image
+end
+
+@all_artwork = random_art_url
+p @all_artwork.count
+
+def random_opp_url
+  image = Cloudinary::Api.resources(type: 'upload', max_results: 500, prefix: 'opps')['resources'].sample['url']
+  return image
+end
 
 url = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&departmentId=11&q=Painting"
 
@@ -111,7 +130,8 @@ puts "--------------------"
     title: Faker::Book.title,
     location: locations.sample,
     description: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
-    date: Date.today + rand(1..10)
+    date: Date.today + rand(1..10),
+    opp_image: random_opp_url
   )
   Tag.all.sample(5).each do |tag|
     OpportunityTag.create!(opportunity_id: opportunity.id, tag_id: tag.id)
@@ -137,7 +157,8 @@ puts "----------------"
     password: "Artist123",
     bio: Faker::Lorem.paragraph_by_chars(number: rand(150..250), supplemental: false),
     location: locations.sample,
-    pronouns: pronouns_list.sample
+    pronouns: pronouns_list.sample,
+    profile_image: random_face_url
   )
   Tag.all.sample(5).each do |tag|
     ArtistTag.create!(artist_id: artist.id, tag_id: tag.id)
@@ -159,21 +180,37 @@ puts "----------------"
 puts "Artwork Creation"
 puts "----------------"
 
-painting_ids.each do |id|
-  data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
-  unless data["primaryImageSmall"] == ""
-    artwork = Artwork.create!(
-      artist_id: Artist.all.ids.sample,
-      name: data["title"],
-      genre: Faker::Book.genre,
-      image_url: data["primaryImageSmall"]
-    )
+# painting_ids.each do |id|
+#   data = JSON.parse(URI.open("https://collectionapi.metmuseum.org/public/collection/v1/objects/#{id}").read)
+#   unless data["primaryImageSmall"] == ""
+#     artwork = Artwork.create!(
+#       artist_id: Artist.all.ids.sample,
+#       name: data["title"],
+#       genre: Faker::Book.genre,
+#       image_url: random_art_url
+#     )
+#     hashtags.sample(5).each do |tag|
+#       ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+#     end
+#     ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
+#     puts "Artwork with id #{artwork.id} created"
+#   end
+# end
+
+# p @all_artwork
+
+@all_artwork.each do |artwork|
+  new_artwork = Artwork.create!(
+    artist_id: Artist.all.ids.sample,
+    name: Faker::Verb.base.capitalize,
+    genre: Faker::Book.genre,
+    image_url: artwork['url']
+   )
     hashtags.sample(5).each do |tag|
-      ArtworkTag.create!(artwork_id: artwork.id, tag_id: tag.id)
+      ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: tag.id)
     end
-    ArtworkTag.create!(artwork_id: artwork.id, tag_id: medium_taggs.sample.id)
-    puts "Artwork with id #{artwork.id} created"
-  end
+      ArtworkTag.create!(artwork_id: new_artwork.id, tag_id: medium_taggs.sample.id)
+      puts "Artwork with id #{new_artwork.id} created"
 end
 
 puts "-------------"

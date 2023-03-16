@@ -4,7 +4,7 @@
   <div class="artwork__card">
     <div class="artwork__frame">
       <% if artwork.photo.key %>
-        <%= cl_image_tag artwork.photo.key %>
+        <%= cl_image_tag artwork.photo.key, class: "img-size" %>
       <% elsif artwork.image_url %>
         <%= image_tag artwork.image_url %>
       <% else %>
@@ -32,17 +32,16 @@
         <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
 
       </div>
-      <div class="modal-body d-flex justify-content-center">
 
+      <div class="modal-body d-flex justify-content-center w-100 artwork-modal">
 
         <% if artwork.photo.key %>
-          <%= cl_image_tag artwork.photo.key, :class => "img-size" %>
+          <%= cl_image_tag artwork.image_url, class: "img-fluid" %>
         <% elsif artwork.image_url %>
           <%= image_tag artwork.image_url %>
         <% else %>
           <h2>NAUGHT</h2>
         <% end %>
-
 
       </div>
       <div class="modal-footer d-flex justify-content-between">
