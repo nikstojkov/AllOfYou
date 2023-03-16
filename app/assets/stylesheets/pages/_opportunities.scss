@@ -38,6 +38,11 @@
   border: $frame-border;
 }
 
+.opp-desc {
+max-width: 65%;
+margin: auto;
+}
+
 .artist-apps {
   display: flex;
   justify-content: center;
