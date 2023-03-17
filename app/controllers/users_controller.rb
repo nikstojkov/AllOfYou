@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @opportunities = @user.opportunities
-    @shortlists = @user.shortlists
+    @shortlists = @user.shortlist
   end
 
   def edit
